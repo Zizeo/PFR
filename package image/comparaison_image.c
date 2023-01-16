@@ -9,6 +9,8 @@ int compare(const void *a, const void *b)
 }
 
 
+
+
 void comparaison_descripteur(){
 char descripteur_recherche[1000];
 char descripteur_indexe[1000];
@@ -20,6 +22,7 @@ char *token_indexe;
 char id_recherche[50];
 
 char couleur_recherche[10];
+float seuil_similarite;
 
 int indice_descripteur=0;
 int valeur_token_recherche[64];
@@ -101,6 +104,7 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
                 list_info[i].difference[j] = abs(list_info[i].valeur_token_indexe[j] - valeur_token_recherche[j]);
 
                 list_info[i].somme += list_info[i].difference[j];
+                list_info[i].taux_de_similarite = (1-(list_info[i].somme/80000));
             }
                 
             if (list_info[i].somme < min)

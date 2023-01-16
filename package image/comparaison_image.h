@@ -14,6 +14,7 @@ struct info_comparaison
     unsigned long somme;
     int valeur_token_indexe[64];
     char couleur_indexe[10];
+    float taux_de_similarite;
 };
 
 void comparaison_descripteur();
