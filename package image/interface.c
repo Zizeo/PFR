@@ -13,7 +13,7 @@ int main()
   int mode = 0;
   int type_search = 0;
   char mot_cle[1000];
-  char id_image[10];
+  char id_image[100];
 
   // Demande à l'utilisateur de choisir le mode d'utilisation
 

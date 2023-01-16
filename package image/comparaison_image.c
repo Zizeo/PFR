@@ -154,21 +154,21 @@ void index_recherche(char *id_image)
 
     char path_image[1000];
     FILE *image;
-    char couleur[10];
+    char couleur[100];
     FILE *descripteur_recherche;
     FILE *descripteur_indexe;
     char descripteur[1000];
 
     sprintf(path_image, "./TEST_RGB/%s.txt", id_image);
     image = fopen(path_image, "r");
-    strcpy(couleur, "RGB");
+    strcpy(couleur,"RGB");
     if (image == NULL)
     {
         sprintf(path_image, "./TEST_NB/%s.txt", id_image);
-        image = fopen(path_image, "r");
+        image = fopen(path_image,"r");
         strcpy(couleur, "NB");
     }
-
+    
     descripteur_recherche = fopen("./descripteur_recherche.txt", "w");
 
     if (descripteur_recherche == NULL)
