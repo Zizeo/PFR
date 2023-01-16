@@ -2,8 +2,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
-#include "comparaison_image.h"
-#include "toutIndexer.h"
+#include "./package_image/comparaison_image.h"
+#include "./package_image/toutIndexer.h"
 
 int main()
 {
