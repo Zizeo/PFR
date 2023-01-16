@@ -17,10 +17,10 @@ test_index.o: test_index.c toutIndexer.h
 clean: 
 	rm -rf *.o
 
-interface: interface.c toutIndexer.c comparaison_image.c
+interface: interface.c ../package_image/toutIndexer.c ../package_image/comparaison_image.c
 	gcc -c -g interface.c
-	gcc -c -g toutIndexer.c
-	gcc -c -g comparaison_image.c
+	gcc -c -g ../package_image/toutIndexer.c
+	gcc -c -g ../package_image/comparaison_image.c
 	gcc -o interface.out interface.o toutIndexer.o comparaison_image.o
 	./interface.out
 	
