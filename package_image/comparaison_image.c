@@ -120,11 +120,11 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
 
         if (strcmp(list_info[i].couleur_indexe,"RGB") == 0)
         {
-            list_info[i].taux_de_similarite = (1 -(list_info[i].somme/80000))*100;
+            list_info[i].taux_de_similarite = (list_info[i].somme/80000)*100;
         }
         else if (strcmp(list_info[i].couleur_indexe,"NB") == 0)
         {
-            list_info[i].taux_de_similarite = (1 -(list_info[i].somme/50000))*100;
+            list_info[i].taux_de_similarite = (list_info[i].somme/50000)*100;
         }
     }
 
