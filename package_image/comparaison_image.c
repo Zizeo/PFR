@@ -108,7 +108,12 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
                 list_info[i].difference[j] = abs(list_info[i].valeur_token_indexe[j] - valeur_token_recherche[j]);
 
                 list_info[i].somme += list_info[i].difference[j];
-                list_info[i].taux_de_similarite = (1-(list_info[i].somme/80000))*100;
+                if(strcmp(list_info[i].couleur_indexe,"RGB")==0){
+                    list_info[i].taux_de_similarite = (1-(list_info[i].somme/80000))*100;
+                }else{
+
+
+                }
             }
                 
             if (list_info[i].somme < min)
@@ -132,7 +137,7 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
 
     printf("les images les plus proches sont : \n");
 
-    for(int i=0;i<nb_descripteurs;i++){
+    for(int i=0;i<5;i++){
         
         if(strcmp(list_info[i].id_image,id_recherche)==0) continue;
 
