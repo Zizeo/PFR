@@ -104,16 +104,9 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
             list_info[i].somme=0;
             for (int j = 0; j < nb_pixel; j++)
             {
-
                 list_info[i].difference[j] = abs(list_info[i].valeur_token_indexe[j] - valeur_token_recherche[j]);
 
                 list_info[i].somme += list_info[i].difference[j];
-                if(strcmp(list_info[i].couleur_indexe,"RGB")==0){
-                    list_info[i].taux_de_similarite = (1-(list_info[i].somme/80000))*100;
-                }else{
-
-
-                }
             }
                 
             if (list_info[i].somme < min)
@@ -122,27 +115,39 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
                 strcpy(closest_id, list_info[i].id_image);
             }
         }
-            
-    }
 
-    for (int i = 0; i < nb_descripteurs; i++)
-    {
-        printf("taux image %d  =%f\n",i, list_info[i].taux_de_similarite);
+        if (strcmp(list_info[i].couleur_indexe,"RGB") == 0)
+        {
+            list_info[i].taux_de_similarite = (1 -(list_info[i].somme/80000))*100;
+        }
+        else if (strcmp(list_info[i].couleur_indexe,"NB") == 0)
+        {
+            list_info[i].taux_de_similarite = (1 -(list_info[i].somme/50000))*100;
+        }
     }
 
 
     qsort(list_info, nb_descripteurs, sizeof(struct info_comparaison), compare);
 
+    for (int i = 0; i < nb_descripteurs; i++)
+    {
+        printf("taux image %s = %f\n", list_info[i].id_image, list_info[i].taux_de_similarite);
+    }
+    printf("%d   %d",list_info[12].somme)
+
     printf("l'image recherché est la %s\n", id_recherche);
 
     printf("les images les plus proches sont : \n");
+
+    printf("");
+
 
     for(int i=0;i<5;i++){
         
         if(strcmp(list_info[i].id_image,id_recherche)==0) continue;
 
         if(list_info[i].taux_de_similarite > seuil_similarite){
-        printf("%s.jpg ",list_info[i+1].id_image);
+        printf("%s.jpg ",list_info[i].id_image);
         }
     }
 
@@ -150,9 +155,15 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
 
     char commande[1000];
     if(strcmp(list_info[0].couleur_indexe,"RGB")==0){
-        sprintf(commande, "viewnior ./TEST_RGB/%s.jpg",list_info[0].id_image);
+        if(strcmp(list_info[0].id_image, id_recherche) == 0){
+            sprintf(commande, "viewnior ./TEST_RGB/%s.jpg", list_info[1].id_image);
+        }
+        sprintf(commande, "viewnior ./TEST_RGB/%s.jpg", list_info[0].id_image);
     }else{
-        sprintf(commande, "viewnior ./TEST_NB/%s.bmp",list_info[0].id_image);
+        if (strcmp(list_info[0].id_image, id_recherche) == 0){
+            sprintf(commande, "viewnior ./TEST_NB/%s.bmp", list_info[1].id_image);
+        }
+        sprintf(commande, "viewnior ./TEST_NB/%s.bmp", list_info[0].id_image);
     }
     
     system(commande);
