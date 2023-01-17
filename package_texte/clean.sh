@@ -1,4 +1,4 @@
-#! /bin/bash 
+#!/bin/bash 
 
 #script pour creer les fichiers clean et tok avant descr.
 
