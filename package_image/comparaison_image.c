@@ -4,14 +4,14 @@ Auteur : Elio Genson
 Date de début : 1ère semaine de janvier 2023.
 Dernière modification : */
 
-#include "comparaison_image.h"
+#include "module_image.h"
 
 
 int compare(const void *a, const void *b)
 {
     struct info_comparaison *im1 = (struct info_comparaison *)b;
     struct info_comparaison *im2 = (struct info_comparaison *)a;
-    return im1->taux_de_similarite - im2->taux_de_similarite;
+    return im1->taux_de_similarite > im2->taux_de_similarite ? 1 :-1;
 }
 
 
@@ -27,7 +27,7 @@ char *token_indexe;
 char id_recherche[50];
 
 char couleur_recherche[10];
-float seuil_similarite=10;
+float seuil_similarite=3;
 
 int indice_descripteur=0;
 int valeur_token_recherche[64];
@@ -99,6 +99,9 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
     {
         if(strcmp(couleur_recherche,list_info[i].couleur_indexe) != 0){
             list_info[i].somme=400000;
+            if(strcmp(list_info[i].couleur_indexe,"RGB")==0){
+                list_info[i].somme=-(list_info[i].somme);
+            }
 
         }else{
             
@@ -120,11 +123,11 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
 
         if (strcmp(list_info[i].couleur_indexe,"RGB") == 0)
         {
-            list_info[i].taux_de_similarite = (list_info[i].somme/80000)*100;
+            list_info[i].taux_de_similarite = (list_info[i].somme/40000)*100;
         }
         else if (strcmp(list_info[i].couleur_indexe,"NB") == 0)
         {
-            list_info[i].taux_de_similarite = (list_info[i].somme/50000)*100;
+            list_info[i].taux_de_similarite = (1-(list_info[i].somme/40000))*100;
         }
     }
 
@@ -135,39 +138,40 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
     {
         printf("taux image %s = %f\n", list_info[i].id_image, list_info[i].taux_de_similarite);
     }
-    printf("%f   %f\n\n",list_info[12].somme, list_info[0].somme);
 
     printf("l'image recherché est la %s\n", id_recherche);
 
     printf("les images les plus proches sont : \n");
 
-
+    int nb_image_trouvee = 0;
     for(int i=0;i<5;i++){
         
         if(strcmp(list_info[i].id_image,id_recherche)==0) continue;
 
         if(list_info[i].taux_de_similarite > seuil_similarite){
         printf("%s.jpg ",list_info[i].id_image);
+        nb_image_trouvee++;
+        }else if(list_info[i].taux_de_similarite>0 && nb_image_trouvee==0){
+            printf("%s.jpg ", list_info[i].id_image);
         }
     }
-
-    printf("\n");
 
     char commande[1000];
     if(strcmp(list_info[0].couleur_indexe,"RGB")==0){
         if(strcmp(list_info[0].id_image, id_recherche) == 0){
             sprintf(commande, "viewnior ./TEST_RGB/%s.jpg", list_info[1].id_image);
-        }
+        }else{
         sprintf(commande, "viewnior ./TEST_RGB/%s.jpg", list_info[0].id_image);
+        }
     }else{
         if (strcmp(list_info[0].id_image, id_recherche) == 0){
             sprintf(commande, "viewnior ./TEST_NB/%s.bmp", list_info[1].id_image);
-        }
+        }else{
         sprintf(commande, "viewnior ./TEST_NB/%s.bmp", list_info[0].id_image);
+        }
     }
     
     system(commande);
-
     fclose(descripteurs);
     fclose(file_nb_descripteurs);
     fclose(file_descripteur_recherche);
@@ -220,7 +224,7 @@ void index_recherche(char *id_image)
 
     Indexer(image, id_image, couleur, descripteur_recherche);
 
-    if (!check_doublon(id_image))
+    if (check_doublon(id_image)==0)
     {
         fgets(descripteur, 1000, descripteur_recherche);
         fprintf(descripteur_indexe,"%s",descripteur);

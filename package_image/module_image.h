@@ -1,12 +1,11 @@
-#ifndef COMPARAISON_IMAGE
-#define COMPARAISON_IMAGE
+#ifndef MODULE_IMAGE
+#define MODULE_IMAGE
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <ctype.h>
 #include <string.h>
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
-
 
 struct info_comparaison
 {
@@ -20,5 +19,11 @@ struct info_comparaison
 
 void comparaison_descripteur();
 void index_recherche(char *id_image);
+
+void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripteur);
+
+void toutIndexer();
+
+int check_doublon(char identifiant[]);
 
 #endif
