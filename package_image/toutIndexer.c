@@ -1,3 +1,8 @@
+/*Ensemble de fonction qui permet l'indexation des image.
+Auteur : Elio Genson
+Date de début : 1ère semaine de décembre 2022.
+Dernière modification : */
+
 #include "toutIndexer.h"
 
 void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripteur)
@@ -96,7 +101,7 @@ void toutIndexer(){
     char path_image[100];
     char id_image[100];
 
-    fichier_descripteur = fopen("./package_image/descripteurs/base_descripteur_image.csv", "a");
+    fichier_descripteur = fopen("./package_image/descripteurs/base_descripteur_image.csv", "a+");
 
     list_image = fopen("list_image.txt", "r");
     list_id_imageRGB = fopen("list_id_imageRGB.txt", "r");
@@ -117,7 +122,6 @@ void toutIndexer(){
 
         int i = 0;
         fscanf(nb_image, "%d", &i);
-        printf("i = %d\n", i);
 
         for (int j = 0; j < i; j++){
                      
@@ -163,8 +167,6 @@ void toutIndexer(){
     i = 0;
 
     fscanf(nb_image, "%d", &i);
-
-    printf("i = %d\n", i);
 
     for (int j = 0; j < i; j++){
 
@@ -213,7 +215,13 @@ int check_doublon(char identifiant[]){
 FILE *liste_id_indexee;
 
 
-liste_id_indexee = fopen("./descripteurs/base_descripteur_image.csv", "r");
+liste_id_indexee = fopen("./package_image/descripteurs/base_descripteur_image.csv", "r");
+    if (liste_id_indexee == NULL)
+    {
+        perror("Error opening file list_image.txt\n");
+        return -1;
+    }
+
 char buffer[1000];
 
 char *id_descripteur;
