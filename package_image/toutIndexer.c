@@ -96,7 +96,7 @@ void toutIndexer(){
     char path_image[100];
     char id_image[100];
 
-    fichier_descripteur = fopen("./descripteurs/base_descripteur_image.csv", "a");
+    fichier_descripteur = fopen("./package_image/descripteurs/base_descripteur_image.csv", "a");
 
     list_image = fopen("list_image.txt", "r");
     list_id_imageRGB = fopen("list_id_imageRGB.txt", "r");
@@ -203,7 +203,7 @@ void toutIndexer(){
     fclose(list_id_imageNB);
     fclose(list_id_imageRGB);
     fclose(fichier_descripteur);
-    system("rm list_id_imageNB.txt; rm list_id_imageRGB.txt; rm nb_image.txt; rm list_image.txt; rm");
+    system("rm list_id_imageNB.txt; rm list_id_imageRGB.txt; rm nb_image.txt; rm list_image.txt");
 
     return;
 }
