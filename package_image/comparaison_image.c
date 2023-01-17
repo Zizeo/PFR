@@ -105,7 +105,8 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
             list_info[i].somme=0;
             for (int j = 0; j < nb_pixel; j++)
             {
-                list_info[i].difference[j] = abs(list_info[i].valeur_token_indexe[j] - valeur_token_recherche[j]);
+                //list_info[i].difference[j] = abs(list_info[i].valeur_token_indexe[j] - valeur_token_recherche[j]);
+                list_info[i].difference[j] = MIN(list_info[i].valeur_token_indexe[j], valeur_token_recherche[j]);
 
                 list_info[i].somme += list_info[i].difference[j];
             }

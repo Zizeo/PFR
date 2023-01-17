@@ -6,6 +6,7 @@
 #include <ctype.h>
 #include <string.h>
 #include "toutIndexer.h"
+#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 struct info_comparaison
 {
