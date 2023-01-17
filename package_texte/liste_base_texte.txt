@@ -1,4 +1,5 @@
 0 ./TOK/03-Des_chercheurs_parviennent_à_régénérer.xml.tok
+1 ./TOK/03-Mimer_un_signal_nerveux_pour.xml.tok
 2 ./TOK/05-Au_stade_d_Abidjan,_la_défaite.xml.tok
 3 ./TOK/05-Edition___les_mots_et.xml.tok
 4 ./TOK/05-Jean-Christophe_Bette_a_dû_attendre.xml.tok
@@ -47,6 +48,7 @@
 47 ./TOK/15-_Si_on_veut_aller_trop.xml.tok
 48 ./TOK/15-Un_quasar_solitaire_bouleverse_les.xml.tok
 49 ./TOK/16-Une_sonde_japonaise_va_tenter.xml.tok
+50 ./TOK/17-Anouk_Aimée_et_Philippe_Noiret.xml.tok
 51 ./TOK/17-De_la_difficulté_d_anticiper_les.xml.tok
 52 ./TOK/17-La_voix_envoûtante_de_Girija.xml.tok
 53 ./TOK/17-Une_équipe_française_a_réussi.xml.tok
@@ -59,14 +61,13 @@
 60 ./TOK/22-Danse___quarante_jeunes_de.xml.tok
 61 ./TOK/22-Des_laboureurs,_des_OGM..._et.xml.tok
 62 ./TOK/22-Dominique_Noël____Les_architectes.xml.tok
-63 ./TOK/22-Exposition___les_métamorphoses_picturales.xml.tok
 64 ./TOK/22-Grippe_aviaire___la_course.xml.tok
 65 ./TOK/22-Les_clubs_de_football_anglais.xml.tok
 66 ./TOK/22-Sursaut_des_Monégasques_après_le.xml.tok
 67 ./TOK/22-Ted_Stanger,_l_Américain_de_service.xml.tok
 68 ./TOK/23-Les_Bleus,_tombeurs_de_la.xml.tok
 69 ./TOK/24-Canicules_et_sécheresses_menacent_de.xml.tok
-70 ./TOK/26-Grippe_aviaire___une_sixième.xml.tok
+71 ./TOK/26-Jazz___Manu_Katché,_haut.xml.tok
 72 ./TOK/26-Lyon_prend_ses_aises_en.xml.tok
 73 ./TOK/26-Tom_Boonen_sacré_champion_du.xml.tok
 74 ./TOK/27-A_Lens,_le_Louvre_sera.xml.tok
