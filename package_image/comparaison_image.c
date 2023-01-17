@@ -1,14 +1,18 @@
+
+/*Ensemble de fonction qui permet l'indexation des image.
+Auteur : Elio Genson
+Date de début : 1ère semaine de janvier 2023.
+Dernière modification : */
+
 #include "comparaison_image.h"
 
 
 int compare(const void *a, const void *b)
 {
-    struct info_comparaison *im1 = (struct info_comparaison *)a;
-    struct info_comparaison *im2 = (struct info_comparaison *)b;
-    return im1->somme - im2->somme;
+    struct info_comparaison *im1 = (struct info_comparaison *)b;
+    struct info_comparaison *im2 = (struct info_comparaison *)a;
+    return im1->taux_de_similarite - im2->taux_de_similarite;
 }
-
-
 
 
 void comparaison_descripteur(){
@@ -22,7 +26,7 @@ char *token_indexe;
 char id_recherche[50];
 
 char couleur_recherche[10];
-float seuil_similarite;
+float seuil_similarite=10;
 
 int indice_descripteur=0;
 int valeur_token_recherche[64];
@@ -31,7 +35,7 @@ int nb_descripteurs=0;
 int nb_pixel = 64;
 char closest_id[100] = "";
 
-system("wc -l < ./descripteurs/base_descripteur_image.csv > nb_descripteurs.txt");
+system("wc -l < ./package_image/descripteurs/base_descripteur_image.csv > nb_descripteurs.txt");
 
 file_descripteur_recherche = fopen("descripteur_recherche.txt", "r");
 if (file_descripteur_recherche == NULL)
@@ -49,7 +53,7 @@ fscanf(file_nb_descripteurs,"%d", &nb_descripteurs);
 
 struct info_comparaison list_info[nb_descripteurs];
 
-descripteurs = fopen("./descripteurs/base_descripteur_image.csv","r");
+descripteurs = fopen("./package_image/descripteurs/base_descripteur_image.csv","r");
 
 if(descripteurs==NULL){
     printf("Error opening file base_descripteur_image.csv");
@@ -104,7 +108,7 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
                 list_info[i].difference[j] = abs(list_info[i].valeur_token_indexe[j] - valeur_token_recherche[j]);
 
                 list_info[i].somme += list_info[i].difference[j];
-                list_info[i].taux_de_similarite = (1-(list_info[i].somme/80000));
+                list_info[i].taux_de_similarite = (1-(list_info[i].somme/80000))*100;
             }
                 
             if (list_info[i].somme < min)
@@ -115,13 +119,12 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
         }
             
     }
-    int closest_num =min;
 
     for (int i = 0; i < nb_descripteurs; i++)
     {
-        printf("somme  =%lu\n", list_info[i].somme);
+        printf("taux image %d  =%f\n",i, list_info[i].taux_de_similarite);
     }
-    printf("closest = %d\n", closest_num);
+
 
     qsort(list_info, nb_descripteurs, sizeof(struct info_comparaison), compare);
 
@@ -129,10 +132,15 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
 
     printf("les images les plus proches sont : \n");
 
-    for(int i=0;i<4;i++){
+    for(int i=0;i<nb_descripteurs;i++){
+        
+        if(strcmp(list_info[i].id_image,id_recherche)==0) continue;
 
-        printf("%s.jpg ",list_info[i].id_image);
+        if(list_info[i].taux_de_similarite > seuil_similarite){
+        printf("%s.jpg ",list_info[i+1].id_image);
+        }
     }
+
     printf("\n");
 
     char commande[1000];
@@ -147,6 +155,7 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
     fclose(descripteurs);
     fclose(file_nb_descripteurs);
     fclose(file_descripteur_recherche);
+    return;
 }
 
 
@@ -186,11 +195,11 @@ void index_recherche(char *id_image)
         return;
     }
 
-    descripteur_indexe = fopen("./descripteurs/base_descripteur_image.csv", "a");
+    descripteur_indexe = fopen("./package_image/descripteurs/base_descripteur_image.csv", "a");
 
     if (descripteur_indexe == NULL)
     {
-        printf("Error opening file");
+        printf("\nError opening file descripteur_indexe\n");
     }
 
     Indexer(image, id_image, couleur, descripteur_recherche);
