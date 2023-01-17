@@ -15,6 +15,7 @@ int compare(const void *a, const void *b)
 }
 
 
+
 void comparaison_descripteur(){
 char descripteur_recherche[1000];
 char descripteur_indexe[1000];
@@ -92,7 +93,7 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
     }
 
     indice_descripteur++;
-    }
+}
 
     for (int i = 0; i < nb_descripteurs; i++)
     {
@@ -133,13 +134,11 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
     {
         printf("taux image %s = %f\n", list_info[i].id_image, list_info[i].taux_de_similarite);
     }
-    printf("%d   %d",list_info[12].somme)
+    printf("%f   %f\n\n",list_info[12].somme, list_info[0].somme);
 
     printf("l'image recherché est la %s\n", id_recherche);
 
     printf("les images les plus proches sont : \n");
-
-    printf("");
 
 
     for(int i=0;i<5;i++){
