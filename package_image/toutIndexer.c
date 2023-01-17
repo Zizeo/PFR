@@ -9,10 +9,27 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
 {
     int li, co;
     int pix;
+    int bit_quantification;
     unsigned int pixMasque;
+    FILE *config;
+
+    config = fopen("./config.txt","r");
+
+    if(config == NULL){
+        printf("Error oppening config file");
+        return;
+    }
+
+    fscanf(config, "bits de quantification= %d", &bit_quantification);
+    if(bit_quantification<0 || bit_quantification>8){
+        printf("nombre de bit de quantification invalide : > 8 ou < 0");
+        return;
+    }
+    
+    int masque = (unsigned char)((1 << bit_quantification) - 1) << (8 - bit_quantification); 
+
     int c = 0;
     int composante;
-    int masque = 0b11100000;
     int histogramme[64] = {0};
     int nombre_lu;
 
@@ -81,6 +98,7 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     }
 
     fprintf(fichier_descripteur, "\n");
+    fclose(fichier_descripteur);
 
     return;
 }
@@ -120,10 +138,10 @@ void toutIndexer(){
         return;
     }
 
-        int i = 0;
-        fscanf(nb_image, "%d", &i);
+    int i = 0;
+    fscanf(nb_image, "%d", &i);
 
-        for (int j = 0; j < i; j++){
+    for (int j = 0; j < i; j++){
                      
         fgets(id_image, 100, list_id_imageRGB);
         fgets(path_image, 100, list_image);

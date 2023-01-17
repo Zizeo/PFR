@@ -27,7 +27,7 @@ char *token_indexe;
 char id_recherche[50];
 
 char couleur_recherche[10];
-float seuil_similarite=10;
+float seuil_similarite=3;
 
 int indice_descripteur=0;
 int valeur_token_recherche[64];
@@ -99,6 +99,9 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
     {
         if(strcmp(couleur_recherche,list_info[i].couleur_indexe) != 0){
             list_info[i].somme=400000;
+            if(strcmp(list_info[i].couleur_indexe,"RGB")==0){
+                list_info[i].somme=-(list_info[i].somme);
+            }
 
         }else{
             
@@ -135,7 +138,6 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
     {
         printf("taux image %s = %f\n", list_info[i].id_image, list_info[i].taux_de_similarite);
     }
-    printf("%f   %f\n\n",list_info[12].somme, list_info[0].somme);
 
     printf("l'image recherché est la %s\n", id_recherche);
 
@@ -154,19 +156,19 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
         }
     }
 
-    printf("\n");
-
     char commande[1000];
     if(strcmp(list_info[0].couleur_indexe,"RGB")==0){
         if(strcmp(list_info[0].id_image, id_recherche) == 0){
             sprintf(commande, "viewnior ./TEST_RGB/%s.jpg", list_info[1].id_image);
-        }
+        }else{
         sprintf(commande, "viewnior ./TEST_RGB/%s.jpg", list_info[0].id_image);
+        }
     }else{
         if (strcmp(list_info[0].id_image, id_recherche) == 0){
             sprintf(commande, "viewnior ./TEST_NB/%s.bmp", list_info[1].id_image);
-        }
+        }else{
         sprintf(commande, "viewnior ./TEST_NB/%s.bmp", list_info[0].id_image);
+        }
     }
     
     system(commande);
@@ -222,7 +224,7 @@ void index_recherche(char *id_image)
 
     Indexer(image, id_image, couleur, descripteur_recherche);
 
-    if (!check_doublon(id_image))
+    if (check_doublon(id_image)==0)
     {
         fgets(descripteur, 1000, descripteur_recherche);
         fprintf(descripteur_indexe,"%s",descripteur);
