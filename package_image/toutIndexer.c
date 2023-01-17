@@ -3,7 +3,7 @@ Auteur : Elio Genson
 Date de début : 1ère semaine de décembre 2022.
 Dernière modification : */
 
-#include "toutIndexer.h"
+#include "module_image.h"
 
 void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripteur)
 {
@@ -12,7 +12,7 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     unsigned int pixMasque;
     int c = 0;
     int composante;
-    int masque = 0b11000000;
+    int masque = 0b11100000;
     int histogramme[64] = {0};
     int nombre_lu;
 

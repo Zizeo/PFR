@@ -4,14 +4,14 @@ Auteur : Elio Genson
 Date de début : 1ère semaine de janvier 2023.
 Dernière modification : */
 
-#include "comparaison_image.h"
+#include "module_image.h"
 
 
 int compare(const void *a, const void *b)
 {
     struct info_comparaison *im1 = (struct info_comparaison *)b;
     struct info_comparaison *im2 = (struct info_comparaison *)a;
-    return im1->taux_de_similarite - im2->taux_de_similarite;
+    return im1->taux_de_similarite > im2->taux_de_similarite ? 1 :-1;
 }
 
 
@@ -120,11 +120,11 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
 
         if (strcmp(list_info[i].couleur_indexe,"RGB") == 0)
         {
-            list_info[i].taux_de_similarite = (1 -(list_info[i].somme/80000))*100;
+            list_info[i].taux_de_similarite = (list_info[i].somme/40000)*100;
         }
         else if (strcmp(list_info[i].couleur_indexe,"NB") == 0)
         {
-            list_info[i].taux_de_similarite = (1 -(list_info[i].somme/50000))*100;
+            list_info[i].taux_de_similarite = (1-(list_info[i].somme/40000))*100;
         }
     }
 
@@ -141,13 +141,16 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
 
     printf("les images les plus proches sont : \n");
 
-
+    int nb_image_trouvee = 0;
     for(int i=0;i<5;i++){
         
         if(strcmp(list_info[i].id_image,id_recherche)==0) continue;
 
         if(list_info[i].taux_de_similarite > seuil_similarite){
         printf("%s.jpg ",list_info[i].id_image);
+        nb_image_trouvee++;
+        }else if(list_info[i].taux_de_similarite>0 && nb_image_trouvee==0){
+            printf("%s.jpg ", list_info[i].id_image);
         }
     }
 
@@ -167,7 +170,6 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
     }
     
     system(commande);
-
     fclose(descripteurs);
     fclose(file_nb_descripteurs);
     fclose(file_descripteur_recherche);
