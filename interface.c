@@ -164,7 +164,7 @@ int main()
 
                   case 7:
                     printf("\nRetour au Menu Mode Utilisateur en cours . . .\n\n");
-                    sleep(2);
+                    sleep(0.5);
                     quitM3 = 1;
                     break;
                   }
@@ -178,7 +178,7 @@ int main()
 
             case 6:
               printf("\nRetour au Menu Principal en cours . . .\n\n");
-              sleep(1);
+              sleep(0.5);
               quitM2 = 1;
               break;
             }
