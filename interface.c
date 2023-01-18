@@ -151,7 +151,7 @@ int main()
                   case 5:
                     printf("Recherche de d'image par couleur dominante majenta en cours...\n");
                     sleep(1);
-                    index_recherche("majenta");
+                    index_recherche("magenta");
                     comparaison_descripteur();
                     break;
 
