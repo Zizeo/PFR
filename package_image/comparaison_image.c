@@ -96,10 +96,10 @@ void comparaison_descripteur(){
 
         indice_descripteur++;
     }
-
-    for (int i = 0; i < nb_valeur; i++)
+//-------------------------------------------------------------------------------------------------------------------------------------
+    for (int i = 0; i < nb_valeur; i++)          //on fait la somme du descripteur recherché pour ensuite calculer le taux de similarité
     {
-        somme_recherche+=valeur_token_recherche[i];
+        somme_recherche+=valeur_token_recherche[i];   
     }
 //--------------------------------------------------------------------------------------------------------------------------------
     for (int i = 0; i < nb_descripteurs; i++)
@@ -163,7 +163,8 @@ void comparaison_descripteur(){
             printf("%s.jpg ", list_info[i].id_image);
         }
     }
-    sleep(2);
+
+
     char commande[1000];
     if(strcmp(list_info[0].couleur_indexe,"RGB")==0){
         if(strcmp(list_info[0].id_image, id_recherche) == 0){
@@ -241,5 +242,6 @@ int index_recherche(char *id_image)
 
     fclose(descripteur_indexe);
     fclose(descripteur_recherche);
+    fclose(image);
     return 1;
 }
