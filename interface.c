@@ -85,7 +85,7 @@ int main()
 
             case 3:
               printf("\nRentrez l'identifiant de l'image source : ");
-              scanf("%s",id_image);
+              scanf("%s", id_image);
               index_recherche(id_image);
               printf("\nRecherche d'image à partir d'une image source en cours...\n");
               sleep(2);
@@ -101,12 +101,15 @@ int main()
                 printf("1. Rouge\n");
                 printf("2. Vert\n");
                 printf("3. Bleu\n");
-                printf("4. Retour au menu de sélection de recherche.\n\n");
+                printf("4. Bleu Ciel\n");
+                printf("5. Magenta\n");
+                printf("6. Jaune\n");
+                printf("7. Retour au menu de sélection de recherche.\n\n");
                 printf("Entrez le numéro de l'action que vous souhaitez réaliser : \n");
 
                 scanf("%d", &type_search);
 
-                if (type_search < 1 || type_search > 4)
+                if (type_search < 1 || type_search > 7)
                 {
                   printf(" ⚠ Valeur non valide, veuillez réessayer. ⚠ \n");
                   scanf("%s");
@@ -118,27 +121,48 @@ int main()
                   {
                   case 1:
                     printf("Recherche de d'image par couleur dominante rouge en cours...\n");
-                    sleep(2);
+                    sleep(1);
                     index_recherche("rouge");
                     comparaison_descripteur();
-                    
+
                     break;
 
                   case 2:
                     printf("Recherche de d'image par couleur dominante verte en cours...\n");
-                    sleep(2);
+                    sleep(1);
                     index_recherche("vert");
                     comparaison_descripteur();
                     break;
 
                   case 3:
                     printf("Recherche de d'image par couleur dominante bleue en cours...\n");
-                    sleep(2);
+                    sleep(1);
                     index_recherche("bleu");
                     comparaison_descripteur();
                     break;
 
                   case 4:
+                    printf("Recherche de d'image par couleur dominante bleue ciel en cours...\n");
+                    sleep(1);
+                    index_recherche("bleu_ciel");
+                    comparaison_descripteur();
+                    break;
+
+                  case 5:
+                    printf("Recherche de d'image par couleur dominante majenta en cours...\n");
+                    sleep(1);
+                    index_recherche("majenta");
+                    comparaison_descripteur();
+                    break;
+
+                  case 6:
+                    printf("Recherche de d'image par couleur dominante jaune en cours...\n");
+                    sleep(1);
+                    index_recherche("jaune");
+                    comparaison_descripteur();
+                    break;
+
+                  case 7:
                     printf("\nRetour au Menu Mode Utilisateur en cours . . .\n\n");
                     sleep(2);
                     quitM3 = 1;
