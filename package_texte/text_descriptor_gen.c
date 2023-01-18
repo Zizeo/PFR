@@ -24,12 +24,12 @@ void add_term(Descriptor *descriptor, char *word)
 }
 
 // Nettoye les fichier .xml en .tok
-void clean_files()
+void clean_xml_files()
 {
-    system("chmod +x clean.sh"); // give execute permission to the script
+    system("chmod +x ./package_texte/clean.sh"); // give execute permission to the script
     DIR *d;
     struct dirent *dir;
-    d = opendir("Textes");
+    d = opendir("./package_texte/Textes");
     if (d)
     {
         while ((dir = readdir(d)) != NULL)
@@ -40,12 +40,12 @@ void clean_files()
                 if (strstr(file_name, ".xml"))
                 { // only xml files
                     char filename[100];
-                    sprintf(filename, "TOK/%s.tok", file_name);
+                    sprintf(filename, "./package_texte/TOK/%s.tok", file_name);
                     FILE *file = fopen(filename, "r");
                     if (file == NULL)
                     {
                         char command[100];
-                        sprintf(command, "./clean.sh Textes/%s", file_name);
+                        sprintf(command, "./package_texte/clean.sh Textes/%s", file_name);
                         system(command);
                     }
                     else
@@ -75,7 +75,7 @@ int descriptor_exists(int document_id)
     char buffer[BUFFER_SIZE];
     int found_id = 0;
 
-    FILE *descriptor_file = fopen("./base_descripteur_texte.txt", "r");
+    FILE *descriptor_file = fopen("./package_texte/base_descripteur_texte.txt", "r");
     if (descriptor_file == NULL)
     {
         return 0;
@@ -102,7 +102,7 @@ int descriptor_exists(int document_id)
 // Met à jour la liste des empalcements des textes
 void update_liste_emplacement_texte()
 {
-    system("ls ./TOK/*.tok > liste_emplacement_texte.txt");
+    system("ls ./package_texte/TOK/*.tok > ./package_texte/liste_emplacement_texte.txt");
 }
 
 void process_text(int document_id, char *file_path, char *document, Descriptor *descriptor)
@@ -155,7 +155,7 @@ void process_text(int document_id, char *file_path, char *document, Descriptor *
     }
 
     // Sauvegarde le descripteur dans base_descriptor_texte
-    FILE *descriptor_file = fopen("./base_descripteur_texte.txt", "a");
+    FILE *descriptor_file = fopen("./package_texte/base_descripteur_texte.txt", "a");
     fprintf(descriptor_file, "%d ", descriptor->document_id);
     for (i = 0; i < descriptor->total_terms; i++)
     {
@@ -169,7 +169,67 @@ void process_text(int document_id, char *file_path, char *document, Descriptor *
     fclose(descriptor_file);
 
     // Sauvegarde le lien entre le descripteur et le document dans liste_base_texte
-    FILE *document_list_file = fopen("./liste_base_texte.txt", "a");
+    FILE *document_list_file = fopen("./package_texte/liste_base_texte.txt", "a");
     fprintf(document_list_file, "%d %s\n", descriptor->document_id, file_path);
     fclose(document_list_file);
+}
+
+void indexerText()
+{
+    clean_xml_files();
+
+    update_liste_emplacement_texte();
+
+    // Ouvre le fichier contenant l'emplacement des fichiers à indexer
+    FILE *liste_emplacement_texte = fopen("./package_texte/liste_emplacement_texte.txt", "r");
+    if (liste_emplacement_texte == NULL)
+    {
+        printf("Impossible d'ouvrir le fichier liste_emplacement_texte\n");
+    }
+
+    // Initialise le descripteur
+    Descriptor descriptor;
+    int document_id = 0;
+
+    // Lit chaque ligne du fichier contenant l'emplacement des fichiers à indexer
+    char path_texte[100];
+    while (fgets(path_texte, 100, liste_emplacement_texte) != NULL)
+    {
+
+        printf("%s\n", path_texte);
+        path_texte[strlen(path_texte) - 1] = '\0';
+
+        // Ouvre le fichier texte
+        FILE *text = fopen(path_texte, "r");
+        if (text == NULL)
+        {
+            printf("Impossible d'ouvrir le fichier %s\n", path_texte);
+            continue;
+        }
+
+        // Lit le contenu du fichier texte
+        fseek(text, 0, SEEK_END);
+        long file_size = ftell(text);
+        rewind(text);
+        char *document = malloc(file_size + 1);
+        fread(document, file_size, 1, text);
+        document[file_size] = '\0';
+
+        // Ferme le fichier texte
+        fclose(text);
+
+        // Appelle la fonction process_text en passant en paramètre l'id du document,
+        // l'emplacement du fichier et le contenu du fichier
+        process_text(document_id, path_texte, document, &descriptor);
+
+        // Libère la mémoire allouée pour le document
+        free(document);
+
+        // Incrémente l'id du document
+        document_id++;
+    }
+
+    // Ferme le fichier contenant l'emplacement des fichiers à indexer
+    fclose(liste_emplacement_texte);
+
 }

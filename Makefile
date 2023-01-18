@@ -12,16 +12,23 @@ comparaison_image: comparaison_image.c comparaison_image.h
 
 test_index.o: test_index.c toutIndexer.h
 	gcc -o test_index.o -c -g test_index.c -W -Wall -ansi -pedantic -std=c99
+
+text_descriptor_gen.out: ./package_texte/text_descriptor_gen.o
+	gcc -o text_descriptor_gen.out text_descriptor_gen.o 
+
+text_descriptor_gen.o: ./package_texte/text_descriptor_gen.c 
+	gcc -c text_descriptor_gen.c -o text_descriptor_gen.o
 	
 
 clean: 
 	rm -rf *.o
 
-interface: interface.c ./package_image/toutIndexer.c ./package_image/comparaison_image.c ./package_image/module_image.h
+interface: interface.c ./package_image/toutIndexer.c ./package_image/comparaison_image.c ./package_image/module_image.h ./package_texte/text_descriptor_gen.c ./package_texte/text_descriptor_gen.h
 	gcc -c -g interface.c
 	gcc -c -g ./package_image/toutIndexer.c
 	gcc -c -g ./package_image/comparaison_image.c
-	gcc -o interface.out interface.o toutIndexer.o comparaison_image.o
+	gcc -c -g ./package_texte/text_descriptor_gen.c
+	gcc -o interface.out interface.o toutIndexer.o comparaison_image.o text_descriptor_gen.o
 	./interface.out
 	
 

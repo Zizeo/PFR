@@ -33,11 +33,13 @@ void add_term(Descriptor *descriptor, char *word);
 
 int file_exists(char *file_path);
 
-void clean_files();
+void clean_xml_files();
 
 int descriptor_exists(int document_id);
 
 void update_liste_emplacement_texte();
 
 void process_text(int document_id, char *file_path, char *document, Descriptor *descriptor);
+
+void indexerText();
 

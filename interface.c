@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include "./package_image/module_image.h"
+#include "./package_texte/text_descriptor_gen.h"
 
 int main()
 {
@@ -14,14 +15,15 @@ int main()
   char mot_cle[1000];
   char id_image[100];
 
-  // Demande à l'utilisateur de choisir le mode d'utilisation
-
+  indexerText();
   toutIndexer();
 
+  // Demande à l'utilisateur de choisir le mode d'utilisation
   while (quitM1 == 0)
   {
     mode = 0;
     quitM2 = 0;
+    system("clear -x");
     printf("\n\n======== LUNARSEARCH ========\n\n");
     printf("______Menu Principal______\n");
     printf("\nChoisissez le mode d'utilisation :\n");
@@ -46,6 +48,7 @@ int main()
           type_search = 0;
           quitM3 = 0;
           // Affiche le menu principal
+          system("clear -x");
           printf("\n\n______Mode utilisateur :______\n\n");
           printf("1. Recherche de Texte grâce à un mot clé.\n");
           printf("2. Recherche de Texte à partir d'un fichier texte source.\n");
@@ -68,27 +71,30 @@ int main()
             switch (type_search)
             {
             case 1:
+              system("clear -x");
               printf("\nVeuillez saisir un mot clé pour votre recherche : ");
               scanf(" %s", mot_cle);
 
               printf("Recherche de texte avec le mot clé ");
               printf(" '%s' ", mot_cle);
               printf(" en cours...\n");
-              sleep(2);
+              sleep(1);
 
               break;
 
             case 2:
+              system("clear -x");
               printf("\nRecherche de Texte à partir d'un fichier texte source en cours...\n");
-              sleep(2);
+              sleep(1);
               break;
 
             case 3:
+              system("clear -x");
               printf("\nRentrez l'identifiant de l'image source : ");
               scanf("%s", id_image);
               index_recherche(id_image);
               printf("\nRecherche d'image à partir d'une image source en cours...\n");
-              sleep(2);
+              sleep(1);
               comparaison_descripteur(id_image);
               break;
 
@@ -97,6 +103,7 @@ int main()
               {
                 type_search = 0;
                 // Affiche le menu principal
+                system("clear -x");
                 printf("\n\n______Recherche d'image par couleur domiante :______\n\n");
                 printf("1. Rouge\n");
                 printf("2. Vert\n");
@@ -120,6 +127,7 @@ int main()
                   switch (type_search)
                   {
                   case 1:
+                    system("clear -x");
                     printf("Recherche de d'image par couleur dominante rouge en cours...\n");
                     sleep(1);
                     index_recherche("rouge");
@@ -128,6 +136,7 @@ int main()
                     break;
 
                   case 2:
+                    system("clear -x");
                     printf("Recherche de d'image par couleur dominante verte en cours...\n");
                     sleep(1);
                     index_recherche("vert");
@@ -135,6 +144,7 @@ int main()
                     break;
 
                   case 3:
+                    system("clear -x");
                     printf("Recherche de d'image par couleur dominante bleue en cours...\n");
                     sleep(1);
                     index_recherche("bleu");
@@ -142,6 +152,7 @@ int main()
                     break;
 
                   case 4:
+                    system("clear -x");
                     printf("Recherche de d'image par couleur dominante bleue ciel en cours...\n");
                     sleep(1);
                     index_recherche("bleu_ciel");
@@ -149,6 +160,7 @@ int main()
                     break;
 
                   case 5:
+                    system("clear -x");
                     printf("Recherche de d'image par couleur dominante majenta en cours...\n");
                     sleep(1);
                     index_recherche("majenta");
@@ -156,6 +168,7 @@ int main()
                     break;
 
                   case 6:
+                    system("clear -x");
                     printf("Recherche de d'image par couleur dominante jaune en cours...\n");
                     sleep(1);
                     index_recherche("jaune");
@@ -163,8 +176,9 @@ int main()
                     break;
 
                   case 7:
+                    system("clear -x");
                     printf("\nRetour au Menu Mode Utilisateur en cours . . .\n\n");
-                    sleep(2);
+                    sleep(1);
                     quitM3 = 1;
                     break;
                   }
@@ -172,11 +186,13 @@ int main()
               }
               break;
             case 5:
+              system("clear -x");
               printf("\n ⚠ Recherche d'audio à partir d'un fichier audio source Non-Implémenté ⚠ \n");
               sleep(1);
               break;
 
             case 6:
+              system("clear -x");
               printf("\nRetour au Menu Principal en cours . . .\n\n");
               sleep(1);
               quitM2 = 1;
