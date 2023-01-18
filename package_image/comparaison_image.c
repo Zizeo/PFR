@@ -27,13 +27,13 @@ void comparaison_descripteur(){
     char id_recherche[50];
 
     char couleur_recherche[10];                          
-    float seuil_similarite=3;
-
+    float seuil_similarite=60;
+    float somme_recherche=0;
     int indice_descripteur=0;
     int valeur_token_recherche[64];
     unsigned long min=4000000;
     int nb_descripteurs=0;
-    int nb_pixel = 64;
+    int nb_valeur = 64;
     char closest_id[100] = "";
 
     system("wc -l < ./package_image/descripteurs/base_descripteur_image.csv > nb_descripteurs.txt");
@@ -69,21 +69,21 @@ void comparaison_descripteur(){
     if (strcmp(couleur_recherche, "\0") == 0) return;
     
 
-    for(int i=0; i<nb_pixel; i++){
+    for(int i=0; i<nb_valeur; i++){
         fscanf(file_descripteur_recherche,"%d", &valeur_token_recherche[i]);
     }
 //--------------------------------------------------------------------------------------------------------------------------------
 
     while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
-    {
+    {                                                                   //cette partie permet de lire chaque descripteur des immage indexé
+                                                                        //et d'extraire l'identifiant, la composante couleur et les valeur de l'histogramme.
         token_indexe = strtok(descripteur_indexe, " ");
         strcpy(list_info[indice_descripteur].id_image, token_indexe);
         token_indexe = strtok(NULL, " ");
         strcpy(list_info[indice_descripteur].couleur_indexe, token_indexe);
 
-        int indice_token = 0;                                                   //cette partie permet de lire 
-
-        while (token_indexe != NULL)
+        int indice_token = 0;
+        while (token_indexe != NULL)                        
         {
             token_indexe = strtok(NULL, " ");
             if (token_indexe == NULL)                                                   
@@ -96,21 +96,25 @@ void comparaison_descripteur(){
 
         indice_descripteur++;
     }
+
+    for (int i = 0; i < nb_valeur; i++)
+    {
+        somme_recherche+=valeur_token_recherche[i];
+    }
 //--------------------------------------------------------------------------------------------------------------------------------
     for (int i = 0; i < nb_descripteurs; i++)
     {
         if(strcmp(couleur_recherche,list_info[i].couleur_indexe) != 0){
             list_info[i].somme=400000;
-            if(strcmp(list_info[i].couleur_indexe,"RGB")==0){
+            if(strcmp(list_info[i].couleur_indexe,"RGB")==0){                // cette partie permet de traiter les images noir et blanc
+                                                                            //et RGB indépendament.
                 list_info[i].somme=-(list_info[i].somme);
             }
-
+//---------------------------------------------------------------------------------------------------------------------------------
         }else{
-            
             list_info[i].somme=0;
-            for (int j = 0; j < nb_pixel; j++)
+            for (int j = 0; j < nb_valeur; j++)
             {
-                //list_info[i].difference[j] = abs(list_info[i].valeur_token_indexe[j] - valeur_token_recherche[j]);
                 list_info[i].difference[j] = MIN(list_info[i].valeur_token_indexe[j], valeur_token_recherche[j]);
 
                 list_info[i].somme += list_info[i].difference[j];
@@ -123,13 +127,15 @@ void comparaison_descripteur(){
             }
         }
 
+    
+
         if (strcmp(list_info[i].couleur_indexe,"RGB") == 0)
         {
-            list_info[i].taux_de_similarite = (list_info[i].somme/40000)*100;
+            list_info[i].taux_de_similarite = (list_info[i].somme/somme_recherche)*100;
         }
         else if (strcmp(list_info[i].couleur_indexe,"NB") == 0)
         {
-            list_info[i].taux_de_similarite = (1-(list_info[i].somme/40000))*100;
+            list_info[i].taux_de_similarite = (1-(list_info[i].somme/somme_recherche))*100;
         }
     }
 
@@ -157,7 +163,7 @@ void comparaison_descripteur(){
             printf("%s.jpg ", list_info[i].id_image);
         }
     }
-
+    sleep(2);
     char commande[1000];
     if(strcmp(list_info[0].couleur_indexe,"RGB")==0){
         if(strcmp(list_info[0].id_image, id_recherche) == 0){

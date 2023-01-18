@@ -39,9 +39,6 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
 
     unsigned int R[li][co], G[li][co], B[li][co], binary_pix[li][co];
 
-    //printf("nb ligne = %d\n", li);
-    //printf("nb colone = %d\n", co);
-    //printf("nb composante = %d\n\n", composante);
 
     for (c = 0; c < composante; c++)
     {
@@ -98,7 +95,6 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     }
 
     fprintf(fichier_descripteur, "\n");
-    //fclose(fichier_descripteur);
 
     return;
 }

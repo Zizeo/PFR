@@ -5,6 +5,7 @@
 #include <math.h>
 #include <ctype.h>
 #include <string.h>
+#include <unistd.h>
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 struct info_comparaison
