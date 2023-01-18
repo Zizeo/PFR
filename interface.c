@@ -74,13 +74,13 @@ int main()
               printf("Recherche de texte avec le mot clé ");
               printf(" '%s' ", mot_cle);
               printf(" en cours...\n");
-              sleep(2);
+              sleep(1);
 
               break;
 
             case 2:
               printf("\nRecherche de Texte à partir d'un fichier texte source en cours...\n");
-              sleep(2);
+              sleep(1);
               break;
 
             case 3:
@@ -88,7 +88,7 @@ int main()
               scanf("%s", id_image);
               index_recherche(id_image);
               printf("\nRecherche d'image à partir d'une image source en cours...\n");
-              sleep(2);
+              sleep(1);
               comparaison_descripteur(id_image);
               break;
 

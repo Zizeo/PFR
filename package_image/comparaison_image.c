@@ -1,5 +1,5 @@
 
-/*Ensemble de fonction qui permet l'indexation des image.
+/*Ensemble de fonction qui permet la comparaison et la recherche des image.
 Auteur : Elio Genson
 Date de début : 1ère semaine de janvier 2023.
 Dernière modification : */
@@ -7,9 +7,9 @@ Dernière modification : */
 #include "module_image.h"
 
 
-int compare(const void *a, const void *b)
-{
-    struct info_comparaison *im1 = (struct info_comparaison *)b;
+int compare(const void *a, const void *b)                         //fonction qui est appellé dans la fonction qsort. 
+{                                                                 //Permet de choisir comment est trier le tableau
+    struct info_comparaison *im1 = (struct info_comparaison *)b;  
     struct info_comparaison *im2 = (struct info_comparaison *)a;
     return im1->taux_de_similarite > im2->taux_de_similarite ? 1 :-1;
 }
@@ -17,84 +17,86 @@ int compare(const void *a, const void *b)
 
 
 void comparaison_descripteur(){
-char descripteur_recherche[1000];
-char descripteur_indexe[1000];
-FILE *descripteurs;
-FILE *file_nb_descripteurs;
-FILE *file_descripteur_recherche;
-char *token_recherche;
-char *token_indexe;
-char id_recherche[50];
+    char descripteur_recherche[1000];
+    char descripteur_indexe[1000];
+    FILE *descripteurs;
+    FILE *file_nb_descripteurs;
+    FILE *file_descripteur_recherche;
+    char *token_recherche;
+    char *token_indexe;
+    char id_recherche[50];
 
-char couleur_recherche[10];
-float seuil_similarite=3;
+    char couleur_recherche[10];                          
+    float seuil_similarite=3;
 
-int indice_descripteur=0;
-int valeur_token_recherche[64];
-unsigned long min=4000000;
-int nb_descripteurs=0;
-int nb_pixel = 64;
-char closest_id[100] = "";
+    int indice_descripteur=0;
+    int valeur_token_recherche[64];
+    unsigned long min=4000000;
+    int nb_descripteurs=0;
+    int nb_pixel = 64;
+    char closest_id[100] = "";
 
-system("wc -l < ./package_image/descripteurs/base_descripteur_image.csv > nb_descripteurs.txt");
+    system("wc -l < ./package_image/descripteurs/base_descripteur_image.csv > nb_descripteurs.txt");
 
-file_descripteur_recherche = fopen("descripteur_recherche.txt", "r");
-if (file_descripteur_recherche == NULL)
-{
-    printf("Error opening descripteur_recherche.txt");
-    return;
-}
-
-file_nb_descripteurs = fopen("nb_descripteurs.txt","r");
-if(file_nb_descripteurs==NULL){
-    printf("Error opening file_nb_descripteur");
-    return;
-}
-fscanf(file_nb_descripteurs,"%d", &nb_descripteurs);
-
-struct info_comparaison list_info[nb_descripteurs];
-
-descripteurs = fopen("./package_image/descripteurs/base_descripteur_image.csv","r");
-
-if(descripteurs==NULL){
-    printf("Error opening file base_descripteur_image.csv");
-    return;
-}
-
-
-fscanf(file_descripteur_recherche,"%s", id_recherche);
-
-fscanf(file_descripteur_recherche,"%s", couleur_recherche);
-
-
-for(int i=0; i<nb_pixel; i++){
-    fscanf(file_descripteur_recherche,"%d", &valeur_token_recherche[i]);
-}
-
-
-while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
-{
-    token_indexe = strtok(descripteur_indexe, " ");
-    strcpy(list_info[indice_descripteur].id_image, token_indexe);
-    token_indexe = strtok(NULL, " ");
-    strcpy(list_info[indice_descripteur].couleur_indexe, token_indexe);
-
-    int indice_token = 0;
-
-    while (token_indexe != NULL)
+    file_descripteur_recherche = fopen("descripteur_recherche.txt", "r");
+    if (file_descripteur_recherche == NULL)
     {
-        token_indexe = strtok(NULL, " ");
-        if (token_indexe == NULL)
-            break;
-        int nombre_indexe = atoi(token_indexe);
-        list_info[indice_descripteur].valeur_token_indexe[indice_token] = nombre_indexe;
-
-        indice_token++;
+        printf("Error opening descripteur_recherche.txt");
+        return;
     }
 
-    indice_descripteur++;
-}
+    file_nb_descripteurs = fopen("nb_descripteurs.txt","r");
+    if(file_nb_descripteurs==NULL){
+        printf("Error opening file_nb_descripteur");                    //dans cette partie, les fichiers sont ouverts et on vérifie qu'il sont bien ouverts.
+        return;                                                         //et on déclare les variables.
+    }               
+    fscanf(file_nb_descripteurs,"%d", &nb_descripteurs);
 
+    struct info_comparaison list_info[nb_descripteurs];
+
+    descripteurs = fopen("./package_image/descripteurs/base_descripteur_image.csv","r");
+
+    if(descripteurs==NULL){
+        printf("Error opening file base_descripteur_image.csv");
+        return;
+    }
+//--------------------------------------------------------------------------------------------------------------------------------
+
+    fscanf(file_descripteur_recherche,"%s", id_recherche);
+    if (strcmp(id_recherche,"\0")==0) return;
+
+    fscanf(file_descripteur_recherche,"%s", couleur_recherche);          //dans cette partie, le programme lis les variable correspondant au descripteur de l'image recherché
+    if (strcmp(couleur_recherche, "\0") == 0) return;
+    
+
+    for(int i=0; i<nb_pixel; i++){
+        fscanf(file_descripteur_recherche,"%d", &valeur_token_recherche[i]);
+    }
+//--------------------------------------------------------------------------------------------------------------------------------
+
+    while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
+    {
+        token_indexe = strtok(descripteur_indexe, " ");
+        strcpy(list_info[indice_descripteur].id_image, token_indexe);
+        token_indexe = strtok(NULL, " ");
+        strcpy(list_info[indice_descripteur].couleur_indexe, token_indexe);
+
+        int indice_token = 0;                                                   //cette partie permet de lire 
+
+        while (token_indexe != NULL)
+        {
+            token_indexe = strtok(NULL, " ");
+            if (token_indexe == NULL)                                                   
+            break;
+            int nombre_indexe = atoi(token_indexe);
+            list_info[indice_descripteur].valeur_token_indexe[indice_token] = nombre_indexe;
+
+        indice_token++;
+        }
+
+        indice_descripteur++;
+    }
+//--------------------------------------------------------------------------------------------------------------------------------
     for (int i = 0; i < nb_descripteurs; i++)
     {
         if(strcmp(couleur_recherche,list_info[i].couleur_indexe) != 0){
@@ -149,8 +151,8 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
         if(strcmp(list_info[i].id_image,id_recherche)==0) continue;
 
         if(list_info[i].taux_de_similarite > seuil_similarite){
-        printf("%s.jpg ",list_info[i].id_image);
-        nb_image_trouvee++;
+            printf("%s.jpg ",list_info[i].id_image);
+            nb_image_trouvee++;
         }else if(list_info[i].taux_de_similarite>0 && nb_image_trouvee==0){
             printf("%s.jpg ", list_info[i].id_image);
         }
@@ -182,7 +184,7 @@ while (fgets(descripteur_indexe, 10000, descripteurs) != NULL)
 
 
 
-void index_recherche(char *id_image)
+int index_recherche(char *id_image)
 {
 
     char path_image[1000];
@@ -212,7 +214,7 @@ void index_recherche(char *id_image)
     if (image == NULL)
     {
         printf("Error opening file : cette image n'existe pas dans les répertoires d'image\n");
-        return;
+        return -1;
     }
 
     descripteur_indexe = fopen("./package_image/descripteurs/base_descripteur_image.csv", "a");
@@ -220,6 +222,7 @@ void index_recherche(char *id_image)
     if (descripteur_indexe == NULL)
     {
         printf("\nError opening file descripteur_indexe\n");
+        return -1;
     }
 
     Indexer(image, id_image, couleur, descripteur_recherche);
@@ -232,5 +235,5 @@ void index_recherche(char *id_image)
 
     fclose(descripteur_indexe);
     fclose(descripteur_recherche);
-    return;
+    return 1;
 }
