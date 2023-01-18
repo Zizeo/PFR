@@ -98,7 +98,7 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     }
 
     fprintf(fichier_descripteur, "\n");
-    fclose(fichier_descripteur);
+    //fclose(fichier_descripteur);
 
     return;
 }
@@ -231,7 +231,6 @@ void toutIndexer(){
 
 int check_doublon(char identifiant[]){
 FILE *liste_id_indexee;
-
 
 liste_id_indexee = fopen("./package_image/descripteurs/base_descripteur_image.csv", "r");
     if (liste_id_indexee == NULL)
