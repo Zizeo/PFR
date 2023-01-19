@@ -1,10 +1,10 @@
 #include <stdio.h> 
 #include <stdlib.h>
 #include <string.h>
-#include <text_descriptor_gen.h>
+//#include <text_descriptor_gen.h>
 
 
-#define MAX_TOKEN 50
+#define MAX_TOKEN 100000
 #define MAX_TOKEN_LENGTH 50
 #define MAX_PARAMETER_LENGTH 10
 #define MAX_DESCRIPTEUR 100
@@ -139,7 +139,7 @@ void search_by_keyword(char* mot_cle, Descripteur *descripteurs, int descripteur
     
 
 }
-
+/*
 void comparaison_fichier( int descripteur_length ){
     FILE *f;
     char location_a_comparer[]="/home/sri-admin-etud/Documents/Projet_fil_rouge/4"; //insert base à comparer 
@@ -221,12 +221,12 @@ int comparaison_texte(){
     comparaison_fichier(&descriptors_length);
     
     return 0;
-}
+}*/
 
 int main (){
     
     FILE *base_descripteur_texte;
-    base_descripteur_texte= fopen("/home/sri-admin-etud/Documents/Projet_fil_rouge/base_descripteurs.txt","rb");
+    base_descripteur_texte= fopen("/home/sri-admin-etud/Documents/PFR/package_texte/base_descripteur_texte.txt","rb");
     
     int descriptors_length = 0;
     Descripteur *descriptors;
@@ -242,6 +242,8 @@ int main (){
     //comparaison_fichier(&descriptors_length);
     
     //fclose(fp);
+
+    /*
 
 
     //FILE *base_descripteur_texte = fopen("./package_texte/base_descripteur_texte.txt", "r");
