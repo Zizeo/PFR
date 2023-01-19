@@ -163,15 +163,15 @@ void comparaison_descripteur(){
     char commande[1000];
     if(strcmp(list_info[0].couleur_indexe,"RGB")==0){
         if(strcmp(list_info[0].id_image, id_recherche) == 0){
-            sprintf(commande, "viewnior ./TEST_RGB/%s.jpg", list_info[1].id_image);
+            sprintf(commande, "viewnior ./TEST_RGB/%s.jpg&", list_info[1].id_image);
         }else{
-        sprintf(commande, "viewnior ./TEST_RGB/%s.jpg", list_info[0].id_image);
+        sprintf(commande, "viewnior ./TEST_RGB/%s.jpg&", list_info[0].id_image);
         }
     }else{
         if (strcmp(list_info[0].id_image, id_recherche) == 0){
-            sprintf(commande, "viewnior ./TEST_NB/%s.bmp", list_info[1].id_image);
+            sprintf(commande, "viewnior ./TEST_NB/%s.bmp&", list_info[1].id_image);
         }else{
-        sprintf(commande, "viewnior ./TEST_NB/%s.bmp", list_info[0].id_image);
+        sprintf(commande, "viewnior ./TEST_NB/%s.bmp&", list_info[0].id_image);
         }
     }
     
