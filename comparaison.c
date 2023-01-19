@@ -265,8 +265,8 @@ int main (){
         printf("Entrer le numéro de l'identifiant: "); 
         int num_id; 
         scanf("%d", num_id);
+        int existe=descriptor_exists( num_id); 
 
-        descriptor_exists( num_id); 
 
         
     }
