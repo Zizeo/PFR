@@ -19,9 +19,9 @@ int compare(const void *a, const void *b)                         //fonction qui
 void comparaison_descripteur(){
     char descripteur_recherche[1000];
     char descripteur_indexe[1000];
-    FILE *descripteurs;
-    FILE *file_nb_descripteurs;
-    FILE *file_descripteur_recherche;
+    FILE *descripteurs=NULL;
+    FILE *file_nb_descripteurs=NULL;
+    FILE *file_descripteur_recherche=NULL;
     char *token_recherche;
     char *token_indexe;
     char id_recherche[50];
@@ -130,10 +130,9 @@ void comparaison_descripteur(){
         }
         else if (strcmp(list_info[i].couleur_indexe,"NB") == 0)
         {
-            list_info[i].taux_de_similarite = (1-(list_info[i].somme/somme_recherche))*100;
+            list_info[i].taux_de_similarite = ((list_info[i].somme/somme_recherche))*100;
         }
     }
-
 
     qsort(list_info, nb_descripteurs, sizeof(struct info_comparaison), compare);
 
@@ -186,6 +185,9 @@ void comparaison_descripteur(){
 
 
 
+
+
+
 int index_recherche(char *id_image)
 {
 
@@ -206,7 +208,7 @@ int index_recherche(char *id_image)
         strcpy(couleur, "NB");
     }
     
-    descripteur_recherche = fopen("./descripteur_recherche.txt", "w");
+    descripteur_recherche = fopen("./descripteur_recherche.txt", "w+");
 
     if (descripteur_recherche == NULL)
     {
@@ -237,6 +239,6 @@ int index_recherche(char *id_image)
 
     fclose(descripteur_indexe);
     fclose(descripteur_recherche);
-    //fclose(image_recherche);
+    image_recherche = NULL;
     return 1;
 }

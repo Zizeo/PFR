@@ -12,6 +12,8 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     int bit_quantification;
     unsigned int pixMasque;
     FILE *config;
+    printf("%s", id_image);
+    printf("%s", couleur);
 
     config = fopen("./config.txt","r");
 
@@ -27,7 +29,7 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
         return;
     }
     
-    int masque = (unsigned char)((1 << bit_quantification) - 1) << (8 - bit_quantification); 
+    int masque = (unsigned char)((1 << bit_quantification) - 1) << (8 - bit_quantification);
 
     int c = 0;
     int composante=0;
