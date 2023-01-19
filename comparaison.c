@@ -164,6 +164,8 @@ void comparaison_fichier( int descripteur_length ){
    // printf("%d",nb_apparition  )
     fclose(f);
     fclose(fptr_base_descr); 
+
+
 }
 
 
@@ -263,7 +265,7 @@ int main (){
         printf("Entrer le numéro de l'identifiant: "); 
         int num_id; 
         scanf("%d", num_id);
-        
+
         descriptor_exists(int document_id); 
 
         
