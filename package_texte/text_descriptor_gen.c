@@ -156,15 +156,15 @@ void process_text(int document_id, char *file_path, char *document, Descriptor *
 
     // Sauvegarde le descripteur dans base_descriptor_texte
     FILE *descriptor_file = fopen("./package_texte/base_descripteur_texte.txt", "a");
-    fprintf(descriptor_file, "%d ", descriptor->document_id);
+    fprintf(descriptor_file, "%d\n", descriptor->document_id);
+    // Nombre total de token
+    fprintf(descriptor_file, "%d\n", descriptor->total_terms);
+    // Taille du document 
+    fprintf(descriptor_file, "%d\n", descriptor->document_size);
     for (i = 0; i < descriptor->total_terms; i++)
     {
-        fprintf(descriptor_file, "%s:%d ", descriptor->terms[i].word, descriptor->terms[i].count);
+        fprintf(descriptor_file, "%s:%d\n", descriptor->terms[i].word, descriptor->terms[i].count);
     }
-    // Nombre total de termes
-    // fprintf(descriptor_file, "%d;", descriptor->total_terms);
-    // Taille du document en token
-    fprintf(descriptor_file, "%d\n", descriptor->document_size);
 
     fclose(descriptor_file);
 
@@ -231,5 +231,4 @@ void indexerText()
 
     // Ferme le fichier contenant l'emplacement des fichiers à indexer
     fclose(liste_emplacement_texte);
-
 }

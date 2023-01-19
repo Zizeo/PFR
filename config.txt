@@ -1,1 +1,1 @@
-bits de quantification= 3
+bits de quantification= 4

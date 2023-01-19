@@ -21,6 +21,7 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     }
 
     fscanf(config, "bits de quantification= %d", &bit_quantification);
+
     if(bit_quantification<0 || bit_quantification>8){
         printf("nombre de bit de quantification invalide : > 8 ou < 0");
         return;
@@ -29,9 +30,9 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     int masque = (unsigned char)((1 << bit_quantification) - 1) << (8 - bit_quantification); 
 
     int c = 0;
-    int composante;
+    int composante=0;
     int histogramme[64] = {0};
-    int nombre_lu;
+    int nombre_lu=0;
 
     fscanf(image, "%d", &li);
     fscanf(image, "%d", &co);
@@ -39,9 +40,10 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
 
     unsigned int R[li][co], G[li][co], B[li][co], binary_pix[li][co];
 
-    printf("nb ligne = %d\n", li);
-    printf("nb colone = %d\n", co);
-    printf("nb composante = %d\n\n", composante);
+    memset(R, 0, li * co);
+    memset(G, 0, li * co);
+    memset(B, 0, li * co);
+    memset(binary_pix, 0, li * co);
 
     for (c = 0; c < composante; c++)
     {
@@ -98,8 +100,7 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     }
 
     fprintf(fichier_descripteur, "\n");
-    //fclose(fichier_descripteur);
-
+    fclose(image);
     return;
 }
 
@@ -115,11 +116,10 @@ void toutIndexer(){
     FILE *list_id_imageNB;
     FILE *fichier_descripteur;
 
-    
     char path_image[100];
     char id_image[100];
 
-    fichier_descripteur = fopen("./package_image/descripteurs/base_descripteur_image.csv", "a+");
+    fichier_descripteur = fopen("package_image/descripteurs/base_descripteur_image.csv", "a+");
 
     list_image = fopen("list_image.txt", "r");
     list_id_imageRGB = fopen("list_id_imageRGB.txt", "r");
@@ -163,7 +163,7 @@ void toutIndexer(){
         Indexer(image, id_image, couleur, fichier_descripteur);
 
         printf("fichier %s a bien été indexé\n",id_image);
-        fclose(image);
+
 
         }else printf("fichier %s dejà indexé\n", id_image);
     }
@@ -208,12 +208,11 @@ void toutIndexer(){
                 return;
             }
             char couleur[4]="NB";
+
             Indexer(image, id_image, couleur, fichier_descripteur);
 
             printf("fichier %s a bien été indexé\n",id_image);
 
-            fclose(image);
-            
 
             }else printf("fichier %s déjà indexé\n",id_image);                
     }
@@ -223,7 +222,9 @@ void toutIndexer(){
     fclose(list_id_imageNB);
     fclose(list_id_imageRGB);
     fclose(fichier_descripteur);
+
     system("rm list_id_imageNB.txt; rm list_id_imageRGB.txt; rm nb_image.txt; rm list_image.txt");
+    printf("\nIndexation terminé\n");
 
     return;
 }

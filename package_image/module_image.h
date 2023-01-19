@@ -5,6 +5,7 @@
 #include <math.h>
 #include <ctype.h>
 #include <string.h>
+#include <unistd.h>
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 struct info_comparaison
@@ -18,7 +19,7 @@ struct info_comparaison
 };
 
 void comparaison_descripteur();
-void index_recherche(char *id_image);
+int index_recherche(char *id_image);
 
 void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripteur);
 
