@@ -163,7 +163,7 @@ int main()
                     system("clear -x");
                     printf("Recherche de d'image par couleur dominante majenta en cours...\n");
                     sleep(1);
-                    index_recherche("majenta");
+                    index_recherche("magenta");
                     comparaison_descripteur();
                     break;
 
@@ -178,7 +178,7 @@ int main()
                   case 7:
                     system("clear -x");
                     printf("\nRetour au Menu Mode Utilisateur en cours . . .\n\n");
-                    sleep(1);
+                    sleep(0.5);
                     quitM3 = 1;
                     break;
                   }
@@ -194,7 +194,7 @@ int main()
             case 6:
               system("clear -x");
               printf("\nRetour au Menu Principal en cours . . .\n\n");
-              sleep(1);
+              sleep(0.5);
               quitM2 = 1;
               break;
             }
