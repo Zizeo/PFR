@@ -39,7 +39,12 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     fscanf(image, "%d", &composante);
 
     unsigned int R[li][co], G[li][co], B[li][co], binary_pix[li][co];
-    
+
+    memset(R, 0, li * co);
+    memset(G, 0, li * co);
+    memset(B, 0, li * co);
+    memset(binary_pix, 0, li * co);
+
     for (c = 0; c < composante; c++)
     {
         for (int i = 0; i < li; i++)
