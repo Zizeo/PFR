@@ -39,8 +39,7 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     fscanf(image, "%d", &composante);
 
     unsigned int R[li][co], G[li][co], B[li][co], binary_pix[li][co];
-
-
+    
     for (c = 0; c < composante; c++)
     {
         for (int i = 0; i < li; i++)
@@ -112,7 +111,6 @@ void toutIndexer(){
     FILE *list_id_imageNB;
     FILE *fichier_descripteur;
 
-    
     char path_image[100];
     char id_image[100];
 
@@ -219,7 +217,9 @@ void toutIndexer(){
     fclose(list_id_imageNB);
     fclose(list_id_imageRGB);
     fclose(fichier_descripteur);
+
     system("rm list_id_imageNB.txt; rm list_id_imageRGB.txt; rm nb_image.txt; rm list_image.txt");
+    printf("\nIndexation terminé\n");
 
     return;
 }

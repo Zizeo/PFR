@@ -120,11 +120,6 @@ void comparaison_descripteur(){
                 list_info[i].somme += list_info[i].difference[j];
             }
                 
-            if (list_info[i].somme < min)
-            {
-                min = list_info[i].somme;
-                strcpy(closest_id, list_info[i].id_image);
-            }
         }
 
     
@@ -195,19 +190,19 @@ int index_recherche(char *id_image)
 {
 
     char path_image[1000];
-    FILE *image;
+    FILE *image_recherche=NULL;
     char couleur[100];
-    FILE *descripteur_recherche;
-    FILE *descripteur_indexe;
+    FILE *descripteur_recherche=NULL;
+    FILE *descripteur_indexe=NULL;
     char descripteur[1000];
 
     sprintf(path_image, "./TEST_RGB/%s.txt", id_image);
-    image = fopen(path_image, "r");
+    image_recherche = fopen(path_image, "r");
     strcpy(couleur,"RGB");
-    if (image == NULL)
+    if (image_recherche == NULL)
     {
         sprintf(path_image, "./TEST_NB/%s.txt", id_image);
-        image = fopen(path_image,"r");
+        image_recherche = fopen(path_image,"r");
         strcpy(couleur, "NB");
     }
     
@@ -218,7 +213,7 @@ int index_recherche(char *id_image)
         printf("Error opening file");
     }
 
-    if (image == NULL)
+    if (image_recherche == NULL)
     {
         printf("Error opening file : cette image n'existe pas dans les répertoires d'image\n");
         return -1;
@@ -232,7 +227,7 @@ int index_recherche(char *id_image)
         return -1;
     }
 
-    Indexer(image, id_image, couleur, descripteur_recherche);
+    Indexer(image_recherche, id_image, couleur, descripteur_recherche);
 
     if (check_doublon(id_image)==0)
     {
@@ -242,6 +237,6 @@ int index_recherche(char *id_image)
 
     fclose(descripteur_indexe);
     fclose(descripteur_recherche);
-    fclose(image);
+    //fclose(image_recherche);
     return 1;
 }
