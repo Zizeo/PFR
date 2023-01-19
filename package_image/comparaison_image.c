@@ -102,14 +102,14 @@ void comparaison_descripteur(){
         somme_recherche+=valeur_token_recherche[i];   
     }
 //--------------------------------------------------------------------------------------------------------------------------------
+     // cette partie permet de traiter les images noir et blanc
+     //et RGB indépendament.
     for (int i = 0; i < nb_descripteurs; i++)
     {
         if(strcmp(couleur_recherche,list_info[i].couleur_indexe) != 0){
-            list_info[i].somme=400000;
-            if(strcmp(list_info[i].couleur_indexe,"RGB")==0){                // cette partie permet de traiter les images noir et blanc
-                                                                            //et RGB indépendament.
-                list_info[i].somme=-(list_info[i].somme);
-            }
+            list_info[i].somme=-400000;
+        
+                                                                           
 //---------------------------------------------------------------------------------------------------------------------------------
         }else{
             list_info[i].somme=0;
