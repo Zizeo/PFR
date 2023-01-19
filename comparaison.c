@@ -266,7 +266,7 @@ int main (){
         int num_id; 
         scanf("%d", num_id);
 
-        descriptor_exists(int document_id); 
+        descriptor_exists( num_id); 
 
         
     }
