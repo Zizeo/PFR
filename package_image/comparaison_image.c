@@ -196,7 +196,7 @@ int index_recherche(char *id_image)
     char couleur[100];
     FILE *descripteur_recherche=NULL;
     FILE *descripteur_indexe=NULL;
-    char descripteur[1000];
+    char descripteur[10000];
 
     sprintf(path_image, "./TEST_RGB/%s.txt", id_image);
     image_recherche = fopen(path_image, "r");
@@ -233,7 +233,8 @@ int index_recherche(char *id_image)
 
     if (check_doublon(id_image)==0)
     {
-        fgets(descripteur, 1000, descripteur_recherche);
+        rewind(descripteur_recherche);
+        fgets(descripteur, 10000, descripteur_recherche);
         fprintf(descripteur_indexe,"%s",descripteur);
     }
 
