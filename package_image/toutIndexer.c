@@ -27,7 +27,7 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
         return;
     }
     
-    int masque = (unsigned char)((1 << bit_quantification) - 1) << (8 - bit_quantification); 
+    int masque = (unsigned char)((1 << bit_quantification) - 1) << (8 - bit_quantification);
 
     int c = 0;
     int composante=0;
@@ -40,10 +40,6 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
 
     unsigned int R[li][co], G[li][co], B[li][co], binary_pix[li][co];
 
-    memset(R, 0, li * co);
-    memset(G, 0, li * co);
-    memset(B, 0, li * co);
-    memset(binary_pix, 0, li * co);
 
     for (c = 0; c < composante; c++)
     {
@@ -77,7 +73,11 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     {
         for (int j = 0; j < co; j++)
         {
+            if(composante==1){
+                binary_pix[i][j] = R[i][j];
+            }else{
             binary_pix[i][j] = R[i][j] | G[i][j] | B[i][j];
+            }
         }
     }
 
