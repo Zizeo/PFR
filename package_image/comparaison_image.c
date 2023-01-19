@@ -130,7 +130,7 @@ void comparaison_descripteur(){
         }
         else if (strcmp(list_info[i].couleur_indexe,"NB") == 0)
         {
-            list_info[i].taux_de_similarite = (1-(list_info[i].somme/somme_recherche))*100;
+            list_info[i].taux_de_similarite = ((list_info[i].somme/somme_recherche))*100;
         }
     }
 
@@ -208,7 +208,7 @@ int index_recherche(char *id_image)
         strcpy(couleur, "NB");
     }
     
-    descripteur_recherche = fopen("./descripteur_recherche.txt", "w");
+    descripteur_recherche = fopen("./descripteur_recherche.txt", "w+");
 
     if (descripteur_recherche == NULL)
     {
