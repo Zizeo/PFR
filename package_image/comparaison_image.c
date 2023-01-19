@@ -242,6 +242,5 @@ int index_recherche(char *id_image)
 
     fclose(descripteur_indexe);
     fclose(descripteur_recherche);
-    fclose(image);
     return 1;
 }
