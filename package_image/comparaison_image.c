@@ -19,9 +19,9 @@ int compare(const void *a, const void *b)                         //fonction qui
 void comparaison_descripteur(){
     char descripteur_recherche[1000];
     char descripteur_indexe[1000];
-    FILE *descripteurs;
-    FILE *file_nb_descripteurs;
-    FILE *file_descripteur_recherche;
+    FILE *descripteurs=NULL;
+    FILE *file_nb_descripteurs=NULL;
+    FILE *file_descripteur_recherche=NULL;
     char *token_recherche;
     char *token_indexe;
     char id_recherche[50];
@@ -134,7 +134,6 @@ void comparaison_descripteur(){
         }
     }
 
-
     qsort(list_info, nb_descripteurs, sizeof(struct info_comparaison), compare);
 
     for (int i = 0; i < nb_descripteurs; i++)
@@ -181,6 +180,9 @@ void comparaison_descripteur(){
     fclose(file_descripteur_recherche);
     return;
 }
+
+
+
 
 
 
@@ -237,6 +239,6 @@ int index_recherche(char *id_image)
 
     fclose(descripteur_indexe);
     fclose(descripteur_recherche);
-    //fclose(image_recherche);
+    image_recherche = NULL;
     return 1;
 }
