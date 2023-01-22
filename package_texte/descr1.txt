@@ -5,3 +5,10 @@ animal:10
 surfeur:8
 stratégie:4
 maison:2
+2 
+4
+500
+loi:10
+sur:8
+stratégie:4
+replacer:2

@@ -1,7 +1,14 @@
 #include <stdio.h>
+
 #include <stdlib.h>
+
 #include <string.h>
-#include <math.h> 
+
+#include <math.h>
+
+#include <limits.h>
+
+#include "./package_texte/text_descriptor_gen.h"
 
 
 #define MAX_TOKEN 2000
@@ -9,7 +16,10 @@
 #define MAX_PARAMETER_LENGTH 10
 #define MAX_DESCRIPTEUR 100
 #define TOKEN_DELIMITER ":"
-#define SEUIL_SIMILARITE 50
+#define SEUIL_SIMILARITE 0.5
+#define MENU__CHOIX_RECHERCHE_CHEMIN 1
+#define MENU__CHOIX_RECHERCHE_ID 2
+#define BASE_DESCRIPTEUR "./package_texte/descr2.txt"
 
 typedef struct {
   int nb_occurence;
@@ -30,6 +40,12 @@ typedef struct {
   int nb_occurence;
 }
 SearchComparableItem;
+
+typedef struct {
+  int id;
+  int similarite;
+}
+SimilariteTexte; 
 
 Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
   Descripteur * descripteurs = malloc(sizeof(Descripteur) * MAX_DESCRIPTEUR);
@@ -74,7 +90,7 @@ Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
       fgets(token_line, MAX_TOKEN_LENGTH, fp);
       char * tokenized_line = strtok(token_line, TOKEN_DELIMITER);
 
-      sscanf(tokenized_line, "%s", & token -> keyword);
+      sscanf(tokenized_line, "%s", (char * ) & token -> keyword);
       sscanf(strtok(NULL, tokenized_line), "%d", & token -> nb_occurence);
 
     }
@@ -86,7 +102,7 @@ Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
 }
 
 void search_by_keyword(char * mot_cle, Descripteur * descripteurs, int descripteurs_length) {
-  
+
   SearchComparableItem search_comparables[MAX_DESCRIPTEUR];
 
   int nb_apparition = 0;
@@ -173,23 +189,216 @@ void search_by_keyword(char * mot_cle, Descripteur * descripteurs, int descripte
 }
 
 */
-double compare_descripteurs(Descripteur descripteur1, Descripteur descripteur2){
-    int total_termes_commun= 0;
-    for( int i=0; i<descripteur1.nb_token; i++) {
-        for(int j =0; j<descripteur2.nb_token; j++){
-            if (strcmp((char*)descripteur1.tokens[i].keyword, (char*)descripteur2.tokens[j].keyword) == 0){
-                total_termes_commun += descripteur1.tokens[i].nb_occurence* descripteur2.tokens[j].nb_occurence;
-                break;
-            }
-        }
+float cosine_similarity(Descripteur desc1, Descripteur desc2) {
+  float dot_product = 0.0, desc1_norm = 0.0, desc2_norm = 0.0;
+
+  for (int i = 0; i < desc1.nb_token; i++) {
+    for (int j = 0; j < desc2.nb_token; j++) {
+      if (strcmp(desc1.tokens[i].keyword, desc2.tokens[j].keyword) == 0) {
+        dot_product += desc1.tokens[i].nb_occurence * desc2.tokens[j].nb_occurence;
+        break;
+      }
     }
-    return total_termes_commun / (sqrt(descripteur1.nb_token) * sqrt(descripteur2.nb_token)); 
+    desc1_norm += pow(desc1.tokens[i].nb_occurence, 2);
+  }
+
+  for (int i = 0; i < desc2.nb_token; i++) {
+    desc2_norm += pow(desc2.tokens[i].nb_occurence, 2);
+  }
+
+  return dot_product / (sqrt(desc1_norm) * sqrt(desc2_norm));
 }
+
+void comparaison_par_fichier(Descripteur descripteur) {
+  int descriptors_length = 0;
+  FILE * base_descripteur = fopen(BASE_DESCRIPTEUR, "r");
+
+  Descripteur *descripteurs = parse_base_descripteur(base_descripteur, & descriptors_length);
+  SimilariteTexte similarites[descriptors_length]; 
+
+  for (int i = 0; i < descriptors_length; i++) {
+    // On ne le compare pas à lui même
+    if (descripteur.id == descripteurs[i].id) {
+      continue;
+    }
+    
+    similarites[i].id = descripteur.id; 
+    similarites[i].similarite = cosine_similarity(descripteur, descripteurs[i]); 
+  }
+
+  // Tri bulle
+  for (int i=0; i < descriptors_length; i++) {
+    for (int j=0; j < descriptors_length-i; j++) {
+      if (similarites[j].similarite < similarites[j + 1].similarite) {
+
+        SimilariteTexte tmp = similarites[j];
+
+        similarites[j] = similarites[j + 1];
+        similarites[j + 1] = tmp;
+
+      }
+    }
+  }
+
+  for (int i=0; i<descriptors_length; i++){
+    printf("ID: %d similaire à %d", similarites[i].id, similarites[i].similarite);
+  }
+}
+
+int get_new_document_id() {
+  int biggest_id = INT_MIN;
+  char line[MAX_FILE_PATH_LENGTH];
+  FILE * liste_base_texte = fopen("/home/sri-admin-etud/Documents/PFR/package_texte/liste_emplacement_texte.txt", "rb");
+
+  while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
+    int id;
+    sscanf(line, "%d ", & id);
+    if (id > biggest_id) {
+      biggest_id = id;
+    }
+  }
+
+  return biggest_id + 1;
+}
+
+int indexation_fichier(char * path_texte, int id) {
+  path_texte[strlen(path_texte) - 1] = '\0';
+
+  Descriptor * descripteur;
+
+  FILE * text = fopen(path_texte, "r");
+  if (text == NULL) {
+    printf("Impossible d'ouvrir le fichier %s\n", path_texte);
+    return 1;
+  }
+
+  // Lit le contenu du fichier texte
+  fseek(text, 0, SEEK_END);
+  long file_size = ftell(text);
+  rewind(text);
+  char * document = malloc(file_size + 1);
+  fread(document, file_size, 1, text);
+  document[file_size] = '\0';
+  fclose(text);
+
+  // Appelle la fonction process_text en passant en paramètre l'id du document,
+  // l'emplacement du fichier et le contenu du fichier
+  process_text(id, path_texte, document, descripteur);
+
+  free(document);
+
+  return 0;
+}
+
+Descripteur * get_descripteur_par_id(int id) {
+  FILE * base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "rb");
+  int descripteur_length = 0;
+  Descripteur * descripteurs = parse_base_descripteur(base_descripteur_texte, & descripteur_length);
+
+  for (int i = 0; i < descripteur_length; i++) {
+    if (descripteurs[i].id == id) {
+      return & descripteurs[i];
+    }
+  }
+
+  return (Descripteur * ) NULL;
+  fclose(base_descripteur_texte);
+}
+
+char * get_path_by_id(int id) {
+  char line[MAX_FILE_PATH_LENGTH];
+  FILE * liste_base_texte = fopen("/home/sri-admin-etud/Documents/PFR/package_texte/liste_emplacement_texte.txt", "rb");
+  while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
+    int rid;
+    char * path;
+    sscanf(line, "%d %s", & rid, path);
+    if (rid == id) {
+      return path;
+    }
+  }
+
+  return NULL;
+}
+
+int MENU__main() {
+  int choix;
+  printf("Pour une recherche par chemin Saisir 1, pour une recherche par Identifiant saisir 2");
+  scanf("%d", & choix);
+  return choix;
+}
+
+void MENU__research_by_path() {
+  int id;
+  char text_path[MAX_FILE_NAME_LENGTH];
+  printf("Entrer le chemin du texte source: ");
+  scanf("%d %s", & id, (char * ) text_path);
+
+  if (descriptor_exists(id) == 0) {
+    printf("Le fichier n'est pas indéxé, on tentes de l'indexer");
+    if (indexation_fichier(text_path, id) > 0) {
+      printf("Erreur: Impossible de faire l'indexation.");
+      return;
+    }
+  }
+
+  char * path_texte = get_path_by_id(id);
+  if (path_texte == NULL) {
+    printf("Erreur: Le chemin est invalide");
+    return;
+  }
+
+  Descripteur * descripteur = get_descripteur_par_id(id); // If it does not work, return an address instead
+  comparaison_par_fichier( * descripteur);
+}
+
+void MENU__research_by_id() {
+  int id;
+
+  printf("Entrer le numéro de l'identifiant: ");
+  scanf("%d", & id);
+
+  if (descriptor_exists(id) == 1) {
+    // char * path_texte = get_path_by_id(id);
+    //if (path_texte == NULL) {
+     // printf("Erreur: Le chemin est invalide.");
+     // return;
+    
+
+    Descripteur * descripteur = get_descripteur_par_id(id);
+    comparaison_par_fichier( * descripteur);
+  
+  }
+}
+
+int recherche_par_mot_cle(){
+  FILE * base_descripteur_texte;
+  base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "r");
+
+  int descriptors_length = 0;
+  Descripteur * descriptors;
+  descriptors = parse_base_descripteur(base_descripteur_texte, &descriptors_length);
+
+    for (int i = 0; i < descriptors_length; i++) {
+        printf("N°%d, ID: %d, nb_token: %d, max token: %d\n", i, descriptors[i].id, descriptors[i].nb_token, descriptors[i].nb_total_token);
+    }
+
+  char * search_keyword;
+  printf("Saisir le mot clé : ");
+  scanf("%s", search_keyword);
+  //printf ("%s", search_keyword);
+
+  search_by_keyword(search_keyword, descriptors, descriptors_length);
+  //fclose(base_descripteur_texte);
+
+  
+}
+
 int main() {
-    /*
+
+
   //recherche par mot clé dans la bdd
   FILE * base_descripteur_texte;
-  base_descripteur_texte = fopen("/home/sri-admin-etud/Documents/PFR/package_texte/base_descripteur_texte.txt", "r");
+  base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "r");
 
   int descriptors_length = 0;
   Descripteur * descriptors;
@@ -211,69 +420,42 @@ int main() {
   //////////////////////////////////////
 
   
-      //recherche par fihier 
-      FILE *base_descripteur_texte = fopen("./package_t exte/base_descripteur_texte.txt", "r");//à remover 
-      if (base_descripteur_texte == NULL)
-      {
-          printf("Impossible d'ouvrir le fichier base_descripteur_texte, il n'y a aucun fichier à comparer\n");
-      }
-      int descriptor_nb; 
-      // Compare the text to all others in the list
-      char path_texte[MAX_FILE_NAME_LENGTH];
-      printf("Pour une recherche par chemin Saisir 1, pour une recherche par Identifiant saisir 2");  
-      int TYPE_RECHERCHE; 
-      scanf("%d",  TYPE_RECHERCHE); 
-      switch(TYPE_RECHERCHE){
-      case 1:
-          printf("Entrer le chemin du texte source: ");
-          scanf("%s", path_texte);
-          //get identifiant 
-          break; 
 
-       
-      case 2:
-          printf("Entrer le numéro de l'identifiant: "); 
-          int num_id; 
-          scanf("%d", num_id);
-          int existe=descriptor_exists(num_id); 
-          if (existe==1){
-              //texte déjà indexé 
 
-          }
-          if (existe==0){
-              //le texte est à indexer 
-             Descriptor *descipteur; 
-             long file_size = ftell(text);
-             rewind(text);
-             char *document = malloc(file_size + 1); 
-             //process_text(num_id, path_texte, descipteur ); 
 
-          }
-          break; 
-          default: 
-          printf("Saisir un chiffre entre 0 et 1");
 
-       
 
-          
-      }*/
-      FILE * base_descripteur1;
-      base_descripteur1 = fopen("/home/sri-admin-etud/Documents/PFR/package_texte/descr1.txt", "r");
-      
-      int descriptors_length = 0;
-      Descripteur * descr1;
-      descr1 = parse_base_descripteur(base_descripteur1, &descriptors_length);
-     
-      FILE * base_descripteur2;
-      base_descripteur2 = fopen("/home/sri-admin-etud/Documents/PFR/package_texte/descr2.txt", "r");
-      
-      int descriptors_length2 = 0;
-      Descripteur * descr2;
-      descr2 = parse_base_descripteur(base_descripteur2, &descriptors_length2);
-     
-      double val= compare_descripteurs(descr1[0], descr2[0]);
-      
-      printf("%.0f\n", val);
 
-    return 0;
+  /*
+
+  // recherche par fihier 
+  FILE * base_descripteur_texte;
+  base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "r"); //à remover 
+
+  if (base_descripteur_texte == NULL) {
+    printf("Impossible d'ouvrir le fichier base_descripteur_texte, il n'y a aucun fichier à comparer\n");
+    exit(1);
+  }
+
+  int descriptor_nb;
+  int TYPE_RECHERCHE;
+
+  while (TYPE_RECHERCHE != MENU__CHOIX_RECHERCHE_CHEMIN && TYPE_RECHERCHE != MENU__CHOIX_RECHERCHE_ID) {
+    TYPE_RECHERCHE = MENU__main();
+    switch (TYPE_RECHERCHE) {
+    case MENU__CHOIX_RECHERCHE_CHEMIN:
+      MENU__research_by_path();
+      break;
+
+    case 2:
+      MENU__research_by_id();
+      break;
+
+    default:
+      printf("Saisir un chiffre entre 0 et 1");
+    }
+  }
+  */
+  return 0;
+
 }
