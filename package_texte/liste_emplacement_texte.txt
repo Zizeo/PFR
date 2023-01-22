@@ -1,11 +1,10 @@
-<<<<<<< Updated upstream
 ./package_texte/TOK/03-Des_chercheurs_parviennent_à_régénérer.xml.tok
 ./package_texte/TOK/03-Mimer_un_signal_nerveux_pour.xml.tok
 ./package_texte/TOK/05-Au_stade_d_Abidjan,_la_défaite.xml.tok
 ./package_texte/TOK/05-Edition___les_mots_et.xml.tok
 ./package_texte/TOK/05-Jean-Christophe_Bette_a_dû_attendre.xml.tok
-./package_texte/TOK/05-L_apnéiste_français_Guillaume_Néry_plonge.xml.tok
 ./package_texte/TOK/05-La_circoncision_pourrait_réduire_le.xml.tok
+./package_texte/TOK/05-L_apnéiste_français_Guillaume_Néry_plonge.xml.tok
 ./package_texte/TOK/05-Le_Colombien_Juan_Pablo_Montoya.xml.tok
 ./package_texte/TOK/05-Le_théâtre_de_texte_confronté.xml.tok
 ./package_texte/TOK/05-Musique_électronique___l_élan_collectif.xml.tok
@@ -19,8 +18,8 @@
 ./package_texte/TOK/06-US_Open___Mauresmo_et.xml.tok
 ./package_texte/TOK/07-Un_député_UMP_lance_une.xml.tok
 ./package_texte/TOK/08-Carlos_do_Carmo____Le.xml.tok
-./package_texte/TOK/08-L_équipe_de_France_victime_d_un.xml.tok
 ./package_texte/TOK/08-La_mission_Deep_Impact_permet.xml.tok
+./package_texte/TOK/08-L_équipe_de_France_victime_d_un.xml.tok
 ./package_texte/TOK/08-Pavé,_tour_ou_silo,_cinq.xml.tok
 ./package_texte/TOK/08-Sous_l_effet_du_réchauffement,_les.xml.tok
 ./package_texte/TOK/08-Théâtre___l_échappée_belle,_peu.xml.tok
@@ -36,18 +35,18 @@
 ./package_texte/TOK/12-Musiques_du_monde___les.xml.tok
 ./package_texte/TOK/12-Succès_sur_les_tatamis,_polémique.xml.tok
 ./package_texte/TOK/13-Des_astronomes_détectent_l_explosion_cosmique.xml.tok
-./package_texte/TOK/13-L_inattendue_lévitation_de_la_goutte.xml.tok
 ./package_texte/TOK/13-Les_accidents_vasculaires_cérébraux,_à.xml.tok
 ./package_texte/TOK/13-Ligue_des_champions____Si.xml.tok
+./package_texte/TOK/13-L_inattendue_lévitation_de_la_goutte.xml.tok
 ./package_texte/TOK/14-Grippe_aviaire___l_OMS_exhorte.xml.tok
-./package_texte/TOK/15-Capturer_et_emprisonner_le_CO.xml.tok
 ./package_texte/TOK/15-Capturer_et_emprisonner_le_CO2,.xml.tok
+./package_texte/TOK/15-Capturer_et_emprisonner_le_CO.xml.tok
 ./package_texte/TOK/15-Danse___Preljocaj_emmène_l_Opéra.xml.tok
 ./package_texte/TOK/15-La_mort_de_Robert_Wise,.xml.tok
 ./package_texte/TOK/15-Le_Théâtre_des_Champs-Elysées_s_offre.xml.tok
 ./package_texte/TOK/15-Lille_s_incline_dans_les.xml.tok
-./package_texte/TOK/15-Un_quasar_solitaire_bouleverse_les.xml.tok
 ./package_texte/TOK/15-_Si_on_veut_aller_trop.xml.tok
+./package_texte/TOK/15-Un_quasar_solitaire_bouleverse_les.xml.tok
 ./package_texte/TOK/16-Une_sonde_japonaise_va_tenter.xml.tok
 ./package_texte/TOK/17-Anouk_Aimée_et_Philippe_Noiret.xml.tok
 ./package_texte/TOK/17-De_la_difficulté_d_anticiper_les.xml.tok
@@ -83,5 +82,3 @@
 ./package_texte/TOK/28-_Œdipe_à_Colone_,_la_rage.xml.tok
 ./package_texte/TOK/29-Forte_réduction_de_la_calotte.xml.tok
 ./package_texte/TOK/29-Ligue_des_champions___Lyon.xml.tok
-=======
->>>>>>> Stashed changes
