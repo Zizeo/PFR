@@ -3,7 +3,6 @@
 #include <string.h>
 #include <math.h> 
 
-//#include <text_descriptor_gen.h>
 
 #define MAX_TOKEN 2000
 #define MAX_TOKEN_LENGTH 50
@@ -273,6 +272,8 @@ int main() {
       descr2 = parse_base_descripteur(base_descripteur2, &descriptors_length2);
      
       double val= compare_descripteurs(descr1[0], descr2[0]);
+      
+      printf("%.0f\n", val);
 
     return 0;
 }
