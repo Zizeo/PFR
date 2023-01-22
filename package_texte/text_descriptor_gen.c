@@ -45,7 +45,7 @@ void clean_xml_files()
                     if (file == NULL)
                     {
                         char command[100];
-                        sprintf(command, "./package_texte/clean.sh Textes/%s", file_name);
+                        sprintf(command, "./package_texte/clean.sh ./package_texte/Textes/%s", file_name);
                         system(command);
                     }
                     else
@@ -85,7 +85,7 @@ int descriptor_exists(int document_id)
     while (fgets(buffer, BUFFER_SIZE, descriptor_file) != NULL)
     {
         // Vérifie si il existe bien un document_id sur la ligne
-        if (sscanf(buffer, "%d", &found_id) == 1)
+        if (sscanf(buffer, "document_id=%d", &found_id) == 1)
         {
 
             if (found_id == document_id)
@@ -102,7 +102,36 @@ int descriptor_exists(int document_id)
 // Met à jour la liste des empalcements des textes
 void update_liste_emplacement_texte()
 {
+    // Créer un nouveau liste_emplacement_texte.txt
+    FILE *fp = fopen("./package_texte/liste_emplacement_texte.txt", "w");
+    if (fp == NULL)
+    {
+        printf("Could not open file liste_emplacement_texte.txt\n");
+        return;
+    }
+    fclose(fp);
+
     system("ls ./package_texte/TOK/*.tok > ./package_texte/liste_emplacement_texte.txt");
+
+    // Créer un nouveau base_descripteur_texte.txt
+    fp = fopen("./package_texte/base_descripteur_texte.txt", "w");
+    if (fp == NULL)
+    {
+        printf("Could not open file base_descripteur_texte.txt\n");
+        return;
+    }
+    fclose(fp);
+    system("echo \" > ./package_texte/base_descripteur_texte.txt");
+
+    // Créer un nouveau base_descripteur_texte.txt
+    fp = fopen("./package_texte/liste_base_texte.txt", "w");
+    if (fp == NULL)
+    {
+        printf("Could not open file liste_base_texte.txt\n");
+        return;
+    }
+    fclose(fp);
+    system("echo \" > ./package_texte/liste_base_texte.txt");
 }
 
 void process_text(int document_id, char *file_path, char *document, Descriptor *descriptor)
@@ -159,7 +188,7 @@ void process_text(int document_id, char *file_path, char *document, Descriptor *
     fprintf(descriptor_file, "%d\n", descriptor->document_id);
     // Nombre total de token
     fprintf(descriptor_file, "%d\n", descriptor->total_terms);
-    // Taille du document 
+    // Taille du document
     fprintf(descriptor_file, "%d\n", descriptor->document_size);
     for (i = 0; i < descriptor->total_terms; i++)
     {
@@ -231,4 +260,9 @@ void indexerText()
 
     // Ferme le fichier contenant l'emplacement des fichiers à indexer
     fclose(liste_emplacement_texte);
+
+    // Remplacer dernier \n dans la base descripteur texte par un token nul
+    FILE *descriptor_file = fopen("./package_texte/base_descripteur_texte.txt", "a");
+    fprintf(descriptor_file, "end:0");
+    fclose(descriptor_file);
 }
