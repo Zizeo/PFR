@@ -1,0 +1,7 @@
+1
+4
+500
+animal:10
+surfeur:8
+stratégie:4
+maison:2

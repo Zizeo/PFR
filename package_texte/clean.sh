@@ -6,10 +6,10 @@ echo "This is $0"
 
 ARG=$1
  
-array=$(cat ./stopword.txt) 
+array=$(cat ./package_texte/stopword.txt) 
 iconv -f ISO-8859-1 -t UTF-8 "$ARG" | sed 's/<\/\?[^>]\+>//g' |  tr -d '[:punct:]' | tr -s '[:space:]' | tr '[:upper:]' '[:lower:]' | tail -n +4 > "$ARG.pre"
 
-sed 's/-/ /g' "$ARG.pre" | sed 's/\./ /g' |  tr "\n" " " > "$ARG.clean"
+sed 's/-//g' "$ARG.pre" | sed 's/\./ /g' |  tr "\n" " " > "$ARG.clean"
 #cat "$ARG.clean"
 
 
@@ -34,7 +34,7 @@ rm "$ARG.pre" "$ARG.clean"
 
 mv "$ARG.clean.bak" "$ARG.tok"
 
-mv "$ARG.tok" TOK
+mv "$ARG.tok" ./package_texte/TOK
 
 
 echo "This is $0"
