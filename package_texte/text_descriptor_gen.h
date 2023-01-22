@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include <math.h>
 #include <ctype.h>
 
 #define MAX_WORDS 10000

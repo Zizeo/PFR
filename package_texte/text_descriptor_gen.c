@@ -165,6 +165,10 @@ void process_text(int document_id, char *file_path, char *document, Descriptor *
     {
         fprintf(descriptor_file, "%s:%d\n", descriptor->terms[i].word, descriptor->terms[i].count);
     }
+    // Nombre total de termes
+    // fprintf(descriptor_file, "%d;", descriptor->total_terms);
+    // Taille du document en token
+    // fprintf(descriptor_file, "%d\n", descriptor->document_size);
 
     fclose(descriptor_file);
 
