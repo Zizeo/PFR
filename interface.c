@@ -104,12 +104,14 @@ int main()
                 printf("4. Bleu Ciel\n");
                 printf("5. Magenta\n");
                 printf("6. Jaune\n");
-                printf("7. Retour au menu de sélection de recherche.\n\n");
+                printf("7. Noir\n");
+                printf("8. Blanc\n");
+                printf("9. Retour au menu de sélection de recherche.\n\n");
                 printf("Entrez le numéro de l'action que vous souhaitez réaliser : \n");
 
                 scanf("%d", &type_search);
 
-                if (type_search < 1 || type_search > 7)
+                if (type_search < 1 || type_search > 9)
                 {
                   printf(" ⚠ Valeur non valide, veuillez réessayer. ⚠ \n");
                   scanf("%s", suite);
@@ -169,6 +171,22 @@ int main()
                     break;
 
                   case 7:
+                    system("clear -x");
+                    printf("Recherche de d'image par couleur dominante noir en cours...\n");
+                    sleep(1);
+                    index_recherche("noir");
+                    comparaison_descripteur();
+                    break;
+
+                  case 8:
+                    system("clear -x");
+                    printf("Recherche de d'image par couleur dominante blanc en cours...\n");
+                    sleep(1);
+                    index_recherche("blanc");
+                    comparaison_descripteur();
+                    break;
+
+                  case 9:
                     system("clear -x");
                     printf("\nRetour au Menu Mode Utilisateur en cours . . .\n\n");
                     sleep(0.5);
