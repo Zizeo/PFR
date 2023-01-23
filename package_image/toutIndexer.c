@@ -31,7 +31,7 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
 
     int c = 0;
     int composante=0;
-    int histogramme[2^bit_quantification] = {0};
+    int histogramme[64] = {0};
     int nombre_lu=0;
 
     fscanf(image, "%d", &li);
