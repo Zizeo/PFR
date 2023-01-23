@@ -85,7 +85,7 @@ int descriptor_exists(int document_id)
     while (fgets(buffer, BUFFER_SIZE, descriptor_file) != NULL)
     {
         // Vérifie si il existe bien un document_id sur la ligne
-        if (sscanf(buffer, "document_id=%d", &found_id) == 1)
+        if (sscanf(buffer, "%d", &found_id) == 1)
         {
 
             if (found_id == document_id)
