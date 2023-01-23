@@ -8,6 +8,7 @@
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 
+
 struct info_comparaison
 {
     char id_image[200];

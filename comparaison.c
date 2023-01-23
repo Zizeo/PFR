@@ -68,10 +68,6 @@ void search_by_keyword(char *mot_cle, Descripteur *descripteurs, int descripteur
     }
   }
   
-  for (int i = 0; i < nb_apparition; i++) {
-      printf("N°%d, ID: %d, nb occ: %d\n", i, search_comparables[i].id, search_comparables[i].nb_occurence);
-  }
-  
   // tri à bulle
   for (int i = 0; i < nb_apparition - 1; i++) {
     for (int j = 0; j < nb_apparition - i - 1; j++) {
@@ -95,6 +91,7 @@ void search_by_keyword(char *mot_cle, Descripteur *descripteurs, int descripteur
   for (int i = 0; i < nb_apparition; i++) {
     printf("ID: %d, Occurences: %d\n", search_comparables[i].id, search_comparables[i].nb_occurence);
   }
+
 }
  
 float cosine_similarity(Descripteur desc1, Descripteur desc2) {
@@ -156,7 +153,7 @@ void comparaison_par_fichier(Descripteur descripteur) {
 int get_new_document_id() {
   int biggest_id = INT_MIN;
   char line[MAX_FILE_PATH_LENGTH];
-  FILE * liste_base_texte = fopen("/home/sri-admin-etud/Documents/PFR/package_texte/liste_emplacement_texte.txt", "rb");
+  FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
 
   while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
     int id;
@@ -215,7 +212,7 @@ Descripteur * get_descripteur_par_id(int id) {
 
 char * get_path_by_id(int id) {
   char line[MAX_FILE_PATH_LENGTH];
-  FILE * liste_base_texte = fopen("/home/sri-admin-etud/Documents/PFR/package_texte/liste_emplacement_texte.txt", "rb");
+  FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
   while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
     int rid;
     char * path;
@@ -231,7 +228,7 @@ char * get_path_by_id(int id) {
 int MENU__search_by_file() {
   int choix;
   printf(
-    "Bienvenue dans la recherche !\nPour une recherche par :\n  %d. Chemin\n  %d. Identifiant\n\nEntrer votre choix (%d/%d): ",
+    "Bienvenue dans la recherche de Texte !\nPour une recherche par :\n  %d. Chemin\n  %d. Identifiant\n\nEntrer votre choix (%d/%d): ",
     MENU__CHOIX_RECHERCHE_CHEMIN, MENU__CHOIX_RECHERCHE_ID, MENU__CHOIX_RECHERCHE_CHEMIN, MENU__CHOIX_RECHERCHE_ID);
   scanf("%d", & choix);
   return choix;
@@ -285,13 +282,13 @@ int research_by_keyword(){
   Descripteur *descriptors = parse_base_descripteur(base_descripteur_texte, &descriptors_length);
 
   for (int i = 0; i < descriptors_length; i++) {
-    printf("N°%d, ID: %d, nb_token: %d, max token: %d\n", i, descriptors[i].id, descriptors[i].nb_token, descriptors[i].nb_total_token);
+    //printf("N°%d, ID: %d, nb_token: %d, max token: %d\n", i, descriptors[i].id, descriptors[i].nb_token, descriptors[i].nb_total_token);
     /*for (int j=0; j<descriptors[i].nb_token; j++){                    
       printf("Mot clé n°%d : %s avec %d occurences\n", j, descriptors[i].tokens[j].keyword, descriptors[i].tokens[j].nb_occurence);
     }*/
   }
 
-  printf("Saisir le mot clé : ");
+  printf("\nVeuillez saisir un mot clé pour votre recherche : ");
   scanf("%s", (char*)search_keyword);
 
   search_by_keyword(search_keyword, descriptors, descriptors_length);
@@ -325,8 +322,9 @@ int research_by_file(){
       printf("Saisir un chiffre entre 1 et 2");
     }
   }
-
+  
   return 0;
+
 }
 
 int main(){
