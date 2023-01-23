@@ -26,12 +26,12 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
         printf("nombre de bit de quantification invalide : > 8 ou < 0");
         return;
     }
-    int taille_histogramme;
+    
     int masque = (unsigned char)((1 << bit_quantification) - 1) << (8 - bit_quantification);
 
     int c = 0;
     int composante=0;
-    int histogramme[2^bit_quantification] = {0};
+    int histogramme[64] = {0};
     int nombre_lu=0;
 
     fscanf(image, "%d", &li);
