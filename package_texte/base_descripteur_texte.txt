@@ -254,7 +254,7 @@ brebis:1
 chiens:1
 vont:1
 tenter:1
-­:2
+mot­:2
 partir:1
 simple:1
 biopsie:1
@@ -735,7 +735,7 @@ lest:1
 40:1
 interrogés:1
 363:1
-­:1
+mot­:1
 devance:1
 nettement:1
 aimer:1
@@ -1367,7 +1367,7 @@ unlimited:3
 edition:3
 1976pour:1
 passage:2
-­:3
+mot­:3
 lemploi:1
 direct:1
 stream:1
@@ -2289,7 +2289,7 @@ poids:1
 commencé:1
 sortir:1
 limage:1
-­:2
+­mot:2
 style:1
 habits:1
 maquillage:1
@@ -2474,7 +2474,7 @@ anvers:1
 tél:1
 0158710101:1
 17:1
-:2
+mot:2
 cadre:1
 trésors:1
 lusophones:1
@@ -3204,7 +3204,7 @@ concentration:2
 ce:2
 polluant:2
 dans:7
-­:4
+mot­:4
 couche:2
 dair:1
 épaisse:1
@@ -4096,7 +4096,7 @@ dune:2
 distribution:1
 hors:1
 pair:1
-­:2
+mot­:2
 placido:1
 domingo:1
 birgit:1
@@ -4316,7 +4316,7 @@ réalisé:1
 par:2
 mark:1
 kidel:1
-­:1
+mot­:1
 aux:3
 sources:1
 indiennes:1
@@ -6975,7 +6975,7 @@ cinq:1
 ou:1
 dadra:1
 balancé:1
-­:2
+mot­:2
 modes:2
 vocaux:1
 rythmiques:1
@@ -7092,7 +7092,7 @@ h:1
 heures:2
 15:1
 1150:1
-:2
+mot:2
 tél:1
 0142742277:1
 internet:1
@@ -7474,7 +7474,7 @@ optant:1
 stratégie:1
 risquée:1
 défense:1
-­:4
+mot­:4
 zone:1
 sont:3
 exposés:1
@@ -8632,7 +8632,7 @@ fils:1
 ansjeune:1
 étudiant:1
 sorbonne:1
-­:2
+mot­:2
 licence:1
 littérature:1
 anglaise:1
@@ -10056,7 +10056,7 @@ victorhugo:1
 tél:1
 0141839898:1
 8:1
-:2
+mot:2
 14:1
 jusquau:1
 5:1

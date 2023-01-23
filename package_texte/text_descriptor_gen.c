@@ -1,5 +1,4 @@
 #include "text_descriptor_gen.h"
-#define DT_REG 8
 
 void add_term(Descriptor *descriptor, char *word)
 {
@@ -232,9 +231,4 @@ void indexerText()
 
     // Ferme le fichier contenant l'emplacement des fichiers à indexer
     fclose(liste_emplacement_texte);
-
-
-
-
-    
 }
