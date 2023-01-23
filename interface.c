@@ -10,6 +10,7 @@ int main()
   int type_search = 0;
   char mot_cle[1000];
   char id_image[100];
+  char suite[10];
 
   indexerText();
   toutIndexer();
@@ -31,7 +32,7 @@ int main()
     if (mode < 1 || mode > 3)
     {
       printf(" ⚠ Valeur non valide, veuillez réessayer. ⚠ \n");
-      scanf("%s");
+      scanf("%s",suite);
       sleep(1);
     }
     else
@@ -59,7 +60,7 @@ int main()
           if (type_search < 1 || type_search > 6)
           {
             printf("⚠ Valeur non valide, veuillez réessayer. ⚠ \n");
-            scanf("%s");
+            scanf("%s",suite);
             sleep(1);
           }
           else
@@ -111,7 +112,7 @@ int main()
                 if (type_search < 1 || type_search > 7)
                 {
                   printf(" ⚠ Valeur non valide, veuillez réessayer. ⚠ \n");
-                  scanf("%s");
+                  scanf("%s", suite);
                   sleep(1);
                 }
                 else
