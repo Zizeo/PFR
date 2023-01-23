@@ -325,7 +325,7 @@ int research_by_file(){
       printf("Saisir un chiffre entre 1 et 2");
     }
   }
-  */
+  
   return;
 
 }

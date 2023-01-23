@@ -72,4 +72,3 @@ int research_by_keyword();
 
 int research_by_file();
 
-void recherche_text_mot();

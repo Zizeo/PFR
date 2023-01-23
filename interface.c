@@ -69,12 +69,8 @@ int main()
             case 1:
               system("clear -x");
               printf("\nVeuillez saisir un mot clé pour votre recherche : ");
-              recherche_text_mot();
+              research_by_keyword();
 
-              printf("Recherche de texte avec le mot clé ");
-              printf(" '%s' ", mot_cle);
-              printf(" en cours...\n");
-              sleep(1);
 
               break;
 
