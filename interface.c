@@ -196,12 +196,12 @@ int main()
       else if (mode == 2)
       {
         printf("\n ⚠ Mode Administrateur Non-Implémenté ⚠ \n");
-        sleep(1);
+        sleep(0.5);
       }
       else if (mode == 3)
       {
         printf("\nArrêt de LUNARSEARCH en cours . . .\n");
-        sleep(1);
+        sleep(0.5);
         quitM1 = 1;
         break;
       }
