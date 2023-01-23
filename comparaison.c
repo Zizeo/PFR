@@ -251,11 +251,11 @@ void MENU__research_by_path() {
     }
   }
 
-  char * path_texte = get_path_by_id(id);
+  /*char * path_texte = get_path_by_id(id);
   if (path_texte == NULL) {
     printf("Erreur: Le chemin est invalide");
     return;
-  }
+  }*/
 
   Descripteur * descripteur = get_descripteur_par_id(id); // If it does not work, return an address instead
   comparaison_par_fichier( * descripteur);
@@ -329,12 +329,12 @@ int research_by_file(){
   return 0;
 }
 
-
+int main(){
 //il faut appeler ces deux fonctions
 
   //recherche par mot clé dans la bdd
   //research_by_keyword(); 
 
   // Recherche par fichier 
-  //research_by_file(); 
-
+  research_by_file(); 
+}

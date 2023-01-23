@@ -46,6 +46,7 @@ typedef struct {
   float similarite;
 }
 SimilariteTexte; 
+
 Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb);
 
 void search_by_keyword(char * mot_cle, Descripteur * descripteurs, int descripteurs_length);
@@ -61,8 +62,6 @@ int indexation_fichier(char * path_texte, int id);
 Descripteur * get_descripteur_par_id(int id);
 
 char * get_path_by_id(int id);
-
-int MENU__main();
 
 void MENU__research_by_path();
 
