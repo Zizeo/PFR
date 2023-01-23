@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <ctype.h>
 #include "./package_image/module_image.h"
-#include "./package_texte/text_descriptor_gen.h"
+#include "comparaison.h"
 
 int main()
 {
@@ -14,6 +10,7 @@ int main()
   int type_search = 0;
   char mot_cle[1000];
   char id_image[100];
+  char suite[10];
 
   indexerText();
   toutIndexer();
@@ -35,7 +32,7 @@ int main()
     if (mode < 1 || mode > 3)
     {
       printf(" ⚠ Valeur non valide, veuillez réessayer. ⚠ \n");
-      scanf("%s");
+      scanf("%s",suite);
       sleep(1);
     }
     else
@@ -48,7 +45,7 @@ int main()
           type_search = 0;
           quitM3 = 0;
           // Affiche le menu principal
-          system("clear -x");
+          //system("clear -x");
           printf("\n\n______Mode utilisateur :______\n\n");
           printf("1. Recherche de Texte grâce à un mot clé.\n");
           printf("2. Recherche de Texte à partir d'un fichier texte source.\n");
@@ -63,7 +60,7 @@ int main()
           if (type_search < 1 || type_search > 6)
           {
             printf("⚠ Valeur non valide, veuillez réessayer. ⚠ \n");
-            scanf("%s");
+            scanf("%s",suite);
             sleep(1);
           }
           else
@@ -72,20 +69,16 @@ int main()
             {
             case 1:
               system("clear -x");
-              printf("\nVeuillez saisir un mot clé pour votre recherche : ");
-              scanf(" %s", mot_cle);
+              research_by_keyword();
+              sleep(3);
 
-              printf("Recherche de texte avec le mot clé ");
-              printf(" '%s' ", mot_cle);
-              printf(" en cours...\n");
-              sleep(1);
 
               break;
 
             case 2:
               system("clear -x");
-              printf("\nRecherche de Texte à partir d'un fichier texte source en cours...\n");
-              sleep(1);
+              research_by_file();
+              sleep(3);
               break;
 
             case 3:
@@ -111,15 +104,17 @@ int main()
                 printf("4. Bleu Ciel\n");
                 printf("5. Magenta\n");
                 printf("6. Jaune\n");
-                printf("7. Retour au menu de sélection de recherche.\n\n");
+                printf("7. Noir\n");
+                printf("8. Blanc\n");
+                printf("9. Retour au menu de sélection de recherche.\n\n");
                 printf("Entrez le numéro de l'action que vous souhaitez réaliser : \n");
 
                 scanf("%d", &type_search);
 
-                if (type_search < 1 || type_search > 7)
+                if (type_search < 1 || type_search > 9)
                 {
                   printf(" ⚠ Valeur non valide, veuillez réessayer. ⚠ \n");
-                  scanf("%s");
+                  scanf("%s", suite);
                   sleep(1);
                 }
                 else
@@ -176,6 +171,22 @@ int main()
                     break;
 
                   case 7:
+                    system("clear -x");
+                    printf("Recherche de d'image par couleur dominante noir en cours...\n");
+                    sleep(1);
+                    index_recherche("noir");
+                    comparaison_descripteur();
+                    break;
+
+                  case 8:
+                    system("clear -x");
+                    printf("Recherche de d'image par couleur dominante blanc en cours...\n");
+                    sleep(1);
+                    index_recherche("blanc");
+                    comparaison_descripteur();
+                    break;
+
+                  case 9:
                     system("clear -x");
                     printf("\nRetour au Menu Mode Utilisateur en cours . . .\n\n");
                     sleep(0.5);
