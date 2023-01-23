@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <ctype.h>
 #include "./package_image/module_image.h"
-#include "./package_texte/text_descriptor_gen.h"
+#include "comparaison.h"
 
 int main()
 {
@@ -48,7 +44,7 @@ int main()
           type_search = 0;
           quitM3 = 0;
           // Affiche le menu principal
-          system("clear -x");
+          //system("clear -x");
           printf("\n\n______Mode utilisateur :______\n\n");
           printf("1. Recherche de Texte grâce à un mot clé.\n");
           printf("2. Recherche de Texte à partir d'un fichier texte source.\n");
@@ -72,20 +68,16 @@ int main()
             {
             case 1:
               system("clear -x");
-              printf("\nVeuillez saisir un mot clé pour votre recherche : ");
-              scanf(" %s", mot_cle);
+              research_by_keyword();
+              sleep(3);
 
-              printf("Recherche de texte avec le mot clé ");
-              printf(" '%s' ", mot_cle);
-              printf(" en cours...\n");
-              sleep(1);
 
               break;
 
             case 2:
               system("clear -x");
-              printf("\nRecherche de Texte à partir d'un fichier texte source en cours...\n");
-              sleep(1);
+              research_by_file();
+              sleep(3);
               break;
 
             case 3:
