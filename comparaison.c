@@ -68,10 +68,6 @@ void search_by_keyword(char *mot_cle, Descripteur *descripteurs, int descripteur
     }
   }
   
-  for (int i = 0; i < nb_apparition; i++) {
-      printf("N°%d, ID: %d, nb occ: %d\n", i, search_comparables[i].id, search_comparables[i].nb_occurence);
-  }
-  
   // tri à bulle
   for (int i = 0; i < nb_apparition - 1; i++) {
     for (int j = 0; j < nb_apparition - i - 1; j++) {
@@ -95,6 +91,7 @@ void search_by_keyword(char *mot_cle, Descripteur *descripteurs, int descripteur
   for (int i = 0; i < nb_apparition; i++) {
     printf("ID: %d, Occurences: %d\n", search_comparables[i].id, search_comparables[i].nb_occurence);
   }
+
 }
  
 float cosine_similarity(Descripteur desc1, Descripteur desc2) {
@@ -285,7 +282,7 @@ int research_by_keyword(){
   Descripteur *descriptors = parse_base_descripteur(base_descripteur_texte, &descriptors_length);
 
   for (int i = 0; i < descriptors_length; i++) {
-    printf("N°%d, ID: %d, nb_token: %d, max token: %d\n", i, descriptors[i].id, descriptors[i].nb_token, descriptors[i].nb_total_token);
+    //printf("N°%d, ID: %d, nb_token: %d, max token: %d\n", i, descriptors[i].id, descriptors[i].nb_token, descriptors[i].nb_total_token);
     /*for (int j=0; j<descriptors[i].nb_token; j++){                    
       printf("Mot clé n°%d : %s avec %d occurences\n", j, descriptors[i].tokens[j].keyword, descriptors[i].tokens[j].nb_occurence);
     }*/
@@ -326,7 +323,7 @@ int research_by_file(){
     }
   }
   
-  return;
+  return 0;
 
 }
 

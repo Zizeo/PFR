@@ -56,8 +56,8 @@
 ./package_texte/TOK/18-L_équipe_de_France_de_tennis.xml.tok
 ./package_texte/TOK/18-Les_22e_Journées_du_Patrimoine.xml.tok
 ./package_texte/TOK/18-Ligue_1___Lyon_a.xml.tok
-./package_texte/TOK/1_texte2.xml.tok
 ./package_texte/TOK/1_texte.xml.tok
+./package_texte/TOK/1_texte2.xml.tok
 ./package_texte/TOK/21-La_France_se_réveille_pour.xml.tok
 ./package_texte/TOK/21-Matières_plastiques_et_pesticides_pourraient.xml.tok
 ./package_texte/TOK/22-Danse___quarante_jeunes_de.xml.tok

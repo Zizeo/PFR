@@ -44,7 +44,7 @@ int main()
           type_search = 0;
           quitM3 = 0;
           // Affiche le menu principal
-          system("clear -x");
+          //system("clear -x");
           printf("\n\n______Mode utilisateur :______\n\n");
           printf("1. Recherche de Texte grâce à un mot clé.\n");
           printf("2. Recherche de Texte à partir d'un fichier texte source.\n");
@@ -77,7 +77,7 @@ int main()
             case 2:
               system("clear -x");
               printf("\nRecherche de Texte à partir d'un fichier texte source en cours...\n");
-              sleep(1);
+              research_by_file();
               break;
 
             case 3:
