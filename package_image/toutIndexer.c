@@ -104,26 +104,41 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     return;
 }
 
+
+
 void toutIndexer(){
-    system("ls ./TEST_RGB/*.txt > list_image.txt");
-    system("wc -l < list_image.txt > nb_image.txt");
-    system("ls ./TEST_RGB/*.txt | cut -d / -f 3 | cut -d . -f 1 > list_id_imageRGB.txt");
+    system("ls ./TEST_RGB/*.txt > list_imageRGB.txt");
+    system("wc -l < list_imageRGB.txt > nb_imageRGB.txt");
+    system("ls ./TEST_NB/*.txt > list_imageNB.txt");
+    system("wc -l < list_imageNB.txt > nb_imageNB.txt");
+    system("ls ./TEST_RGB/*.txt | cut -d / -f 3 | cut -d . -f 1 > list_nom_imageRGB.txt");
 
     FILE *image;
     FILE *list_image;
     FILE *nb_image;
-    FILE *list_id_imageRGB;
-    FILE *list_id_imageNB;
+    FILE *list_nom_imageRGB;
+    FILE *list_nom_imageNB;
     FILE *fichier_descripteur;
 
     char path_image[100];
-    char id_image[100];
+    char nom_image[100];
+
 
     fichier_descripteur = fopen("package_image/descripteurs/base_descripteur_image.csv", "a+");
 
-    list_image = fopen("list_image.txt", "r");
-    list_id_imageRGB = fopen("list_id_imageRGB.txt", "r");
-    nb_image = fopen("nb_image.txt", "r");
+    list_image = fopen("list_imageRGB.txt", "r");
+    list_nom_imageRGB = fopen("list_nom_imageRGB.txt", "r");
+    nb_image = fopen("nb_imageNB.txt", "r");
+    int i = 0;
+    fscanf(nb_image, "%d", &i);
+    int buffer_id_total = i;
+    nb_image = fopen("nb_imageRGB.txt", "r");
+    i = 0;
+    fscanf(nb_image, "%d", &i);
+    buffer_id_total += i;
+    int buffer_idRGB = i;
+    printf("%d\n",buffer_id_total);
+    char list_nom_id[buffer_id_total][1][100];
 
     if (fichier_descripteur==NULL)
     {
@@ -138,15 +153,20 @@ void toutIndexer(){
         return;
     }
 
-    int i = 0;
-    fscanf(nb_image, "%d", &i);
+    for(int i =0; i < buffer_id_total; i++){
+        char str_i[10];
+        sprintf(str_i,"%d",i);
+        strcpy(list_nom_id[i][1],str_i);
+    }
 
     for (int j = 0; j < i; j++){
                      
-        fgets(id_image, 100, list_id_imageRGB);
+        fgets(nom_image, 100, list_nom_imageRGB);
         fgets(path_image, 100, list_image);
 
-        int check = check_doublon(id_image);
+        strcpy(list_nom_id[j][0], nom_image);
+
+        int check = check_doublon(list_nom_id[j][1]);
 
         if (check ==0 ){
                     
@@ -160,21 +180,19 @@ void toutIndexer(){
         return;
         }
         char couleur[4] = "RGB";
-        Indexer(image, id_image, couleur, fichier_descripteur);
+        Indexer(image, list_nom_id[j][1], couleur, fichier_descripteur);
 
-        printf("fichier %s a bien été indexé\n",id_image);
+        printf("fichier %s a bien été indexé\n",nom_image);
 
 
-        }else printf("fichier %s dejà indexé\n", id_image);
+        }else printf("fichier %s dejà indexé\n", nom_image);
     }
 
-    system("ls ./TEST_NB/*.txt > list_image.txt");
-    system("wc -l < list_image.txt > nb_image.txt");
-    system("ls ./TEST_NB/*.txt | cut -d / -f 3 | cut -d . -f 1 > list_id_imageNB.txt");
+    system("ls ./TEST_NB/*.txt | cut -d / -f 3 | cut -d . -f 1 > list_nom_imageNB.txt");
 
-    list_image = fopen("list_image.txt", "r");
-    nb_image = fopen("nb_image.txt", "r");
-    list_id_imageNB = fopen("list_id_imageNB.txt", "r");
+    list_image = fopen("list_imageNB.txt", "r");
+    nb_image = fopen("nb_imageNB.txt", "r");
+    list_nom_imageNB = fopen("list_nom_imageNB.txt", "r");
 
     if (list_image == NULL)
     {
@@ -188,42 +206,48 @@ void toutIndexer(){
 
     for (int j = 0; j < i; j++){
 
-        fgets(id_image, 100, list_id_imageNB);
+        fgets(nom_image, 100, list_nom_imageNB);
         fgets(path_image, 100, list_image);
+        strcpy(list_nom_id[buffer_idRGB+j][0], nom_image);
 
+        if (!check_doublon(list_nom_id[buffer_idRGB + j][0]))
+        {
 
-        if (!check_doublon(id_image)){
+        printf("%s\n", path_image);
 
-            printf("%s\n", path_image);
+        path_image[strlen(path_image) - 1] = '\0';
 
-            path_image[strlen(path_image) - 1] = '\0';
+        image = fopen(path_image, "r");
 
-            image = fopen(path_image, "r");
+        if (image == NULL)
+        {
 
-            if (image == NULL){
-            
+        printf("Error opening file\n");
 
-                printf("Error opening file\n");
+        return;
+        }
+        char couleur[4] = "NB";
 
-                return;
-            }
-            char couleur[4]="NB";
+        Indexer(image, list_nom_id[buffer_idRGB + j][1], couleur, fichier_descripteur);
 
-            Indexer(image, id_image, couleur, fichier_descripteur);
+        printf("fichier %s a bien été indexé\n", nom_image);
+        }
+        else
+        printf("fichier %s déjà indexé\n", nom_image);
+    }
 
-            printf("fichier %s a bien été indexé\n",id_image);
-
-
-            }else printf("fichier %s déjà indexé\n",id_image);                
+    for (int i = 0; i < buffer_id_total; i++)
+    {
+        printf(" nom : %s ; id : %s \n", list_nom_id[i][0], list_nom_id[i][1]);
     }
 
     fclose(nb_image);
     fclose(list_image);
-    fclose(list_id_imageNB);
-    fclose(list_id_imageRGB);
+    fclose(list_nom_imageNB);
+    fclose(list_nom_imageRGB);
     fclose(fichier_descripteur);
 
-    system("rm list_id_imageNB.txt; rm list_id_imageRGB.txt; rm nb_image.txt; rm list_image.txt");
+    system("rm list_nom_imageNB.txt; rm list_nom_imageRGB.txt; rm nb_imageNB.txt; rm list_imageNB.txt; rm nb_imageRGB.txt; rm list_imageRGB.txt");
     printf("\nIndexation terminé\n");
 
     return;

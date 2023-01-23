@@ -20,7 +20,7 @@ int main()
   {
     mode = 0;
     quitM2 = 0;
-    system("clear -x");
+    //system("clear -x");
     printf("\n\n======== LUNARSEARCH ========\n\n");
     printf("______Menu Principal______\n");
     printf("\nChoisissez le mode d'utilisation :\n");
