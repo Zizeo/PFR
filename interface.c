@@ -68,16 +68,16 @@ int main()
             {
             case 1:
               system("clear -x");
-              printf("\nVeuillez saisir un mot clé pour votre recherche : ");
               research_by_keyword();
+              sleep(3);
 
 
               break;
 
             case 2:
               system("clear -x");
-              printf("\nRecherche de Texte à partir d'un fichier texte source en cours...\n");
               research_by_file();
+              sleep(3);
               break;
 
             case 3:

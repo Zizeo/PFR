@@ -153,7 +153,7 @@ void comparaison_par_fichier(Descripteur descripteur) {
 int get_new_document_id() {
   int biggest_id = INT_MIN;
   char line[MAX_FILE_PATH_LENGTH];
-  FILE * liste_base_texte = fopen("/home/sri-admin-etud/Documents/PFR/package_texte/liste_emplacement_texte.txt", "rb");
+  FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
 
   while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
     int id;
@@ -212,7 +212,7 @@ Descripteur * get_descripteur_par_id(int id) {
 
 char * get_path_by_id(int id) {
   char line[MAX_FILE_PATH_LENGTH];
-  FILE * liste_base_texte = fopen("/home/sri-admin-etud/Documents/PFR/package_texte/liste_emplacement_texte.txt", "rb");
+  FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
   while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
     int rid;
     char * path;
@@ -228,7 +228,7 @@ char * get_path_by_id(int id) {
 int MENU__search_by_file() {
   int choix;
   printf(
-    "Bienvenue dans la recherche !\nPour une recherche par :\n  %d. Chemin\n  %d. Identifiant\n\nEntrer votre choix (%d/%d): ",
+    "Bienvenue dans la recherche de Texte !\nPour une recherche par :\n  %d. Chemin\n  %d. Identifiant\n\nEntrer votre choix (%d/%d): ",
     MENU__CHOIX_RECHERCHE_CHEMIN, MENU__CHOIX_RECHERCHE_ID, MENU__CHOIX_RECHERCHE_CHEMIN, MENU__CHOIX_RECHERCHE_ID);
   scanf("%d", & choix);
   return choix;
@@ -288,7 +288,7 @@ int research_by_keyword(){
     }*/
   }
 
-  printf("Saisir le mot clé : ");
+  printf("\nVeuillez saisir un mot clé pour votre recherche : ");
   scanf("%s", (char*)search_keyword);
 
   search_by_keyword(search_keyword, descriptors, descriptors_length);
