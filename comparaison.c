@@ -393,7 +393,7 @@ int recherche_par_mot_cle(){
   
 }
 
-int main() {
+void recherche_text_mot() {
 
 
   //recherche par mot clé dans la bdd
@@ -456,6 +456,6 @@ int main() {
     }
   }
   */
-  return 0;
+  return;
 
 }

@@ -1,8 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h>
 #include <string.h>
-#include <text_descriptor_gen.h>
-
+#include "./package_texte/text_descriptor_gen.h"
 
 #define MAX_TOKEN 50
 #define MAX_TOKEN_LENGTH 50
@@ -35,3 +34,5 @@ void search_by_keyword(char* mot_cle, Descripteur *descripteurs, int descripteur
 void comparaison_fichier( int descripteur_length );
 
 double compare_descriptors(Descriptor *descriptor1, Descriptor *descriptor2);
+
+void recherche_text_mot();

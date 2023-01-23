@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <ctype.h>
 #include "./package_image/module_image.h"
-#include "./package_texte/text_descriptor_gen.h"
+#include "comparaison.h"
 
 int main()
 {
@@ -73,7 +69,7 @@ int main()
             case 1:
               system("clear -x");
               printf("\nVeuillez saisir un mot clé pour votre recherche : ");
-              scanf(" %s", mot_cle);
+              recherche_text_mot();
 
               printf("Recherche de texte avec le mot clé ");
               printf(" '%s' ", mot_cle);
