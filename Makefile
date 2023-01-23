@@ -1,4 +1,4 @@
-toutIndexer.out: toutIndexer.o test_index.o 
+toutIndexer.out: toutIndexer.o test_index.o
 	gcc -o toutIndexer.out toutIndexer.o test_index.o Indexer.o comparaison_image.o  -lm
 
 indexer.o: Indexer.c Indexer.h
@@ -17,8 +17,7 @@ text_descriptor_gen.out: ./package_texte/text_descriptor_gen.o
 	gcc -o text_descriptor_gen.out text_descriptor_gen.o 
 
 text_descriptor_gen.o: ./package_texte/text_descriptor_gen.c 
-	gcc -c text_descriptor_gen.c -o text_descriptor_gen.o
-	
+	gcc -c text_descriptor_gen.c -o text_descriptor_gen.o	
 
 clean: 
 	rm -rf *.o
