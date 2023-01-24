@@ -146,7 +146,7 @@ void toutIndexer(){
         fgets(id_image, 100, list_id_imageRGB);
         fgets(path_image, 100, list_image);
 
-        int check = check_doublon(id_image);
+        int check = check_doublon(id_image, "RGB");
 
         if (check ==0 ){
                     
@@ -192,7 +192,7 @@ void toutIndexer(){
         fgets(path_image, 100, list_image);
 
 
-        if (!check_doublon(id_image)){
+        if (!check_doublon(id_image, "NB")){
 
             printf("%s\n", path_image);
 
@@ -230,7 +230,7 @@ void toutIndexer(){
 }
 
 
-int check_doublon(char identifiant[]){
+int check_doublon(char identifiant[], char couleur[]){
 FILE *liste_id_indexee;
 
 liste_id_indexee = fopen("./package_image/descripteurs/base_descripteur_image.csv", "r");
@@ -241,6 +241,7 @@ liste_id_indexee = fopen("./package_image/descripteurs/base_descripteur_image.cs
     }
 
 char buffer[1000];
+char *couleur_descripteur;
 
 char *id_descripteur;
 
@@ -253,8 +254,9 @@ if (liste_id_indexee)
         while (fgets(buffer, 1000, liste_id_indexee) != NULL){
 
             id_descripteur = strtok(buffer, " ");
+            couleur_descripteur = strtok(NULL, " ");
 
-            if (strcmp(id_descripteur, identifiant) == 0)
+            if (strcmp(id_descripteur, identifiant) == 0 && strcmp(couleur_descripteur, couleur)==0)
             {
             return 1;
             }

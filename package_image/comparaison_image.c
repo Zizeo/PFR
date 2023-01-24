@@ -184,29 +184,26 @@ void comparaison_descripteur(){
 
 
 
-
-
-
-
 int index_recherche(char *id_image)
 {
 
     char path_image[1000];
-    FILE *image_recherche=NULL;
+    FILE *image_rechercheNB=NULL;
+    FILE *image_rechercheRGB = NULL;
     char couleur[100];
     FILE *descripteur_recherche=NULL;
     FILE *descripteur_indexe=NULL;
     char descripteur[10000];
 
     sprintf(path_image, "./TEST_RGB/%s.txt", id_image);
-    image_recherche = fopen(path_image, "r");
+    image_rechercheRGB = fopen(path_image, "r");
     strcpy(couleur,"RGB");
-    if (image_recherche == NULL)
-    {
-        sprintf(path_image, "./TEST_NB/%s.txt", id_image);
-        image_recherche = fopen(path_image,"r");
-        strcpy(couleur, "NB");
-    }
+
+    
+    sprintf(path_image, "./TEST_NB/%s.txt", id_image);
+    image_rechercheNB = fopen(path_image,"r");
+    strcpy(couleur, "NB");
+    
     
     descripteur_recherche = fopen("./descripteur_recherche.txt", "w+");
 
@@ -215,7 +212,7 @@ int index_recherche(char *id_image)
         printf("Error opening file");
     }
 
-    if (image_recherche == NULL)
+    if (image_rechercheRGB == NULL && image_rechercheNB==NULL)
     {
         printf("Error opening file : cette image n'existe pas dans les répertoires d'image\n");
         return -1;
@@ -229,9 +226,33 @@ int index_recherche(char *id_image)
         return -1;
     }
 
-    Indexer(image_recherche, id_image, couleur, descripteur_recherche);
+    if (image_rechercheRGB != NULL && image_rechercheNB != NULL){
+        printf("\nDoublon d'image détecté\n");
+        printf("================================\n");
+        printf("choisir une option :\n");
+        printf("1. image RGB\n");
+        printf("2. image noir et blanc\n");
+        int choix_image;
+        scanf("%d", &choix_image);
+        switch (choix_image)
+        {
+        case 1:
+        Indexer(image_rechercheRGB, id_image, couleur, descripteur_recherche);
+        break;
+        
+        case 2:
+        Indexer(image_rechercheNB, id_image, couleur, descripteur_recherche);
+        break;
+        }
 
-    if (check_doublon(id_image)==0)
+    }else if (image_rechercheRGB != NULL){
+        Indexer(image_rechercheRGB, id_image, couleur, descripteur_recherche);
+    }else{
+        Indexer(image_rechercheNB, id_image, couleur, descripteur_recherche);
+    } 
+        
+
+    if (check_doublon(id_image, "RGB")==0 && check_doublon(id_image, "NB")==0)
     {
         rewind(descripteur_recherche);
         fgets(descripteur, 10000, descripteur_recherche);
@@ -240,6 +261,7 @@ int index_recherche(char *id_image)
 
     fclose(descripteur_indexe);
     fclose(descripteur_recherche);
-    image_recherche = NULL;
+    image_rechercheRGB = NULL;
+    image_rechercheNB = NULL;
     return 1;
 }

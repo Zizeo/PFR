@@ -25,6 +25,6 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
 
 void toutIndexer();
 
-int check_doublon(char identifiant[]);
+int check_doublon(char identifiant[], char couleur[]);
 
 #endif
