@@ -13,7 +13,7 @@ sed 's/-//g' "$ARG.pre" | sed 's/\./ /g' |  tr "\n" " " > "$ARG.clean"
 #cat "$ARG.clean"
 
 
-#nous avons creer un ficchier clean contenant sur une meme ligne 
+#nous avons crée un fichier clean contenant sur une même ligne 
 #le fichier sans les balises, sans ponctuation 
 #et les majusccule transformés en minuscule
 
