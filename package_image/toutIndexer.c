@@ -210,7 +210,7 @@ void toutIndexer(){
         fgets(path_image, 100, list_image);
         strcpy(list_nom_id[buffer_idRGB+j][0], nom_image);
 
-        if (!check_doublon(list_nom_id[buffer_idRGB + j][0]))
+        if (!check_doublon(list_nom_id[buffer_idRGB + j][1]))
         {
 
         printf("%s\n", path_image);
@@ -238,7 +238,7 @@ void toutIndexer(){
 
     for (int i = 0; i < buffer_id_total; i++)
     {
-        printf(" nom : %s ; id : %s \n", list_nom_id[i][0], list_nom_id[i][1]);
+        printf("nom : %s ; id : %s \n", list_nom_id[i][0], list_nom_id[i][1]);
     }
 
     fclose(nb_image);
