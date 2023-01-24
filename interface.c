@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include "./package_image/module_image.h"
-#include "./package_texte/text_descriptor_gen.h"
+#include "./package_texte/comparaison.h"
 
 int main()
 {
@@ -73,11 +73,8 @@ int main()
             case 1:
               system("clear -x");
               printf("\nVeuillez saisir un mot clé pour votre recherche : ");
-              scanf(" %s", mot_cle);
+              research_by_keyword();
 
-              printf("Recherche de texte avec le mot clé ");
-              printf(" '%s' ", mot_cle);
-              printf(" en cours...\n");
               sleep(1);
 
               break;
@@ -85,6 +82,7 @@ int main()
             case 2:
               system("clear -x");
               printf("\nRecherche de Texte à partir d'un fichier texte source en cours...\n");
+              research_by_file();
               sleep(1);
               break;
 

@@ -6106,12 +6106,6 @@ gens:1
 achètent:1
 journal:1
 16
-0
-0
-17
-0
-0
-18
 486
 1095
 jeanyves:1
@@ -6600,10 +6594,7 @@ viennent:1
 expertise:1
 thème:1
 cellule:1
-19
-0
-0
-20
+17
 27
 41
 us:1
@@ -6633,7 +6624,7 @@ qui:2
 affiche:2
 des:2
 frames:2
-21
+18
 262
 526
 jeanlouis:1
@@ -6898,7 +6889,7 @@ référence:1
 recours:1
 déposé:1
 récupérer:1
-22
+19
 481
 903
 propos:1
@@ -7382,7 +7373,7 @@ lusophones:1
 jusquau:1
 16:1
 octobre:1
-23
+20
 540
 1061
 jérôme:1
@@ -7925,7 +7916,7 @@ davoir:1
 dévoilé:1
 tous:1
 mystères:1
-24
+21
 182
 387
 léquipe:4
@@ -8110,7 +8101,7 @@ bon:1
 épiloguer:1
 làdessus:1
 basta:1
-25
+22
 244
 414
 agenda:1
@@ -8357,7 +8348,7 @@ jeudi:1
 8:1
 h:1
 30:1
-26
+23
 497
 1007
 stéphane:1
@@ -8857,7 +8848,7 @@ métaux:1
 lourds:1
 divers:1
 polluants:1
-27
+24
 275
 460
 michel:1
@@ -9135,7 +9126,7 @@ dimanche:1
 15:1
 :2
 40:1
-28
+25
 54
 81
 us:1
@@ -9192,7 +9183,7 @@ qui:2
 affiche:2
 des:2
 frames:2
-29
+26
 267
 424
 marc:1
@@ -9462,7 +9453,7 @@ exploitent:1
 poule:1
 ufs:1
 dor:1
-30
+27
 387
 782
 stéphane:1
@@ -9852,7 +9843,7 @@ leur:1
 réalisation:1
 systématiquement:1
 apportées:1
-31
+28
 376
 707
 jérôme:1
@@ -10231,7 +10222,7 @@ réduction:1
 drastique:1
 nombre:1
 vers:1
-32
+29
 325
 588
 stéphane:1
@@ -10559,7 +10550,7 @@ dici:1
 trois:1
 ans:1
 estime:1
-33
+30
 447
 982
 adeline:1
@@ -11009,7 +11000,7 @@ surfaces:1
 différentes:1
 lère:1
 1969:1
-34
+31
 324
 613
 jeanjacques:1
@@ -11336,7 +11327,7 @@ correspondre:1
 aux:1
 caractéristiques:1
 possible:1
-35
+32
 519
 1013
 catherine:1
@@ -11858,7 +11849,7 @@ lieu:1
 dun:1
 combat:1
 culturel:1
-36
+33
 246
 405
 marieaude:1
@@ -12107,7 +12098,7 @@ romantique:1
 2:1
 cd:1
 philipsuniversal:1
-37
+34
 334
 579
 patrick:1
@@ -12444,7 +12435,7 @@ chansonmusic:1
 1:1
 cd:1
 naradavirgin:1
-38
+35
 359
 647
 succès:1
@@ -12806,7 +12797,7 @@ déviter:1
 replonger:1
 crise:1
 longue:1
-39
+36
 317
 545
 jérôme:1
@@ -13126,7 +13117,7 @@ toutes:1
 premières:1
 apparitions:1
 astres:1
-40
+37
 495
 1057
 paul:1
@@ -13624,7 +13615,7 @@ précéder:1
 reprise:1
 neuropsychologique:1
 soigneux:1
-41
+38
 374
 769
 propos:1
@@ -14001,7 +13992,7 @@ va:1
 gagne:1
 coupe:1
 deurope:1
-42
+39
 199
 302
 hervé:1
@@ -14203,7 +14194,7 @@ encore:1
 livré:1
 tous:1
 secrets:1
-43
+40
 242
 438
 jeanyves:1
@@ -14448,7 +14439,7 @@ nouvelle:1
 fois:1
 nationale:1
 planétaire:1
-44
+41
 481
 978
 hervé:1
@@ -14932,7 +14923,7 @@ disposition:1
 ils:1
 apparaissent:1
 incontournables:1
-45
+42
 482
 979
 hervé:1
@@ -15417,7 +15408,7 @@ disposition:1
 ils:1
 apparaissent:1
 incontournables:1
-46
+43
 242
 392
 rosita:1
@@ -15662,7 +15653,7 @@ classiques:1
 distribution:1
 harmonia:1
 mundi:1
-47
+44
 415
 868
 thomas:1
@@ -16080,7 +16071,7 @@ lécran:1
 1979:1
 réalise:1
 rooftops:1
-48
+45
 270
 510
 renaud:1
@@ -16353,7 +16344,7 @@ musiciens:1
 sentendraient:1
 mieux:1
 sur:1
-49
+46
 387
 672
 mathieu:1
@@ -16743,7 +16734,7 @@ autrichiens:1
 fcbarcelone:1
 werder:1
 20:1
-50
+47
 376
 791
 propos:1
@@ -17122,7 +17113,7 @@ comprends:1
 polémique:1
 engendrée:1
 affaire:1
-51
+48
 288
 513
 jérôme:1
@@ -17413,7 +17404,7 @@ type:1
 invisible:1
 aux:1
 humains:1
-52
+49
 544
 1125
 jérôme:1
@@ -17960,7 +17951,7 @@ dapprenti:1
 celui:1
 nation:1
 majeure:1
-53
+50
 264
 518
 michel:1
@@ -18227,7 +18218,7 @@ dimanche:1
 55:1
 durée:1
 1:1
-54
+51
 352
 645
 hervé:1
@@ -18582,7 +18573,7 @@ quaprès:1
 lorage:1
 eu:1
 lieu:1
-55
+52
 379
 703
 véronique:1
@@ -18964,7 +18955,7 @@ tél:1
 0142742277:1
 internet:1
 wwwtheatredelavillepariscom:1
-56
+53
 470
 1028
 paul:1
@@ -19437,7 +19428,7 @@ passer:2
 avant:1
 lexpérimentation:1
 humaine:1
-57
+54
 284
 552
 avec:6
@@ -19724,7 +19715,7 @@ six:1
 ainsi:1
 prochain:1
 mondial:1
-58
+55
 35
 53
 léquipe:1
@@ -19762,7 +19753,7 @@ qui:2
 affiche:2
 des:2
 frames:2
-59
+56
 134
 213
 informations:1
@@ -19899,7 +19890,7 @@ marquées:1
 animations:1
 proposées:1
 aux:1
-60
+57
 63
 91
 ligue:1
@@ -19965,7 +19956,7 @@ qui:2
 affiche:2
 des:2
 frames:2
-61
+58
 15
 19
 test2:1
@@ -19983,7 +19974,7 @@ frames:2
 quatre:1
 le:1
 de:1
-62
+59
 19
 23
 test:1
@@ -20005,7 +19996,7 @@ frames:2
 visualiser:1
 le:1
 de:1
-63
+60
 289
 551
 fabien:1
@@ -20297,7 +20288,7 @@ savoir:1
 comment:1
 mon:1
 réagir:1
-64
+61
 233
 443
 stéphane:1
@@ -20533,7 +20524,7 @@ rayonnements:1
 soupçonnés:1
 participer:1
 baisse:1
-65
+62
 372
 677
 véronique:1
@@ -20908,7 +20899,7 @@ h:4
 12:1
 :2
 17:1
-66
+63
 579
 1120
 evolution:1
@@ -21490,7 +21481,7 @@ agricoles:1
 ceta:1
 administrateur:1
 passionné:1
-67
+64
 442
 914
 propos:1
@@ -21935,7 +21926,7 @@ lusage:1
 valent:1
 diplômes:1
 marché:1
-68
+65
 618
 1172
 philippe:1
@@ -22556,7 +22547,7 @@ vendredi:1
 850:1
 2:1
 2006:1
-69
+66
 473
 954
 jeanyves:1
@@ -23032,7 +23023,7 @@ viral:1
 pathogène:1
 sera:1
 lorigine:1
-70
+67
 422
 893
 the:2
@@ -23457,7 +23448,7 @@ générer:1
 fortes:1
 audiences:1
 télévisées:1
-71
+68
 191
 324
 et:7
@@ -23651,7 +23642,7 @@ bas:1
 nancy:1
 position:1
 relégables:1
-72
+69
 539
 1062
 alain:1
@@ -24193,7 +24184,7 @@ excelle:1
 mauvaise:1
 foi:1
 loutrance:1
-73
+70
 228
 429
 les:16
@@ -24424,7 +24415,7 @@ jamais:1
 laissé:1
 place:1
 suspense:1
-74
+71
 428
 814
 pierre:1
@@ -24855,7 +24846,7 @@ respect:1
 engagements:1
 kyoto:1
 limitation:1
-75
+72
 186
 292
 grippe:5
@@ -25044,7 +25035,7 @@ linstant:1
 contagieux:1
 dhomme:1
 homme:1
-76
+73
 213
 372
 sylvain:1
@@ -25260,7 +25251,7 @@ rentrededansneighbourhood:1
 cd:1
 ecmuniversal:1
 music:1
-77
+74
 296
 512
 pierre:1
@@ -25559,7 +25550,7 @@ perdu:1
 invincibilité:1
 sauvé:1
 leader:1
-78
+75
 253
 440
 olivier:1
@@ -25815,7 +25806,7 @@ montré:1
 sans:1
 obtenir:1
 résultats:1
-79
+76
 458
 875
 emmanuel:1
@@ -26276,7 +26267,7 @@ bureaux:1
 partageront:1
 xxie:1
 siècle:1
-80
+77
 478
 1089
 mathieu:1
@@ -26757,7 +26748,7 @@ autant:1
 larrivée:1
 prochaine:1
 permanent:1
-81
+78
 168
 296
 jacques:2
@@ -26928,7 +26919,7 @@ anglaise:1
 français:1
 restauré:1
 grâce:1
-82
+79
 610
 1283
 jérôme:1
@@ -27541,7 +27532,7 @@ avantpostes:1
 lhomme:1
 navait:1
 observer:1
-83
+80
 289
 535
 fanny:1
@@ -27833,7 +27824,7 @@ appelle:2
 huitième:2
 dixième:1
 peutêtre:1
-84
+81
 361
 691
 rosita:1
@@ -28197,7 +28188,7 @@ tél:1
 jusquau:1
 5:1
 octobre:1
-85
+82
 299
 555
 odile:1
@@ -28499,7 +28490,7 @@ toute:1
 nuit:1
 0143668252:1
 wwwfestivalemergencesinfo:1
-86
+83
 376
 750
 informations:1
@@ -28878,7 +28869,7 @@ présenté:1
 cadre:1
 internet:1
 wwwfestivalteatrodiromanet:1
-87
+84
 232
 447
 avec:3
@@ -29113,7 +29104,7 @@ août:1
 élevée:1
 quau:1
 cinquante:1
-88
+85
 48
 75
 ligue:2

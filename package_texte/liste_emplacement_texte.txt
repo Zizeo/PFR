@@ -14,10 +14,7 @@
 ./package_texte/TOK/05-Tours_d_honneur_pour_les_athlètes.xml.tok
 ./package_texte/TOK/06-La_contamination_du_maïs_par.xml.tok
 ./package_texte/TOK/06-Les_mauvais_comptes_d_une_élimination.xml.tok
-./package_texte/TOK/06-Sensibiliser_à_la_vaccination_grippale.xml.clean.bak.tok
-./package_texte/TOK/06-Sensibiliser_à_la_vaccination_grippale.xml.pre.tok
 ./package_texte/TOK/06-Sensibiliser_à_la_vaccination_grippale.xml.tok
-./package_texte/TOK/06-Sensibiliser_à_la_vaccination_grippale.xml.tok.tok
 ./package_texte/TOK/06-US_Open___Mauresmo_et.xml.tok
 ./package_texte/TOK/07-Un_député_UMP_lance_une.xml.tok
 ./package_texte/TOK/08-Carlos_do_Carmo____Le.xml.tok
