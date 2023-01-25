@@ -190,19 +190,18 @@ int index_recherche(char *id_image)
     char path_image[1000];
     FILE *image_rechercheNB=NULL;
     FILE *image_rechercheRGB = NULL;
-    char couleur[100];
     FILE *descripteur_recherche=NULL;
     FILE *descripteur_indexe=NULL;
     char descripteur[10000];
 
     sprintf(path_image, "./TEST_RGB/%s.txt", id_image);
     image_rechercheRGB = fopen(path_image, "r");
-    strcpy(couleur,"RGB");
+
 
     
     sprintf(path_image, "./TEST_NB/%s.txt", id_image);
     image_rechercheNB = fopen(path_image,"r");
-    strcpy(couleur, "NB");
+
     
     
     descripteur_recherche = fopen("./descripteur_recherche.txt", "w+");
@@ -237,18 +236,18 @@ int index_recherche(char *id_image)
         switch (choix_image)
         {
         case 1:
-        Indexer(image_rechercheRGB, id_image, couleur, descripteur_recherche);
+        Indexer(image_rechercheRGB, id_image, "RGB", descripteur_recherche);
         break;
         
         case 2:
-        Indexer(image_rechercheNB, id_image, couleur, descripteur_recherche);
+        Indexer(image_rechercheNB, id_image, "NB", descripteur_recherche);
         break;
         }
 
     }else if (image_rechercheRGB != NULL){
-        Indexer(image_rechercheRGB, id_image, couleur, descripteur_recherche);
+        Indexer(image_rechercheRGB, id_image, "RGB", descripteur_recherche);
     }else{
-        Indexer(image_rechercheNB, id_image, couleur, descripteur_recherche);
+        Indexer(image_rechercheNB, id_image, "NB", descripteur_recherche);
     } 
         
 
