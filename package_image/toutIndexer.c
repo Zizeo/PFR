@@ -167,15 +167,13 @@ void toutIndexer(){
 
 
         }else{
-        fclose(nb_image);
-        fclose(list_image);
-        fclose(list_id_imageRGB);
-        fclose(fichier_descripteur);
         printf("fichier %s dejà indexé\n", id_image);
-        return;
         } 
     }
 
+    fclose(nb_image);
+    fclose(list_image);
+    
     system("ls ./TEST_NB/*.txt > list_image.txt");
     system("wc -l < list_image.txt > nb_image.txt");
     system("ls ./TEST_NB/*.txt | cut -d / -f 3 | cut -d . -f 1 > list_id_imageNB.txt");
@@ -224,11 +222,6 @@ void toutIndexer(){
 
             }else{
                 printf("fichier %s déjà indexé\n",id_image);
-                fclose(nb_image);
-                fclose(list_image);
-                fclose(list_id_imageNB);
-                fclose(fichier_descripteur);
-                return;
             }                
     }
 
