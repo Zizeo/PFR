@@ -197,13 +197,9 @@ int index_recherche(char *id_image)
     sprintf(path_image, "./TEST_RGB/%s.txt", id_image);
     image_rechercheRGB = fopen(path_image, "r");
 
-
-    
     sprintf(path_image, "./TEST_NB/%s.txt", id_image);
     image_rechercheNB = fopen(path_image,"r");
 
-    
-    
     descripteur_recherche = fopen("./descripteur_recherche.txt", "w+");
 
     if (descripteur_recherche == NULL)
@@ -259,6 +255,7 @@ int index_recherche(char *id_image)
     }
 
     fclose(descripteur_indexe);
+    system("rm ./descripteur_recherche.txt");
     fclose(descripteur_recherche);
     image_rechercheRGB = NULL;
     image_rechercheNB = NULL;
