@@ -26,6 +26,12 @@ void add_term(Descriptor *descriptor, char *word)
 // Nettoye les fichier .xml en .tok
 void clean_xml_files()
 {
+    // Check si un dossier TOK existe bien avant d'effectuer un nettoyage.
+    FILE *TOK = fopen("./package_texte/TOK", "r");
+    if (TOK == NULL)
+    {
+        printf("Impossible d'accéder au dossier TOK.\n");
+    }
     system("chmod +x ./package_texte/clean.sh"); // give execute permission to the script
     DIR *d;
     struct dirent *dir;
