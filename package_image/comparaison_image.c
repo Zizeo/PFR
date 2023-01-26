@@ -255,7 +255,6 @@ int index_recherche(char *id_image)
     }
 
     fclose(descripteur_indexe);
-    system("rm ./descripteur_recherche.txt");
     fclose(descripteur_recherche);
     image_rechercheRGB = NULL;
     image_rechercheNB = NULL;
