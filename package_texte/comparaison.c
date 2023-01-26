@@ -1,4 +1,4 @@
-#include "comparaison.h" 
+#include "./comparaison.h" 
 
 Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
   Descripteur * descripteurs = malloc(sizeof(Descripteur) * MAX_DESCRIPTEUR);
@@ -18,22 +18,22 @@ Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
     // Read 3 first lines
     // Line 0: id
     fgets(line, MAX_PARAMETER_LENGTH, fp);
-    sscanf(line, "%d", & descripteur -> id);
+    sscanf(line, "%d", &descripteur->id);
 
     // Line 1: nb_token
     fgets(line, MAX_PARAMETER_LENGTH, fp);
-    sscanf(line, "%d", & descripteur -> nb_token);
+    sscanf(line, "%d", &descripteur->nb_token);
 
     // Line 2: nb_total_token
     fgets(line, MAX_PARAMETER_LENGTH, fp);
-    sscanf(line, "%d", & descripteur -> nb_total_token);
+    sscanf(line, "%d", &descripteur->nb_total_token);
 
-    if (descripteur -> nb_token > MAX_TOKEN) {
-      printf("Erreur: le nombre de token est supérieur à la limite MAX_TOKEN %d", descripteur -> nb_token);
+    if (descripteur->nb_token > MAX_TOKEN) {
+      printf("Erreur: le nombre de token est supérieur à la limite MAX_TOKEN %d", descripteur ->nb_token );
       exit(EXIT_FAILURE);
     }
 
-    descripteur -> tokens = (Token * ) malloc(sizeof(Token) * descripteur -> nb_token);
+    descripteur->tokens = (Token * ) malloc(sizeof(Token) * descripteur -> nb_token);
 
     // For nb_token, parse Token
     for (int t = 0; t < descripteur -> nb_token; t++) {
@@ -153,7 +153,7 @@ void comparaison_par_fichier(Descripteur descripteur) {
 int get_new_document_id() {
   int biggest_id = INT_MIN;
   char line[MAX_FILE_PATH_LENGTH];
-  FILE * liste_base_texte = fopen("liste_base_texte.txt", "rb");
+  FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
 
   while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
     int id;
@@ -165,7 +165,7 @@ int get_new_document_id() {
 
   return biggest_id + 1;
 }
-
+/*
 int indexation_fichier(char * path_texte, int id) {
   path_texte[strlen(path_texte) - 1] = '\0';
 
@@ -193,7 +193,7 @@ int indexation_fichier(char * path_texte, int id) {
   free(document);
 
   return 0;
-}
+}*/
 
 Descripteur * get_descripteur_par_id(int id) {
   FILE * base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "rb");
@@ -212,7 +212,7 @@ Descripteur * get_descripteur_par_id(int id) {
 
 char * get_path_by_id(int id) {
   char line[MAX_FILE_PATH_LENGTH];
-  FILE * liste_base_texte = fopen("liste_base_texte.txt", "rb");
+  FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
   while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
     int rid;
     char * path;
@@ -240,13 +240,13 @@ void MENU__research_by_path() {
   printf("Entrer le chemin du texte source: ");
   scanf("%d %s", & id, (char * ) text_path);
 
-  if (descriptor_exists(id) == 0) {
-    printf("Le fichier n'est pas indéxé, on tentes de l'indexer");
-    if (indexation_fichier(text_path, id) > 0) {
-      printf("Erreur: Impossible de faire l'indexation.");
-      return;
-    }
-  }
+  //if (descriptor_exists(id) == 0) {
+   // printf("Le fichier n'est pas indéxé, on tentes de l'indexer");
+    //if (indexation_fichier(text_path, id) > 0) {
+     // printf("Erreur: Impossible de faire l'indexation.");
+     // return;
+    //}
+ // }
 
   /*char * path_texte = get_path_by_id(id);
   if (path_texte == NULL) {
@@ -258,19 +258,34 @@ void MENU__research_by_path() {
   comparaison_par_fichier( * descripteur);
 }
 
+int descripteur_exists(int id){
+  int descriptors_length=0;
+  FILE *base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "r");
+  Descripteur *descriptors = parse_base_descripteur(base_descripteur_texte, &descriptors_length);
+
+  for (int i = 0; i < descriptors_length; i++) {
+    if (descriptors[i].id == id){
+      return 1;
+    }    
+  }
+  return 0;
+}
+
 void MENU__research_by_id() {
   int id;
 
   printf("Entrer le numéro de l'identifiant: ");
   scanf("%d", & id);
-  if (descriptor_exists(id) == 1) {
-    // char * path_texte = get_path_by_id(id);
+  if (descripteur_exists(id) == 1) {
+    //char * path_texte = get_path_by_id(id);
     //if (path_texte == NULL) {
-     // printf("Erreur: Le chemin est invalide.");
-     // return;
+    //printf("Erreur: Le chemin est invalide.");
+    //return;
     Descripteur * descripteur = get_descripteur_par_id(id);
+    
     comparaison_par_fichier( * descripteur);
-  }
+  } 
+  
   
 
 }
@@ -297,7 +312,7 @@ int research_by_keyword(){
 //Recherche par fichier 
 int research_by_file(){
   FILE * base_descripteur_texte;
-  base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "r"); //à remover 
+  base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "r"); 
 
   if (base_descripteur_texte == NULL) {
     printf("Impossible d'ouvrir le fichier base_descripteur_texte, il n'y a aucun fichier à comparer\n");
@@ -325,4 +340,14 @@ int research_by_file(){
   
   return 0;
 
+}
+
+int main(){
+//il faut appeler ces deux fonctions
+
+  //recherche par mot clé dans la bdd
+  //research_by_keyword(); 
+
+  // Recherche par fichier 
+  research_by_file(); 
 }
