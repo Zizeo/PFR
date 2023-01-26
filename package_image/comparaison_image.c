@@ -136,10 +136,10 @@ void comparaison_descripteur(){
 
     qsort(list_info, nb_descripteurs, sizeof(struct info_comparaison), compare);
 
-    for (int i = 0; i < nb_descripteurs; i++)
+    /*for (int i = 0; i < nb_descripteurs; i++)
     {
         printf("taux image %s = %f\n", list_info[i].id_image, list_info[i].taux_de_similarite);
-    }
+    }*/
 
     printf("l'image recherché est la %s\n", id_recherche);
 
