@@ -112,4 +112,7 @@
 83 ./package_texte/TOK/28-_Œdipe_à_Colone_,_la_rage.xml.tok
 84 ./package_texte/TOK/29-Forte_réduction_de_la_calotte.xml.tok
 85 ./package_texte/TOK/29-Ligue_des_champions___Lyon.xml.tok
+<<<<<<< HEAD
+>>>>>>> parent of 4dd574b (fic: comparaison mot clé et fichier)
+=======
 >>>>>>> parent of 4dd574b (fic: comparaison mot clé et fichier)
