@@ -1,4 +1,4 @@
-#include "./comparaison.h" 
+#include "comparaison.h" 
 
 Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
   Descripteur * descripteurs = malloc(sizeof(Descripteur) * MAX_DESCRIPTEUR);
@@ -153,7 +153,7 @@ void comparaison_par_fichier(Descripteur descripteur) {
 int get_new_document_id() {
   int biggest_id = INT_MIN;
   char line[MAX_FILE_PATH_LENGTH];
-  FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
+  FILE * liste_base_texte = fopen("liste_base_texte.txt", "rb");
 
   while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
     int id;
@@ -212,7 +212,7 @@ Descripteur * get_descripteur_par_id(int id) {
 
 char * get_path_by_id(int id) {
   char line[MAX_FILE_PATH_LENGTH];
-  FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
+  FILE * liste_base_texte = fopen("liste_base_texte.txt", "rb");
   while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
     int rid;
     char * path;
@@ -248,11 +248,11 @@ void MENU__research_by_path() {
     }
   }
 
-  char * path_texte = get_path_by_id(id);
+  /*char * path_texte = get_path_by_id(id);
   if (path_texte == NULL) {
     printf("Erreur: Le chemin est invalide");
     return;
-  }
+  }*/
 
   Descripteur * descripteur = get_descripteur_par_id(id); // If it does not work, return an address instead
   comparaison_par_fichier( * descripteur);
@@ -326,13 +326,3 @@ int research_by_file(){
   return 0;
 
 }
-
-
-//il faut appeler ces deux fonctions
-
-  //recherche par mot clé dans la bdd
-  //research_by_keyword(); 
-
-  // Recherche par fichier 
-  //research_by_file(); 
-

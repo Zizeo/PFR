@@ -8,7 +8,7 @@
 
 #include <limits.h>
 
-#include "./package_texte/text_descriptor_gen.h"
+#include "text_descriptor_gen.h"
 
 
 #define MAX_TOKEN 2000
@@ -46,6 +46,7 @@ typedef struct {
   float similarite;
 }
 SimilariteTexte; 
+
 Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb);
 
 void search_by_keyword(char * mot_cle, Descripteur * descripteurs, int descripteurs_length);
@@ -62,8 +63,6 @@ Descripteur * get_descripteur_par_id(int id);
 
 char * get_path_by_id(int id);
 
-int MENU__main();
-
 void MENU__research_by_path();
 
 void MENU__research_by_id();
@@ -71,4 +70,3 @@ void MENU__research_by_id();
 int research_by_keyword();
 
 int research_by_file();
-

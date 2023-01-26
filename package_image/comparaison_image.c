@@ -18,7 +18,7 @@ int compare(const void *a, const void *b)                         //fonction qui
 
 void comparaison_descripteur(){
     char descripteur_recherche[1000];
-    char descripteur_indexe[1000];  
+    char descripteur_indexe[1000];
     FILE *descripteurs=NULL;
     FILE *file_nb_descripteurs=NULL;
     FILE *file_descripteur_recherche=NULL;
