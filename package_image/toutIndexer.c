@@ -21,7 +21,6 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     }
 
     fscanf(config, "bits de quantification= %d", &bit_quantification);
-    fclose(config);
 
     if(bit_quantification<0 || bit_quantification>8){
         printf("nombre de bit de quantification invalide : > 8 ou < 0");
@@ -166,14 +165,7 @@ void toutIndexer(){
         printf("fichier %s a bien été indexé\n",id_image);
 
 
-        }else{
-        fclose(nb_image);
-        fclose(list_image);
-        fclose(list_id_imageRGB);
-        fclose(fichier_descripteur);
-        printf("fichier %s dejà indexé\n", id_image);
-        return;
-        } 
+        }else printf("fichier %s dejà indexé\n", id_image);
     }
 
     system("ls ./TEST_NB/*.txt > list_image.txt");
@@ -222,14 +214,7 @@ void toutIndexer(){
             printf("fichier %s a bien été indexé\n",id_image);
 
 
-            }else{
-                printf("fichier %s déjà indexé\n",id_image);
-                fclose(nb_image);
-                fclose(list_image);
-                fclose(list_id_imageNB);
-                fclose(fichier_descripteur);
-                return;
-            }                
+            }else printf("fichier %s déjà indexé\n",id_image);                
     }
 
     fclose(nb_image);
@@ -246,26 +231,26 @@ void toutIndexer(){
 
 
 int check_doublon(char identifiant[], char couleur[]){
-    FILE *liste_id_indexee;
+FILE *liste_id_indexee;
 
-    liste_id_indexee = fopen("./package_image/descripteurs/base_descripteur_image.csv", "r");
+liste_id_indexee = fopen("./package_image/descripteurs/base_descripteur_image.csv", "r");
     if (liste_id_indexee == NULL)
     {
         perror("Error opening file list_image.txt\n");
         return -1;
     }
 
-    char buffer[1000];
-    char *couleur_descripteur;
+char buffer[1000];
+char *couleur_descripteur;
 
-    char *id_descripteur;
+char *id_descripteur;
 
-    if(identifiant[strlen(identifiant)-1] == '\n'){
-        identifiant[strlen(identifiant) - 1] = '\0';
-    }
+if(identifiant[strlen(identifiant)-1] == '\n'){
+identifiant[strlen(identifiant) - 1] = '\0';
+}
 
-    if (liste_id_indexee)
-    {
+if (liste_id_indexee)
+{
         while (fgets(buffer, 1000, liste_id_indexee) != NULL){
 
             id_descripteur = strtok(buffer, " ");
@@ -273,12 +258,10 @@ int check_doublon(char identifiant[], char couleur[]){
 
             if (strcmp(id_descripteur, identifiant) == 0 && strcmp(couleur_descripteur, couleur)==0)
             {
-                fclose(liste_id_indexee);
-                return 1;
+            return 1;
             }
         }
-
-    }
-    fclose(liste_id_indexee);
-    return 0;
+        fclose(liste_id_indexee);
+}
+return 0;
 }
