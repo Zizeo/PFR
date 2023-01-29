@@ -17,12 +17,10 @@ int compare(const void *a, const void *b)                         //fonction qui
 
 
 void comparaison_descripteur(){
-    char descripteur_recherche[1000];
     char descripteur_indexe[1000];
     FILE *descripteurs=NULL;
     FILE *file_nb_descripteurs=NULL;
     FILE *file_descripteur_recherche=NULL;
-    char *token_recherche;
     char *token_indexe;
     char id_recherche[50];
 
@@ -31,10 +29,8 @@ void comparaison_descripteur(){
     float somme_recherche=0;
     int indice_descripteur=0;
     int valeur_token_recherche[64];
-    unsigned long min=4000000;
     int nb_descripteurs=0;
     int nb_valeur = 64;
-    char closest_id[100] = "";
 
     system("wc -l < ./package_image/descripteurs/base_descripteur_image.csv > nb_descripteurs.txt");
 
