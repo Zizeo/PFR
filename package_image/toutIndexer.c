@@ -136,6 +136,7 @@ void toutIndexer(){
     list_id_imageRGB = fopen("list_id_imageRGB.txt", "r");
     nb_image = fopen("nb_image.txt", "r");
 //---------------------------------------------------------------------------------------------------------
+//on vérifie l'ouverture des fichiers
     if (fichier_descripteur==NULL)
     {
         perror("Error opening file base_descripteur_image.csv\n");
@@ -149,6 +150,8 @@ void toutIndexer(){
         return;
     }
 //---------------------------------------------------------------------------------------------------------
+//on indexe toute les image une à une
+//on vérfie si l'image n'est pas déjà indexé
     int i = 0;
     fscanf(nb_image, "%d", &i);
 
@@ -170,6 +173,7 @@ void toutIndexer(){
         printf("Error opening file path_image\n");
         return;
         }
+
         char couleur[4] = "RGB";
         Indexer(image, id_image, couleur, fichier_descripteur);
 
@@ -180,7 +184,8 @@ void toutIndexer(){
         printf("fichier %s dejà indexé\n", id_image);
         } 
     }
-
+//----------------------------------------------------------------------------------------------------------
+//cette partie fait la même chose que la précédente pour les image noir et blanc.
     fclose(nb_image);
     fclose(list_image);
     
@@ -234,7 +239,8 @@ void toutIndexer(){
                 printf("fichier %s déjà indexé\n",id_image);
             }                
     }
-
+//-----------------------------------------------------------------------------------------
+//on ferme les FILE et supprime les fichiers de "transition"
     fclose(nb_image);
     fclose(list_image);
     fclose(list_id_imageNB);
@@ -248,7 +254,9 @@ void toutIndexer(){
 }
 
 
-int check_doublon(char identifiant[], char couleur[]){
+int check_doublon(char nom[], char couleur[]){
+
+    //cette fonction vérifie si il y a déjà un descripteur de l'image dont l'identifiant est passé en paramètre.
     FILE *liste_id_indexee;
 
     liste_id_indexee = fopen("./package_image/descripteurs/base_descripteur_image.csv", "r");
@@ -263,8 +271,8 @@ int check_doublon(char identifiant[], char couleur[]){
 
     char *id_descripteur;
 
-    if(identifiant[strlen(identifiant)-1] == '\n'){
-        identifiant[strlen(identifiant) - 1] = '\0';
+    if(nom[strlen(nom)-1] == '\n'){
+        nom[strlen(nom) - 1] = '\0';
     }
 
     if (liste_id_indexee)
@@ -274,7 +282,7 @@ int check_doublon(char identifiant[], char couleur[]){
             id_descripteur = strtok(buffer, " ");
             couleur_descripteur = strtok(NULL, " ");
 
-            if (strcmp(id_descripteur, identifiant) == 0 && strcmp(couleur_descripteur, couleur)==0)
+            if (strcmp(id_descripteur, nom) == 0 && strcmp(couleur_descripteur, couleur)==0)
             {
                 fclose(liste_id_indexee);
                 return 1;

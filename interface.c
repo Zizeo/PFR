@@ -83,7 +83,6 @@ int main()
               break;
 
             case 3:
-              system("clear -x");
               printf("\nRentrez l'identifiant de l'image source : ");
               scanf("%s", id_image);
               index_recherche(id_image);
@@ -96,8 +95,7 @@ int main()
               while (quitM3 == 0)
               {
                 type_search = 0;
-                // Affiche le menu principal
-                system("clear -x");
+                // Affiche le menu recherche par couleurs dominantes
                 printf("\n\n______Recherche d'image par couleur domiante :______\n\n");
                 printf("1. Rouge\n");
                 printf("2. Vert\n");

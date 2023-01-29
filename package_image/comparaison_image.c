@@ -7,8 +7,10 @@ Dernière modification : */
 #include "module_image.h"
 
 
-int compare(const void *a, const void *b)                         //fonction qui est appellé dans la fonction qsort. 
-{                                                                 //Permet de choisir comment est trier le tableau
+int compare(const void *a, const void *b)                         
+{ 
+    //fonction qui est appellé dans la fonction qsort.
+    //Permet de choisir comment est trier le tableau                                                                
     struct info_comparaison *im1 = (struct info_comparaison *)b;  
     struct info_comparaison *im2 = (struct info_comparaison *)a;
     return im1->taux_de_similarite > im2->taux_de_similarite ? 1 :-1;
@@ -107,35 +109,23 @@ void comparaison_descripteur(){
         
                                                                            
 //---------------------------------------------------------------------------------------------------------------------------------
+//ici on calcule l'intersection des descripteur, puis la somme des l'intersection et le taux de similarité
         }else{
             list_info[i].somme=0;
             for (int j = 0; j < nb_valeur; j++)
             {
-                list_info[i].difference[j] = MIN(list_info[i].valeur_token_indexe[j], valeur_token_recherche[j]);
+            list_info[i].intersection[j] = MIN(list_info[i].valeur_token_indexe[j], valeur_token_recherche[j]);
 
-                list_info[i].somme += list_info[i].difference[j];
+            list_info[i].somme += list_info[i].intersection[j];
             }
                 
         }
-
-    
-
-        if (strcmp(list_info[i].couleur_indexe,"RGB") == 0)
-        {
-            list_info[i].taux_de_similarite = (list_info[i].somme/somme_recherche)*100;
-        }
-        else if (strcmp(list_info[i].couleur_indexe,"NB") == 0)
-        {
-            list_info[i].taux_de_similarite = ((list_info[i].somme/somme_recherche))*100;
-        }
+        list_info[i].taux_de_similarite = (list_info[i].somme/somme_recherche)*100;
     }
+//--------------------------------------------------------------------------------------------------------------------------------
+        //on trie la liste dans l'ordre décroissant avec qsort et on afficher les image les plus ressemblantes
 
     qsort(list_info, nb_descripteurs, sizeof(struct info_comparaison), compare);
-
-    /*for (int i = 0; i < nb_descripteurs; i++)
-    {
-        printf("taux image %s = %f\n", list_info[i].id_image, list_info[i].taux_de_similarite);
-    }*/
 
     printf("l'image recherché est la %s\n", id_recherche);
 
@@ -153,7 +143,7 @@ void comparaison_descripteur(){
             printf("%s.jpg ", list_info[i].id_image);
         }
     }
-
+//--------------------------------------------------------------------------------------------------------------------------------
 
     char commande[1000];
     if(strcmp(list_info[0].couleur_indexe,"RGB")==0){
@@ -169,7 +159,7 @@ void comparaison_descripteur(){
         sprintf(commande, "viewnior ./TEST_NB/%s.bmp&", list_info[0].id_image);
         }
     }
-    
+//
     system(commande);
     fclose(descripteurs);
     fclose(file_nb_descripteurs);
