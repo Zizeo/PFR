@@ -1,5 +1,6 @@
 #include "./comparaison.h" 
 
+
 Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
   Descripteur * descripteurs = malloc(sizeof(Descripteur) * MAX_DESCRIPTEUR);
 
@@ -89,11 +90,14 @@ void search_by_keyword(char *mot_cle, Descripteur *descripteurs, int descripteur
 
 
   for (int i = 0; i < nb_apparition; i++) {
-    printf("ID: %d, Occurences: %d\n", search_comparables[i].id, search_comparables[i].nb_occurence);
+    printf("ID: %d Fichier: %s Occurences: %d\n", search_comparables[i].id, get_path_by_id(search_comparables[i].id),search_comparables[i].nb_occurence);
   }
+  
+  
+  
 
 }
- 
+// calcule de similiarité entre deux descripteur par la similarité de Cosinus
 float cosine_similarity(Descripteur desc1, Descripteur desc2) {
   float dot_product = 0.0, desc1_norm = 0.0, desc2_norm = 0.0;
 
@@ -165,6 +169,7 @@ int get_new_document_id() {
 
   return biggest_id + 1;
 }
+
 /*
 int indexation_fichier(char * path_texte, int id) {
   path_texte[strlen(path_texte) - 1] = '\0';
@@ -210,18 +215,19 @@ Descripteur * get_descripteur_par_id(int id) {
   fclose(base_descripteur_texte);
 }
 
-char * get_path_by_id(int id) {
+char *get_path_by_id(int id) {
   char line[MAX_FILE_PATH_LENGTH];
   FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
   while (fgets(line, MAX_FILE_PATH_LENGTH, liste_base_texte) != NULL) {
     int rid;
-    char * path;
-    sscanf(line, "%d %s", & rid, path);
+    char * path= malloc(MAX_FILE_PATH_LENGTH);
+    sscanf(line, "%d %s", &rid, path);
     if (rid == id) {
+      fclose(liste_base_texte);
       return path;
     }
   }
-
+  fclose(liste_base_texte);
   return NULL;
 }
 
@@ -239,6 +245,7 @@ void MENU__research_by_path() {
   char text_path[MAX_FILE_NAME_LENGTH];
   printf("Entrer le chemin du texte source: ");
   scanf("%d %s", & id, (char * ) text_path);
+  printf("stuff");
 
   //if (descriptor_exists(id) == 0) {
    // printf("Le fichier n'est pas indéxé, on tentes de l'indexer");
@@ -346,8 +353,8 @@ int main(){
 //il faut appeler ces deux fonctions
 
   //recherche par mot clé dans la bdd
-  //research_by_keyword(); 
+  research_by_keyword(); 
 
   // Recherche par fichier 
-  research_by_file(); 
+  //research_by_file(); 
 }
