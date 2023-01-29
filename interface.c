@@ -70,14 +70,15 @@ int main()
             case 1:
               system("clear -x");
               research_by_keyword();
-              sleep(3);
+
+              sleep(0.5);
 
               break;
 
             case 2:
               system("clear -x");
               research_by_file();
-              sleep(3);
+              sleep(0.5);
               break;
 
             case 3:
@@ -86,7 +87,7 @@ int main()
               scanf("%s", id_image);
               index_recherche(id_image);
               printf("\nRecherche d'image à partir d'une image source en cours...\n");
-              sleep(1);
+              sleep(0.5);
               comparaison_descripteur(id_image);
               break;
 
@@ -123,7 +124,7 @@ int main()
                   case 1:
                     system("clear -x");
                     printf("Recherche de d'image par couleur dominante rouge en cours...\n");
-                    sleep(1);
+                    sleep(0.5);
                     index_recherche("rouge");
                     comparaison_descripteur();
 
@@ -132,7 +133,7 @@ int main()
                   case 2:
                     system("clear -x");
                     printf("Recherche de d'image par couleur dominante verte en cours...\n");
-                    sleep(1);
+                    sleep(0.5);
                     index_recherche("vert");
                     comparaison_descripteur();
                     break;
@@ -140,7 +141,7 @@ int main()
                   case 3:
                     system("clear -x");
                     printf("Recherche de d'image par couleur dominante bleue en cours...\n");
-                    sleep(1);
+                    sleep(0.5);
                     index_recherche("bleu");
                     comparaison_descripteur();
                     break;
@@ -148,7 +149,7 @@ int main()
                   case 4:
                     system("clear -x");
                     printf("Recherche de d'image par couleur dominante bleue ciel en cours...\n");
-                    sleep(1);
+                    sleep(0.5);
                     index_recherche("bleu_ciel");
                     comparaison_descripteur();
                     break;
@@ -156,7 +157,7 @@ int main()
                   case 5:
                     system("clear -x");
                     printf("Recherche de d'image par couleur dominante majenta en cours...\n");
-                    sleep(1);
+                    sleep(0.5);
                     index_recherche("magenta");
                     comparaison_descripteur();
                     break;
@@ -164,7 +165,7 @@ int main()
                   case 6:
                     system("clear -x");
                     printf("Recherche de d'image par couleur dominante jaune en cours...\n");
-                    sleep(1);
+                    sleep(0.5);
                     index_recherche("jaune");
                     comparaison_descripteur();
                     break;
@@ -188,7 +189,7 @@ int main()
                   case 9:
                     system("clear -x");
                     printf("\nRetour au Menu Mode Utilisateur en cours . . .\n\n");
-                    sleep(0.5);
+                    sleep(1);
                     quitM3 = 1;
                     break;
                   }
@@ -214,7 +215,7 @@ int main()
       else if (mode == 2)
       {
         printf("\n ⚠ Mode Administrateur Non-Implémenté ⚠ \n");
-        sleep(0.5);
+        sleep(1);
       }
       else if (mode == 3)
       {
