@@ -1,7 +1,7 @@
 /*Ensemble de fonction qui permet l'indexation des image.
 Auteur : Elio Genson
 Date de début : 1ère semaine de décembre 2022.
-Dernière modification : */
+Dernière modification : 29/01/23*/
 
 #include "module_image.h"
 
@@ -12,7 +12,8 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     int bit_quantification;
     unsigned int pixMasque;
     FILE *config;
-
+//---------------------------------------------------------------------------------------------
+/*on lit le fichier config et on envoie un erreur si les données sont invalides*/
     config = fopen("./config.txt","r");
 
     if(config == NULL){
@@ -27,21 +28,24 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
         printf("nombre de bit de quantification invalide : > 8 ou < 0");
         return;
     }
-    
+//-----------------------------------------------------------------------------------------------
+//on construit un masque qui garde les n bit de poids fort
     int masque = (unsigned char)((1 << bit_quantification) - 1) << (8 - bit_quantification);
 
     int c = 0;
     int composante=0;
     int histogramme[64] = {0};
     int nombre_lu=0;
-
+//-----------------------------------------------------------------------------------------------
+//on lit le nombre de ligne, colonne et composante des données des images et on déclare les matrices
     fscanf(image, "%d", &li);
     fscanf(image, "%d", &co);
     fscanf(image, "%d", &composante);
 
     unsigned int R[li][co], G[li][co], B[li][co], binary_pix[li][co];
-
-
+//-------------------------------------------------------------------------------------------------
+//dans cette partie on lit chaque pixel de l'image et on effectue le prétraitement.
+//les matrices RGB contiennes les valeurs des composante rouge, verte et bleue.
     for (c = 0; c < composante; c++)
     {
         for (int i = 0; i < li; i++)
@@ -69,7 +73,8 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
             }
         }
     }
-
+//--------------------------------------------------------------------------------------------------
+//on construit la matrice binary_pix qui contient le mot binaire RRGGBB avec des ou logiques
     for (int i = 0; i < li; i++)
     {
         for (int j = 0; j < co; j++)
@@ -81,7 +86,8 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
             }
         }
     }
-
+//--------------------------------------------------------------------------------------------------
+//on construit l'histogramme 
     for (int i = 0; i < li; i++)
     {
         for (int j = 0; j < co; j++)
@@ -90,7 +96,8 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
             histogramme[nombre_lu] += 1;
         }
     }
-
+//--------------------------------------------------------------------------------------------------
+//on écrit le descripteur dans la base de données
     fprintf(fichier_descripteur, "%s", id_image);
     fprintf(fichier_descripteur, " %s", couleur);
 
@@ -103,13 +110,16 @@ void Indexer(FILE *image, char *id_image, char *couleur, FILE *fichier_descripte
     fprintf(fichier_descripteur, "\n");
     fclose(image);
     return;
+//-------------------------------------------------------------------------------------------------
 }
 
 void toutIndexer(){
+//------------------------------------------------------------------------------------------------
+//ces commande permettent de générer des fichier contenant des information utile au programme.
     system("ls ./TEST_RGB/*.txt > list_image.txt");
     system("wc -l < list_image.txt > nb_image.txt");
     system("ls ./TEST_RGB/*.txt | cut -d / -f 3 | cut -d . -f 1 > list_id_imageRGB.txt");
-
+//------------------------------------------------------------------------------------------------
     FILE *image;
     FILE *list_image;
     FILE *nb_image;
@@ -125,7 +135,7 @@ void toutIndexer(){
     list_image = fopen("list_image.txt", "r");
     list_id_imageRGB = fopen("list_id_imageRGB.txt", "r");
     nb_image = fopen("nb_image.txt", "r");
-
+//---------------------------------------------------------------------------------------------------------
     if (fichier_descripteur==NULL)
     {
         perror("Error opening file base_descripteur_image.csv\n");
@@ -138,7 +148,7 @@ void toutIndexer(){
         perror("Error opening file list_image.txt\n");
         return;
     }
-
+//---------------------------------------------------------------------------------------------------------
     int i = 0;
     fscanf(nb_image, "%d", &i);
 
