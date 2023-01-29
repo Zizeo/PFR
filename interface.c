@@ -1,6 +1,8 @@
 #include "./package_image/module_image.h"
 #include "./package_texte/comparaison.h"
 
+
+
 int main()
 {
   int quitM1 = 0;
@@ -8,7 +10,6 @@ int main()
   int quitM3 = 0;
   int mode = 0;
   int type_search = 0;
-  char mot_cle[1000];
   char id_image[100];
   char suite[10];
 

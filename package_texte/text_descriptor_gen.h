@@ -13,6 +13,7 @@
 #define MAX_FILE_PATH_LENGTH 1000
 #define MAX_COMMAND_LENGTH 1000
 #define MAX_FILE_NAME_LENGTH 100
+#define DT_REG 8
 
 typedef struct
 {
