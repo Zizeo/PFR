@@ -144,7 +144,8 @@ void comparaison_descripteur(){
         }
     }
 //--------------------------------------------------------------------------------------------------------------------------------
-
+//on ouvre l'image la plus proches avec viewnior
+//on a 2 cas : si l'image recherché est dans la base de descripteurs ou si elle n'y est pas.
     char commande[1000];
     if(strcmp(list_info[0].couleur_indexe,"RGB")==0){
         if(strcmp(list_info[0].id_image, id_recherche) == 0){
@@ -159,7 +160,7 @@ void comparaison_descripteur(){
         sprintf(commande, "viewnior ./TEST_NB/%s.bmp&", list_info[0].id_image);
         }
     }
-//
+//---------------------------------------------------------------------------------------------------------------------------------
     system(commande);
     fclose(descripteurs);
     fclose(file_nb_descripteurs);
@@ -172,7 +173,8 @@ void comparaison_descripteur(){
 
 int index_recherche(char *id_image)
 {
-
+//--------------------------------------------------------------------------------------------------------------------------------
+//déclaration des variable, ouverture des fichiers et vérifications
     char path_image[1000];
     FILE *image_rechercheNB=NULL;
     FILE *image_rechercheRGB = NULL;
@@ -206,7 +208,8 @@ int index_recherche(char *id_image)
         printf("\nError opening file descripteur_indexe\n");
         return -1;
     }
-
+//---------------------------------------------------------------------------------------------------------------------
+//gestion des doublons, on choisis quel descripteur à écrire dans le fichier descripteur_recherche.
     if (image_rechercheRGB != NULL && image_rechercheNB != NULL){
         printf("\nDoublon d'image détecté\n");
         printf("================================\n");
@@ -231,8 +234,8 @@ int index_recherche(char *id_image)
     }else{
         Indexer(image_rechercheNB, id_image, "NB", descripteur_recherche);
     } 
-        
-
+//-----------------------------------------------------------------------------------------------------------
+//si le descripteur de l'image recherché n'est pas dans la base de données on l'y ajoute.
     if (check_doublon(id_image, "RGB")==0 && check_doublon(id_image, "NB")==0)
     {
         rewind(descripteur_recherche);
@@ -242,7 +245,7 @@ int index_recherche(char *id_image)
 
     fclose(descripteur_indexe);
     fclose(descripteur_recherche);
-    image_rechercheRGB = NULL;
-    image_rechercheNB = NULL;
+    if(image_rechercheRGB != NULL) fclose(image_rechercheRGB);
+    if(image_rechercheNB != NULL) fclose(image_rechercheNB);
     return 1;
 }
