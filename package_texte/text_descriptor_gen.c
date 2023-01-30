@@ -32,7 +32,7 @@ void clean_xml_files()
     {
         printf("Impossible d'accéder au dossier TOK.\n");
     }
-    system("chmod +x ./package_texte/clean.sh"); // give execute permission to the script
+    system("chmod +x ./package_texte/clean.sh"); // donner les permissions d'exécution au script
     DIR *d;
     struct dirent *dir;
     d = opendir("./package_texte/Textes");
@@ -41,7 +41,7 @@ void clean_xml_files()
         while ((dir = readdir(d)) != NULL)
         {
             if (dir->d_type == DT_REG)
-            { // only regular files
+            {
                 char *file_name = dir->d_name;
                 if (strstr(file_name, ".xml"))
                 { // only xml files
@@ -65,6 +65,7 @@ void clean_xml_files()
     }
 }
 
+// Vérifier l'existence d'un fichier
 int file_exists(char *file_path)
 {
     FILE *fp;
@@ -76,6 +77,7 @@ int file_exists(char *file_path)
     return 0;
 }
 
+// Vérifier l'existence d'un descripteur pour un document_id donné
 int descriptor_exists(int document_id)
 {
     char buffer[BUFFER_SIZE];
