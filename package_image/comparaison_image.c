@@ -34,7 +34,7 @@ void comparaison_descripteur(){
     int nb_descripteurs=0;
     int nb_valeur = 64;
 
-    system("wc -l < ./package_image/descripteurs/base_descripteur_image.csv > nb_descripteurs.txt");
+    system("wc -l < ./package_image/descripteurs/base_descripteur_image.csv > nb_descripteurs_image.txt");
 
     file_descripteur_recherche = fopen("descripteur_recherche.txt", "r");
     if (file_descripteur_recherche == NULL)
@@ -43,7 +43,7 @@ void comparaison_descripteur(){
         return;
     }
 
-    file_nb_descripteurs = fopen("nb_descripteurs.txt","r");
+    file_nb_descripteurs = fopen("nb_descripteurs_image.txt","r");
     if(file_nb_descripteurs==NULL){
         printf("Error opening file_nb_descripteur");                    //dans cette partie, les fichiers sont ouverts et on vérifie qu'il sont bien ouverts.
         return;                                                         //et on déclare les variables.
