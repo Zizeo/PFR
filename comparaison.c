@@ -4,7 +4,7 @@
 Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
   Descripteur * descripteurs = malloc(sizeof(Descripteur) * MAX_DESCRIPTEUR);
 
-  // Check if file exists
+  // Verifier si fichier existe
   if (fp == NULL) {
     printf("Erreur: base descripteur vide");
     exit(EXIT_FAILURE);
@@ -12,20 +12,19 @@ Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
 
   * descripteur_nb = 0;
   while (feof(fp) == 0 && * descripteur_nb < MAX_DESCRIPTEUR) {
-    // Access & init a new Descripteur 
+    
     Descripteur * descripteur = & descripteurs[ * descripteur_nb];
     char line[MAX_PARAMETER_LENGTH];
 
-    // Read 3 first lines
-    // Line 0: id
+    
     fgets(line, MAX_PARAMETER_LENGTH, fp);
     sscanf(line, "%d", &descripteur->id);
 
-    // Line 1: nb_token
+    
     fgets(line, MAX_PARAMETER_LENGTH, fp);
     sscanf(line, "%d", &descripteur->nb_token);
 
-    // Line 2: nb_total_token
+    
     fgets(line, MAX_PARAMETER_LENGTH, fp);
     sscanf(line, "%d", &descripteur->nb_total_token);
 
@@ -36,7 +35,7 @@ Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
 
     descripteur->tokens = (Token * ) malloc(sizeof(Token) * descripteur -> nb_token);
 
-    // For nb_token, parse Token
+    
     for (int t = 0; t < descripteur -> nb_token; t++) {
       char token_line[MAX_TOKEN_LENGTH];
       Token * token = & (descripteur -> tokens[t]);
@@ -55,6 +54,7 @@ Descripteur * parse_base_descripteur(FILE * fp, int * descripteur_nb) {
   return descripteurs;
 }
 
+//recherche par mot clé
 void search_by_keyword(char *mot_cle, Descripteur *descripteurs, int descripteurs_length) {   
   int nb_apparition = 0;
   SearchComparableItem search_comparables[MAX_DESCRIPTEUR]; //, sizeof *search_comparables);
@@ -117,7 +117,7 @@ float cosine_similarity(Descripteur desc1, Descripteur desc2) {
 
   return dot_product / (sqrt(desc1_norm) * sqrt(desc2_norm));
 }
-
+// comparaison par fichier
 void comparaison_par_fichier(Descripteur descripteur) {
   int descriptors_length = 0;
   FILE * base_descripteur = fopen(BASE_DESCRIPTEUR, "r");
@@ -149,11 +149,11 @@ void comparaison_par_fichier(Descripteur descripteur) {
 
   for (int i=0; i<descriptors_length; i++){
     if (similarites[i].similarite > 0.5) {
-      printf("ID: %d similaire à %.0f%%\n", similarites[i].id, similarites[i].similarite * 100);
+      printf("ID: %d Fichier %s similaire à %.0f%%\n",  similarites[i].id, get_path_by_id(similarites[i].id), similarites[i].similarite * 100);
     }
   }
 }
-
+// Trouver l'identifiant d'un fichier
 int get_new_document_id() {
   int biggest_id = INT_MIN;
   char line[MAX_FILE_PATH_LENGTH];
@@ -170,36 +170,7 @@ int get_new_document_id() {
   return biggest_id + 1;
 }
 
-/*
-int indexation_fichier(char * path_texte, int id) {
-  path_texte[strlen(path_texte) - 1] = '\0';
-
-  Descriptor * descripteur;
-
-  FILE * text = fopen(path_texte, "r");
-  if (text == NULL) {
-    printf("Impossible d'ouvrir le fichier %s\n", path_texte);
-    return 1;
-  }
-
-  // Lit le contenu du fichier texte
-  fseek(text, 0, SEEK_END);
-  long file_size = ftell(text);
-  rewind(text);
-  char * document = malloc(file_size + 1);
-  fread(document, file_size, 1, text);
-  document[file_size] = '\0';
-  fclose(text);
-
-  // Appelle la fonction process_text en passant en paramètre l'id du document,
-  // l'emplacement du fichier et le contenu du fichier
-  process_text(id, path_texte, document, descripteur);
-
-  free(document);
-
-  return 0;
-}*/
-
+//Trouver un descripteur à partir de l'identifiant 
 Descripteur * get_descripteur_par_id(int id) {
   FILE * base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "rb");
   int descripteur_length = 0;
@@ -215,6 +186,7 @@ Descripteur * get_descripteur_par_id(int id) {
   fclose(base_descripteur_texte);
 }
 
+//Trouver chemin grace à l'identifiant 
 char *get_path_by_id(int id) {
   char line[MAX_FILE_PATH_LENGTH];
   FILE * liste_base_texte = fopen("./package_texte/liste_base_texte.txt", "rb");
@@ -233,8 +205,7 @@ char *get_path_by_id(int id) {
 
 int MENU__search_by_file() {
   int choix;
-  printf(
-    "Bienvenue dans la recherche de Texte !\nPour une recherche par :\n  %d. Chemin\n  %d. Identifiant\n\nEntrer votre choix (%d/%d): ",
+  printf("Pour une recherche par :\n  %d. Chemin\n  %d. Identifiant\n\nEntrer votre choix (%d/%d): ",
     MENU__CHOIX_RECHERCHE_CHEMIN, MENU__CHOIX_RECHERCHE_ID, MENU__CHOIX_RECHERCHE_CHEMIN, MENU__CHOIX_RECHERCHE_ID);
   scanf("%d", & choix);
   return choix;
@@ -242,29 +213,23 @@ int MENU__search_by_file() {
 
 void MENU__research_by_path() {
   int id;
-  char text_path[MAX_FILE_NAME_LENGTH];
+  char * text_path= malloc(MAX_FILE_NAME_LENGTH);
   printf("Entrer le chemin du texte source: ");
-  scanf("%d %s", & id, (char * ) text_path);
-  printf("stuff");
+  //scanf("%d %s", & id, text_path);
+  scanf("%d", &id);
+  printf("%d", id );
 
-  //if (descriptor_exists(id) == 0) {
-   // printf("Le fichier n'est pas indéxé, on tentes de l'indexer");
-    //if (indexation_fichier(text_path, id) > 0) {
-     // printf("Erreur: Impossible de faire l'indexation.");
-     // return;
-    //}
- // }
-
-  /*char * path_texte = get_path_by_id(id);
+  char * path_texte = get_path_by_id(id);
   if (path_texte == NULL) {
     printf("Erreur: Le chemin est invalide");
     return;
-  }*/
+  }
 
-  Descripteur * descripteur = get_descripteur_par_id(id); // If it does not work, return an address instead
+  Descripteur * descripteur = get_descripteur_par_id(id); 
   comparaison_par_fichier( * descripteur);
 }
 
+//verifie si le descripteur existe
 int descripteur_exists(int id){
   int descriptors_length=0;
   FILE *base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "r");
@@ -296,19 +261,12 @@ void MENU__research_by_id() {
   
 
 }
-
+ //Recherche par mot clé
 int research_by_keyword(){
   int descriptors_length = 0;
   char search_keyword[MAX_TOKEN_LENGTH];
   FILE *base_descripteur_texte = fopen(BASE_DESCRIPTEUR, "r");
   Descripteur *descriptors = parse_base_descripteur(base_descripteur_texte, &descriptors_length);
-
-  for (int i = 0; i < descriptors_length; i++) {
-    //printf("N°%d, ID: %d, nb_token: %d, max token: %d\n", i, descriptors[i].id, descriptors[i].nb_token, descriptors[i].nb_total_token);
-    /*for (int j=0; j<descriptors[i].nb_token; j++){                    
-      printf("Mot clé n°%d : %s avec %d occurences\n", j, descriptors[i].tokens[j].keyword, descriptors[i].tokens[j].nb_occurence);
-    }*/
-  }
 
   printf("\nVeuillez saisir un mot clé pour votre recherche : ");
   scanf("%s", (char*)search_keyword);
@@ -349,12 +307,3 @@ int research_by_file(){
 
 }
 
-int main(){
-//il faut appeler ces deux fonctions
-
-  //recherche par mot clé dans la bdd
-  research_by_keyword(); 
-
-  // Recherche par fichier 
-  //research_by_file(); 
-}
