@@ -1,6 +1,6 @@
 0
-211
-298
+210
+296
 Sat:1
 03:1
 Sep:1
@@ -191,7 +191,6 @@ porcs:1
 brebis:1
 chiens:1
 tenter:1
-­:2
 partir:1
 simple:1
 biopsie:1
@@ -213,8 +212,8 @@ séquelles:1
 infarctus:1
 myocarde:1
 1
-215
-253
+214
+250
 Sat:1
 03:1
 Sep:1
@@ -364,7 +363,6 @@ biologique:2
 obtient:1
 clichés:1
 protéome:1
-­:3
 ensemble:1
 synthétisées:2
 instant:1
@@ -615,8 +613,8 @@ décès:1
 Jacques:1
 Chirac:1
 3
-185
-256
+183
+254
 05:1
 Sep:1
 2005:2
@@ -740,7 +738,6 @@ fun:1
 zen:1
 reloud:1
 chelou:1
-APRÈS:1
 PLUIE:1
 TEMPSLa:1
 sereine:1
@@ -752,7 +749,6 @@ amour:1
 40:1
 interrogés:1
 36:1
-­:1
 devance:1
 nettement:1
 aimer:1
@@ -803,8 +799,8 @@ ans:1
 représentatifs:1
 population:1
 4
-278
-358
+277
+356
 05:1
 Sep:1
 2005:2
@@ -1058,7 +1054,6 @@ titres:1
 mondiaux:1
 pointe:1
 légers:2
-­:2
 70:1
 kg:2
 moyenne:1
@@ -1752,8 +1747,8 @@ disponibles:1
 dizaine:1
 années:1
 7
-403
-696
+402
+690
 05:1
 Sep:1
 2005:1
@@ -1930,7 +1925,6 @@ pilote:4
 colombien:1
 signe:1
 année:1
-­:6
 6e:1
 carrière:1
 obtenue:1
@@ -2158,8 +2152,8 @@ gageure:1
 agissant:1
 automobile:1
 8
-452
-676
+451
+672
 05:1
 Sep:1
 2005:1
@@ -2316,7 +2310,6 @@ populaire:4
 sens:2
 défini:1
 Vilar:3
-­:4
 modernité:1
 Or:1
 objectifs:1
@@ -2613,8 +2606,8 @@ télévision:1
 morale:1
 succès:1
 9
-223
-291
+222
+288
 05:1
 Sep:1
 2005:1
@@ -2683,7 +2676,6 @@ Unlimited:3
 Edition:3
 1976:1
 passage:2
-­:3
 emploi:1
 Direct:1
 Stream:1
@@ -3595,8 +3587,8 @@ CD:1
 Rough:1
 Trade:1
 13
-305
-393
+304
+392
 05:1
 Sep:1
 2005:1
@@ -3828,7 +3820,6 @@ obtenant:1
 victoires:1
 épreuve:1
 MANQUE:1
-À:1
 GAGNERLe:1
 faisait:1
 partie:1
@@ -3903,8 +3894,8 @@ pis:1
 aller:1
 fédération:1
 14
-332
-450
+331
+448
 Tue:1
 06:1
 Sep:1
@@ -4116,7 +4107,6 @@ nord:1
 dépit:2
 décidé:1
 1998:1
-­:2
 vigueur:1
 obtenus:1
 constituent:1
@@ -4238,8 +4228,8 @@ frontière:1
 Etats:1
 Unis:1
 15
-368
-558
+367
+553
 Tue:1
 06:1
 Sep:1
@@ -4349,7 +4339,6 @@ rassuré:1
 fin:2
 éliminatoires:1
 pointent:1
-­:5
 points:1
 Irlandais:1
 Suisses:1
@@ -4609,8 +4598,8 @@ acheté:1
 achètent:1
 journal:1
 16
-363
-554
+362
+552
 Tue:1
 06:1
 Sep:1
@@ -4803,7 +4792,6 @@ protégera:1
 éléments:1
 antigéniques:1
 communs:1
-­:2
 cequin:1
 exclu:1
 apporter:1
@@ -5201,8 +5189,8 @@ recours:1
 déposé:1
 récupérer:1
 19
-361
-479
+359
+475
 Thu:1
 08:1
 Sep:1
@@ -5404,7 +5392,6 @@ poids:1
 commencé:1
 sortir:1
 image:1
-­:2
 style:1
 habits:1
 maquillage:1
@@ -5558,15 +5545,14 @@ Tél:1
 58:1
 71:1
 17:1
-:2
 cadre:1
 Trésors:1
 lusophones:1
 16:1
 octobre:1
 20
-124
-188
+123
+187
 Thu:1
 08:1
 Sep:1
@@ -5592,7 +5578,7 @@ joueurs:4
 football:2
 posent:2
 main:3
-cur:3
+ur:3
 Marseillaise:2
 mercredi:2
 soir:2
@@ -5634,7 +5620,6 @@ Ecouter:1
 enregistrement:1
 site:1
 ÉPILOGUER:1
-LÀ:1
 BASTARaymond:1
 réagi:1
 affirmant:1
@@ -6710,8 +6695,8 @@ métaux:1
 lourds:1
 polluants:1
 24
-206
-249
+204
+245
 Thu:1
 08:2
 Sep:1
@@ -6748,7 +6733,6 @@ petite:2
 semaine:1
 répond:1
 Jules:4
-­:1
 jours:1
 premières:1
 répliques:1
@@ -6907,7 +6891,6 @@ Tél:1
 05:1
 0:1
 34:1
-:3
 min:1
 mardi:1
 samedi:2
@@ -6968,8 +6951,8 @@ navigateur:2
 affiche:2
 frames:2
 26
-207
-230
+206
+228
 Fri:1
 09:1
 Sep:1
@@ -7024,7 +7007,6 @@ feu:1
 pays:1
 longue:1
 attente:1
-­:2
 ans:1
 espoir:1
 petite:2
@@ -7175,11 +7157,11 @@ sponsors:1
 industriels:1
 exploitent:1
 poule:1
-ufs:1
+ufs:1
 or:1
 27
-318
-440
+317
+431
 Sat:1
 10:1
 Sep:1
@@ -7314,7 +7296,6 @@ sanctuaire:1
 Delphes:1
 Grèce:1
 modèle:2
-­:9
 20:1
 gigaoctets:1
 données:5
@@ -7790,8 +7771,8 @@ réduction:1
 drastique:1
 nombre:1
 29
-241
-312
+240
+308
 Sun:1
 11:2
 Sep:1
@@ -7820,7 +7801,6 @@ NO2:6
 2004:1
 concentration:2
 polluant:2
-­:4
 couche:2
 air:1
 épaisse:1
@@ -8034,8 +8014,8 @@ disponibles:1
 ans:1
 estime:1
 30
-328
-548
+326
+545
 12:2
 Sep:1
 2005:2
@@ -8161,7 +8141,6 @@ finaliste:1
 Australien:1
 Ken:1
 Rosewall:1
-­:1
 âgé:1
 39:1
 perdue:1
@@ -8188,7 +8167,6 @@ rougir:1
 défaite:1
 premiers:1
 douter:1
-nº:2
 surnommé:1
 génie:1
 qualité:2
@@ -8365,8 +8343,8 @@ surfaces:1
 open:1
 1969:1
 31
-221
-313
+219
+310
 12:2
 Sep:1
 2005:1
@@ -8447,7 +8425,6 @@ partir:1
 2008:1
 reposait:1
 argument:1
-­:2
 compétition:1
 manufacturiers:1
 grimper:1
@@ -8580,7 +8557,6 @@ Oui:1
 aidé:1
 prendre:1
 ironisait:1
-Ça:1
 important:1
 parfait:1
 mieux:1
@@ -8998,8 +8974,8 @@ lieu:1
 combat:1
 culturel:1
 33
-192
-241
+191
+239
 12:1
 Sep:1
 2005:1
@@ -9062,7 +9038,6 @@ Grammophon:1
 bénéficiait:1
 distribution:1
 pair:1
-­:2
 Placido:1
 Domingo:1
 Birgit:1
@@ -9193,8 +9168,8 @@ CD:1
 Philips:1
 Universal:1
 34
-266
-353
+265
+352
 12:1
 Sep:1
 2005:1
@@ -9238,7 +9213,6 @@ documentaire:1
 réalisé:1
 Mark:1
 Kidel:1
-­:1
 sources:1
 indiennes:1
 Arte:1
@@ -10735,8 +10709,8 @@ gagne:1
 Coupe:1
 Europe:1
 40
-186
-248
+185
+246
 Wed:1
 14:2
 Sep:1
@@ -10908,7 +10882,6 @@ Vietnam:1
 touchés:1
 maladie:1
 animale:1
-­:2
 exposés:1
 recense:1
 année:1
@@ -10924,8 +10897,8 @@ urgente:1
 nouvelle:1
 nationale:1
 41
-386
-515
+385
+513
 Thu:1
 15:3
 Sep:1
@@ -10976,7 +10949,6 @@ internationale:1
 part:1
 énergies:2
 fossiles:2
-­:2
 pétrole:3
 charbon:4
 établit:1
@@ -11313,8 +11285,8 @@ disposition:1
 apparaissent:1
 incontournables:1
 42
-384
-514
+383
+512
 Thu:1
 15:4
 Sep:1
@@ -11363,7 +11335,6 @@ internationale:1
 part:1
 énergies:2
 fossiles:2
-­:2
 pétrole:3
 charbon:4
 établit:1
@@ -11892,8 +11863,8 @@ distribution:1
 Harmonia:1
 Mundi:1
 44
-349
-497
+348
+495
 Thu:1
 15:1
 Sep:1
@@ -11937,7 +11908,6 @@ jour:2
 grand:1
 rendez:1
 espagnol:1
-­:2
 film:14
 Oscars:2
 absence:1
@@ -13229,8 +13199,8 @@ polémique:1
 engendrée:1
 affaire:1
 49
-413
-562
+412
+558
 Fri:1
 16:2
 Sep:1
@@ -13395,7 +13365,6 @@ consiste:1
 haute:1
 vitesse:2
 chargées:1
-­:4
 ions:1
 fournies:1
 réservoir:1
@@ -13645,8 +13614,8 @@ apprenti:1
 nation:1
 majeure:1
 50
-185
-231
+184
+229
 Sat:1
 17:1
 Sep:1
@@ -13828,13 +13797,12 @@ samedi:1
 dimanche:1
 18:1
 15:1
-:2
 55:1
 Durée:1
 1:1
 51
-262
-360
+261
+356
 Sat:1
 17:1
 Sep:1
@@ -13955,7 +13923,6 @@ cours:2
 appuiera:1
 multitude:1
 paramètres:2
-­:4
 perméables:1
 relief:1
 montre:1
@@ -14098,8 +14065,8 @@ actuel:1
 livrer:1
 lieu:1
 52
-297
-388
+295
+384
 Sat:1
 17:3
 Sep:1
@@ -14294,7 +14261,6 @@ mode:1
 tappa:1
 dadra:1
 balancé:1
-­:2
 modes:2
 vocaux:1
 rythmiques:1
@@ -14385,7 +14351,6 @@ Halles:1
 heures:2
 15:1
 50:1
-:2
 Tél:1
 01:1
 42:1
@@ -15140,8 +15105,8 @@ navigateur:2
 affiche:2
 frames:2
 58
-215
-290
+214
+286
 Wed:1
 21:1
 Sep:1
@@ -15244,7 +15209,6 @@ optant:1
 stratégie:1
 risquée:1
 défense:1
-­:4
 zone:1
 exposés:1
 adresse:1
@@ -15540,8 +15504,8 @@ soupçonnés:1
 participer:1
 baisse:1
 60
-311
-392
+309
+386
 Thu:1
 22:2
 Sep:1
@@ -15644,7 +15608,6 @@ quartiers:1
 chics:1
 intéresse:1
 danse:1
-­:4
 bharata:1
 natyan:1
 khatak:1
@@ -15851,11 +15814,10 @@ Tél:1
 16:2
 25:1
 12:1
-:2
 17:1
 61
-445
-549
+442
+542
 Thu:1
 22:1
 Sep:1
@@ -15871,9 +15833,7 @@ laboureurs:1
 OGM:7
 faucheurs:1
 profil:1
-«:1
 surface:1
-»:1
 exploitation:5
 itinéraire:1
 militent:1
@@ -15963,7 +15923,6 @@ août:2
 2004:1
 Volontaires:1
 saccagé:1
-­:5
 neutralisé:1
 transgénique:1
 nord:2
@@ -16018,7 +15977,7 @@ paysans:1
 rangs:1
 détruire:1
 mal:1
-cur:1
+ur:1
 30:1
 kilomètres:1
 Gerzat:1
@@ -16302,8 +16261,8 @@ CETA:1
 administrateur:1
 passionné:1
 62
-314
-446
+313
+445
 Thu:1
 22:1
 Sep:1
@@ -16547,7 +16506,6 @@ diversité:2
 conférences:1
 tombent:1
 chaise:1
-Ça:1
 étonne:1
 DRH:1
 recherchent:1
@@ -16619,8 +16577,8 @@ valent:1
 diplômes:1
 marché:1
 63
-490
-614
+488
+608
 Thu:1
 22:1
 Sep:1
@@ -16718,7 +16676,6 @@ Bellenger:1
 Gallimard:1
 352:1
 49:1
-:2
 insaisissable:1
 caractéristique:1
 principale:1
@@ -16738,7 +16695,6 @@ portant:1
 142:1
 oeuvres:2
 présentées:2
-­:4
 tableaux:1
 graphiques:1
 travaux:1
@@ -17112,8 +17068,8 @@ vendredi:1
 50:1
 2:1
 64
-361
-516
+360
+514
 Thu:1
 22:2
 Sep:1
@@ -17176,7 +17132,6 @@ existe:1
 types:2
 virus:12
 influenza:2
-­:2
 A:4
 formes:1
 infections:1
@@ -17476,8 +17431,8 @@ agent:1
 viral:1
 pathogène:1
 65
-320
-468
+318
+452
 Thu:1
 22:1
 Sep:1
@@ -17544,7 +17499,6 @@ premiers:2
 2004:6
 Chelsea:3
 936:1
-:14
 Arsenal:3
 1:1
 274:1
@@ -17723,7 +17677,6 @@ tournure:2
 sportive:1
 échanges:1
 distance:1
-­:2
 fleurets:1
 mouchetés:1
 Arsène:1
@@ -17952,8 +17905,8 @@ Nancy:1
 position:1
 relégables:1
 67
-427
-545
+426
+543
 Thu:1
 22:1
 Sep:1
@@ -18207,7 +18160,6 @@ fils:1
 27:1
 Jeune:1
 étudiant:1
-­:2
 licence:1
 littérature:1
 anglaise:1
@@ -18382,8 +18334,8 @@ mauvaise:1
 foi:1
 outrance:1
 68
-171
-233
+169
+231
 Fri:1
 23:1
 Sep:1
@@ -18510,8 +18462,6 @@ gros:1
 54:1
 37:1
 A:1
-ÉTÉ:1
-TRÈS:1
 FORTSDans:1
 dernières:1
 gardaient:1
@@ -18556,8 +18506,8 @@ laissé:1
 place:1
 suspense:1
 69
-334
-424
+332
+421
 Sat:1
 24:1
 Sep:1
@@ -18593,7 +18543,6 @@ continent:1
 enregistré:1
 écarts:1
 6:1
-º:1
 normales:1
 saisonnières:1
 déficit:1
@@ -18680,7 +18629,6 @@ Représentatives:1
 types:1
 couverture:1
 végétale:2
-­:2
 forêts:4
 principalement:1
 cultures:1
@@ -18893,8 +18841,8 @@ engagements:1
 Kyoto:1
 limitation:1
 70
-126
-172
+125
+171
 26:2
 Sep:1
 2005:1
@@ -18972,7 +18920,6 @@ Sulianto:1
 Saroso:1
 Djakart:1
 spécialisé:1
-ÉTAT:1
 URGENCELe:1
 engagées:1
 fronts:1
@@ -19022,8 +18969,8 @@ mortel:1
 instant:1
 contagieux:1
 71
-167
-216
+166
+214
 26:1
 Sep:1
 2005:1
@@ -19060,7 +19007,6 @@ A:1
 recherche:2
 nouvelle:1
 star:2
-­:2
 équivalent:1
 chaîne:1
 M6:1
@@ -19607,8 +19553,8 @@ montré:1
 obtenir:1
 résultats:1
 74
-355
-478
+353
+473
 Tue:1
 27:1
 Sep:1
@@ -19716,7 +19662,6 @@ voyait:1
 réminiscence:1
 appuyée:1
 monde:1
-­:4
 crise:2
 industrielle:2
 veut:1
@@ -19864,7 +19809,6 @@ site:1
 implanter:1
 ancienne:1
 fosse:1
-nº:1
 9:1
 située:1
 corons:1
@@ -19965,8 +19909,8 @@ partageront:1
 XXIe:1
 siècle:1
 75
-375
-618
+374
+610
 Tue:1
 27:5
 Sep:1
@@ -20124,7 +20068,6 @@ défavorables:1
 Nordistes:1
 2003:2
 plan:1
-­:8
 porter:1
 capacité:1
 35:2
@@ -20957,8 +20900,8 @@ postes:1
 homme:1
 observer:1
 78
-198
-259
+197
+258
 Wed:1
 28:2
 Sep:1
@@ -21038,7 +20981,6 @@ compétition:1
 rempile:1
 circuit:2
 complet:1
-À:1
 DOMINATEURLes:1
 résultats:1
 suite:1
@@ -21158,8 +21100,8 @@ faut:1
 gagne:1
 appelle:2
 79
-276
-365
+275
+363
 Wed:1
 28:1
 Sep:1
@@ -21432,13 +21374,12 @@ Tél:1
 83:1
 98:2
 8:1
-:2
 14:1
 5:1
 octobre:1
 80
-242
-333
+240
+328
 Wed:1
 28:2
 Sep:1
@@ -21642,7 +21583,6 @@ Vendredi:1
 15:1
 aube:1
 23:1
-:4
 soirée:1
 32:1
 Tél:2
@@ -21662,7 +21602,6 @@ avenue:1
 Corentin:1
 Cariou:1
 19e:1
-M°:1
 Porte:1
 29:2
 2:2
@@ -21682,8 +21621,8 @@ nuit:1
 emergences:1
 info:1
 81
-287
-400
+286
+396
 Wed:1
 28:1
 Sep:1
@@ -21696,7 +21635,7 @@ Informations:1
 pratiques:1
 spectacles:3
 affiche:1
-dipe:14
+dipe:14
 Colone:9
 rage:2
 intacte:2
@@ -21715,7 +21654,6 @@ tragédie:2
 grecque:1
 a:12
 14e:2
-­:4
 créée:1
 Giorgio:1
 Strehler:1
@@ -21972,8 +21910,8 @@ www:1
 festivalteatrodiroma:1
 net:1
 82
-164
-239
+163
+238
 Thu:1
 29:1
 Sep:1
@@ -22136,7 +22074,6 @@ moyenne:1
 janvier:1
 août:1
 2:1
-°C:1
 élevée:1
 83
 42
