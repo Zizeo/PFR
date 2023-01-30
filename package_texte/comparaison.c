@@ -1,3 +1,4 @@
+
 #include "./comparaison.h"
 
 Descripteur *parse_base_descripteur(FILE *fp, int *descripteur_nb)
