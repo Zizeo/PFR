@@ -7,10 +7,10 @@ toutIndexer.o: ./package_image/toutIndexer.c ./package_image/module_image.h
 comparaison_image.o: ./package_image/comparaison_image.c ./package_image/module_image.h
 	gcc -c -g ./package_image/comparaison_image.c -o comparaison_image.o -lm -pedantic
 
-comparaison.o: ./package_texte/comparaison.c
+comparaison.o: ./package_texte/comparaison.c ./package_texte/comparaison.h
 	gcc -c  ./package_texte/comparaison.c -o comparaison.o -lm -pedantic
 
-text_descriptor_gen.o: ./package_texte/text_descriptor_gen.c 
+text_descriptor_gen.o: ./package_texte/text_descriptor_gen.c ./package_texte/text_descriptor_gen.h
 	gcc -c ./package_texte/text_descriptor_gen.c -o text_descriptor_gen.o -lm -pedantic
 
 interface.o: interface.c ./package_image/module_image.h ./package_texte/text_descriptor_gen.h ./package_texte/comparaison.h
