@@ -342,7 +342,7 @@ int research_by_file(){
 
 }
 
-int main(){
+/*int main(){
 //il faut appeler ces deux fonctions
 
   //recherche par mot clé dans la bdd
@@ -350,4 +350,4 @@ int main(){
 
   // Recherche par fichier 
   research_by_file(); 
-}
+}*/
