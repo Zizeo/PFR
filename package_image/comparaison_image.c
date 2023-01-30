@@ -245,7 +245,7 @@ int index_recherche(char *id_image)
 
     fclose(descripteur_indexe);
     fclose(descripteur_recherche);
-    if(image_rechercheRGB != NULL) fclose(image_rechercheRGB);
-    if(image_rechercheNB != NULL) fclose(image_rechercheNB);
+    if(image_rechercheRGB != NULL) image_rechercheRGB=NULL;
+    if(image_rechercheNB != NULL) image_rechercheNB=NULL;
     return 1;
 }
