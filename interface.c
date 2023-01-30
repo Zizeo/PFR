@@ -1,5 +1,5 @@
 #include "./package_image/module_image.h"
-#include "comparaison.h"
+#include "./package_texte/comparaison.h"
 
 int main()
 {

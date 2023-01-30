@@ -8,7 +8,7 @@
 
 #include <limits.h>
 
-#include "./package_texte/text_descriptor_gen.h"
+#include "text_descriptor_gen.h"
 
 
 #define MAX_TOKEN 2000
